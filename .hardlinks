@@ -1,0 +1,5 @@
+# Hardlinks file for use with check-hardlinks (in laomaiweng/scripts)
+
+awesome/rc.lua                      ~/.config/awesome/rc.lua
+awesome/themes/quentin/theme.lua    ~/.config/awesome/themes/quentin/theme.lua
+

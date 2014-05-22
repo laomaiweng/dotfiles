@@ -2,7 +2,8 @@
 
 awesome/rc.lua                      ~/.config/awesome/rc.lua
 awesome/themes/quentin/theme.lua    ~/.config/awesome/themes/quentin/theme.lua
+git/gitconfig                       ~/.gitconfig
+htop/htoprc                         ~/.config/htop/htoprc
 tmux/tmux.conf                      ~/.tmux.conf
 vim/vimrc                           ~/.vimrc
-htop/htoprc                         ~/.config/htop/htoprc
 

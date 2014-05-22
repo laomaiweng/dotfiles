@@ -1,0 +1,24 @@
+# ~/.gitconfig - user-specific global Git configuration file
+
+[user]
+	name = quentin
+	email = quentin@minster.io
+	signingkey = 0F5F912C
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	co = checkout
+	ci = commit
+	st = status -sb
+	br = branch
+	cp = cherry-pick
+	dc = diff --cached
+	last = !git --no-pager log -1 --stat
+	unstage = reset HEAD --
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all

@@ -3,4 +3,5 @@
 awesome/rc.lua                      ~/.config/awesome/rc.lua
 awesome/themes/quentin/theme.lua    ~/.config/awesome/themes/quentin/theme.lua
 tmux/tmux.conf                      ~/.tmux.conf
+vim/vimrc                           ~/.vimrc
 

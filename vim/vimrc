@@ -1,0 +1,74 @@
+" ~/.vimrc
+" User-specific vim settings
+
+"" Key bindings
+" <F1>:  Help
+" <F2>:  Toggle paste mode
+" <F3>:  Toggle light/dark background
+" <F5>:  Toggle tag bar
+" <F7>:  Toggle undo tree
+" <F10>: Toggle VimCommander
+" <F11>: Execute current buffer
+" <F12>: Toggle mouse ownership
+
+
+" Change the mapleader
+let mapleader = ";"
+
+" Use a dark background by default
+set background=dark
+let g:default_background_type = "dark"
+
+" F1-12 key bindings
+set pastetoggle=<F2>
+map <silent><F3> :ToggleBg<CR>
+nnoremap <F5> :Tagbar<CR>
+nnoremap <F7> :GundoToggle<CR>
+nnoremap <silent> <F10> :cal VimCommanderToggle()<CR>
+
+" Display tabs and trailing spaces
+set list
+set listchars=nbsp:¤,tab:\|\ ,trail:•
+highlight SpecialKey ctermfg=236
+
+" Make line numbers less aggressive
+highlight LineNr ctermfg=240 ctermbg=233
+highlight CursorLineNr ctermbg=233
+
+" Highlight the current line
+highlight CursorLine ctermbg=233 cterm=NONE
+set cursorline
+
+" Make the vertical separator less aggressive
+set fillchars=vert:\ 
+highlight VertSplit cterm=NONE ctermbg=234
+
+" Clear the current search with ;/
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+" Use w!! when you forgot to 'sudo vi'
+cmap w!! w !sudo tee % >/dev/null
+cmap w$$ w !sudo tee % >/dev/null
+
+" Map \ev and \sv to edit/reload your vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" airline options
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" syntastic options
+"let g:syntastic_tcl_nagelfar_args = "-s /usr/share/nagelfar-1.2/syntaxdb86.tcl"
+
+" yankring options
+let g:yankring_history_dir = '$HOME/.vim'
+if has("autocmd")
+  " Disable yankring for encrypted files
+  autocmd BufNewFile,BufReadCmd *.\(gpg\|asc\|pgp\) let g:yankring_enabled = 0
+endif
+
+" gundo options
+let g:gundo_right = 1
+let g:gundo_help = 0
+

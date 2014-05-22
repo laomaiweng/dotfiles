@@ -1,0 +1,40 @@
+# ~/.tclshrc - user-specific tclsh init script
+
+# Bail out if not interactive
+if {!$tcl_interactive} return
+
+# Bail out if tclshrc should not be sourced
+if {[info exists ::env(NO_TCLSHRC)] && $::env(NO_TCLSHRC)} return
+
+## tclreadline
+package require tclreadline
+# Setup a prompt
+proc ::tclreadline::prompt1 {} {
+    # Prompt base
+    set base [file tail [info nameofexecutable]]
+    if {[string match tclsh* $base] && [info exists ::tcl_version]} {
+        set base "\[0;31mtclsh$::tcl_version\[0m"
+    } elseif {[string match wish* $base] && [info exists ::tk_version]} {
+        set base "\[0;34mwish$::tk_version\[0m"
+    } else {
+        set base "\[0;31m$base\[0m"
+    }
+
+    # Working directory
+    if {[catch {set pwd [pwd]} tmp]} {
+        set pwd "unable to get pwd"
+    }
+    if {[info exists ::env(HOME)]} {
+        regsub $::env(HOME) $pwd "~" pwd
+    }
+    return "$base \[$pwd\] "
+}
+proc ::tclreadline::prompt2 {} {
+    return "> "
+}
+# Use a fancy ls proc
+namespace import tclreadline::ls
+# Start tclreadline's main loop
+::tclreadline::Loop
+
+# vim: ft=tcl

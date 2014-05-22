@@ -8,6 +8,7 @@ bash/bash_greetings                 ~/.bash_greetings
 git/gitconfig                       ~/.gitconfig
 htop/htoprc                         ~/.config/htop/htoprc
 most/mostrc                         ~/.mostrc
+tclsh/tclshrc                       ~/.tclshrc
 tmux/tmux.conf                      ~/.tmux.conf
 vim/vimrc                           ~/.vimrc
 

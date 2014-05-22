@@ -1,0 +1,52 @@
+# ~/.bash_greetings
+#
+# Commands run on every new BASH shell to make the user feel at ease.
+
+if [ "$NOGREET" != "true" ]
+then
+    # Get host information
+    CPU_NAME="`uname -p`"
+    CPU_NUM="`grep '^processor' /proc/cpuinfo | wc -l`"
+    MEM_MAIN="`free -m | sed -n -e '/^Mem:/ s/Mem:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
+    MEM_SWAP="`free -m | sed -n -e '/^Swap:/ s/Swap:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
+    UNAME="`uname -snrvmio`"
+
+    # Clear the screen
+    clear
+    echo
+    # Print host information
+    echo -e "\E[01;33mHost:\E[00m $UNAME"
+    [[ -f /proc/cpuinfo ]] && echo -e "\E[01;33mCPU: \E[00m $CPU_NAME   ($CPU_NUM logical CPUs)"
+    echo -e "\E[01;33mMem: \E[00m $MEM_MAIN MB   (+ $MEM_SWAP MB swap)"
+    echo
+    # Print the display
+    echo -e "\E[01;31mDisplay:\E[00m $DISPLAY"
+    echo
+    # Print a fortune-telling cow
+    if [ `which cowrand &> /dev/null` ]
+    then
+        fortune | cowrand -n
+        echo
+    fi
+    # Print current directory
+    echo -e "   \E[01;37m`pwd`:\E[00m"
+    ls --color
+    echo
+    # Print todo-list (if any) for this directory
+    if [ -f ./TODO ]
+    then
+        if ! echo "`file -L ./TODO`" | grep -q "XML"    # 'tudu' uses XML todos, rule those out
+        then
+            echo -e "   \E[01;37mTODO:\E[00m"
+            echo -e "`sed -e 's/^\(\*\+\)/\\\\E[01;33m\1\\\\E[00m/' TODO`"
+            echo
+        fi
+    fi
+
+    # Fight environment pollution
+    unset CPU_NAME CPU_NUM MEM_MAIN MEM_SWAP
+
+    # Prevent subsequent shells from greeting the user
+    export NOGREET="true"
+fi
+

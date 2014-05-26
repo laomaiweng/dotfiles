@@ -1,0 +1,19 @@
+# /etc/bash/bash_prompt: system-wide prompt
+
+PS1_TIMECOLOR="\[\033[01;37m\]"
+PS1_TIME="$PS1_TIMECOLOR[\t]"
+PS1_USERCOLOR="\[`[ $EUID -eq 0 ] && echo -n '\033[01;31m' || echo -n '\033[01;32m'`\]"
+PS1_USER="$PS1_USERCOLOR`[ $EUID -eq 0 ] || echo '\u@'`"
+PS1_WDCOLOR="\[\033[01;34m\]"
+PS1_WD="$PS1_WDCOLOR`[ $EUID -eq 0 ] && echo -n '\W' || echo -n '\w'`"
+PS1_JOBCOLOR="\[\033[01;35m\]"
+PS1_JOB="$PS1_JOBCOLOR[\j]"
+PS1_SHLVLCOLOR="\[\033[01;34m\]"
+#PS1_SHLVL="$PS1_SHLVLCOLOR`seq -s ' ' $SHLVL | sed -e 's:[^[:space:]\+]:\\\\$:g' -e 's: ::g'`"
+PS1_SHLVLSEQ="`seq $SHLVL`"
+PS1_SHLVL="$PS1_SHLVLCOLOR`printf '\\$%.s' $PS1_SHLVLSEQ`"
+
+export PS1="$PS1_TIME $PS1_USER\h $PS1_WD $PS1_JOB$PS1_SHLVL\[\033[00m\] "
+
+unset PS1_TIMECOLOR PS1_TIME PS1_USERCOLOR PS1_USER PS1_WDCOLOR PS1_WD PS1_JOBCOLOR PS1_JOB PS1_SHLVLCOLOR PS1_SHLVL
+

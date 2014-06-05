@@ -39,9 +39,10 @@ gpg-agent-test ~/.gnupg/agent-cobalt || gpg-agent --daemon --write-env-file ~/.g
 . ~/.gnupg/agent-cobalt
 export GPG_AGENT_INFO
 
-# Gentoo Repoman environment variables
+# Gentoo environment variables
 export GENTOO_AUTHOR_NAME="Quentin Minster"
 export GENTOO_AUTHOR_EMAIL=quentin@minster.io
+export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 
 # Exit from MC into last working directory
 . /usr/libexec/mc/mc.sh

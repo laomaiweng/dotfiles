@@ -11,3 +11,5 @@ alias hd='hexdump -C'
 alias wot='playonlinux --run "World Of Tanks"'
 alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'
 
+alias git='hub'
+

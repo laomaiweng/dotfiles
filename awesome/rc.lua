@@ -49,25 +49,6 @@ terminal = "konsole"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
--- Keyboard map indicator and changer
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "fr", "oss" }, { "fr", "bepo" }, { "us", "" } }
-kbdcfg.current = 1  -- fr is our default layout
-kbdcfg.widget = wibox.widget.textbox()
-kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][1] .. " ")
-kbdcfg.switch = function ()
-    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-    local t = kbdcfg.layout[kbdcfg.current]
-    kbdcfg.widget:set_text(" " .. t[1] .. " ")
-    os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-end
-
--- Mouse bindings
-kbdcfg.widget:buttons(
-    awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
-)
-
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -120,7 +101,10 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+                                    { "chromium", "chromium" },
+                                    { "firefox", "firefox" },
+                                    { "file browser", "dolphin" },
+                                    { "terminal", terminal }
                                   }
                         })
 
@@ -134,6 +118,29 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
+
+-- Keyboard map indicator and changer
+mykbdcfg = wibox.widget.textbox()
+mykbdcfg.cmd = "setxkbmap"
+mykbdcfg.layout = { { "fr", "oss" }, { "fr", "bepo" }, { "us", "" } }
+mykbdcfg.current = 1  -- fr oss is our default layout
+--mykbdcfg.widget = wibox.widget.textbox()
+--mykbdcfg.widget:set_text(" " .. mykbdcfg.layout[mykbdcfg.current][1] .. " ")
+mykbdcfg:set_text(" " .. mykbdcfg.layout[mykbdcfg.current][1] .. " ")
+mykbdcfg.switch = function (i)
+    mykbdcfg.current = ( mykbdcfg.current + i - 1 ) % #(mykbdcfg.layout) + 1
+    local t = mykbdcfg.layout[mykbdcfg.current]
+    --mykbdcfg.widget:set_text(" " .. t[1] .. " ")
+    mykbdcfg:set_text(" " .. t[1] .. " ")
+    os.execute( mykbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+end
+--mykbdcfg.widget:buttons(
+mykbdcfg:buttons(
+    awful.util.table.join(
+    awful.button({ }, 1, function () mykbdcfg.switch(1) end),
+    awful.button({ }, 3, function () mykbdcfg.switch(-1) end)
+    )
+)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -214,6 +221,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mykbdcfg)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -475,7 +483,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- {{{ Autostart
 -- Programs to run on startup
-awful.util.spawn('/usr/bin/xmodmap /home/quentin/.xmodmaprc')
+--awful.util.spawn('/usr/bin/xmodmap /home/quentin/.xmodmaprc')
 awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.numlock   numlockx on')
 awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.autostart dex -va -e Awesome')
 -- }}}

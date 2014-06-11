@@ -7,6 +7,8 @@ bash/bash_aliases                   ~/.bash_aliases
 bash/bash_greetings                 ~/.bash_greetings
 elinks/elinks.conf                  ~/.elinks/elinks.conf
 git/gitconfig                       ~/.gitconfig
+gnupg/gpg-agent.conf                ~/.gnupg/gpg-agent.conf
+gnupg/gpg.conf                      ~/.gnupg/gpg.conf
 htop/htoprc                         ~/.config/htop/htoprc
 indent/indent.pro                   ~/.indent.pro
 most/mostrc                         ~/.mostrc

@@ -15,4 +15,5 @@ most/mostrc                         ~/.mostrc
 tclsh/tclshrc                       ~/.tclshrc
 tmux/tmux.conf                      ~/.tmux.conf
 vim/vimrc                           ~/.vimrc
+wgetpaste/wgetpaste.conf            ~/.wgetpaste.conf
 

@@ -1,4 +1,8 @@
-# Hardlinks file for use with check-hardlinks (in laomaiweng/scripts)
+## Hardlinks file for use with check-hardlinks (in laomaiweng/scripts)
+#
+# Don't go too hot on the -f flag for check-hardlinks though, as the
+# reference file listed here is the repo's file, which is not always
+# what you want.
 
 awesome/rc.lua                      ~/.config/awesome/rc.lua
 awesome/themes/quentin/theme.lua    ~/.config/awesome/themes/quentin/theme.lua

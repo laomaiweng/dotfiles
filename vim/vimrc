@@ -72,3 +72,7 @@ endif
 let g:gundo_right = 1
 let g:gundo_help = 0
 
+" gist options
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+

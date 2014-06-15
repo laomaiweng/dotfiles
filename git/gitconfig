@@ -22,3 +22,5 @@
 	last = !git --no-pager log -1 --stat
 	unstage = reset HEAD --
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+[github]
+	user = laomaiweng

@@ -4,20 +4,23 @@
 # reference file listed here is the repo's file, which is not always
 # what you want.
 
-awesome/rc.lua                      ~/.config/awesome/rc.lua
-awesome/themes/quentin/theme.lua    ~/.config/awesome/themes/quentin/theme.lua
-bash/bashrc                         ~/.bashrc
-bash/bash_aliases                   ~/.bash_aliases
-bash/bash_greetings                 ~/.bash_greetings
-elinks/elinks.conf                  ~/.elinks/elinks.conf
-git/gitconfig                       ~/.gitconfig
-gnupg/gpg-agent.conf                ~/.gnupg/gpg-agent.conf
-gnupg/gpg.conf                      ~/.gnupg/gpg.conf
-htop/htoprc                         ~/.config/htop/htoprc
-indent/indent.pro                   ~/.indent.pro
-most/mostrc                         ~/.mostrc
-tclsh/tclshrc                       ~/.tclshrc
-tmux/tmux.conf                      ~/.tmux.conf
-vim/vimrc                           ~/.vimrc
-wgetpaste/wgetpaste.conf            ~/.wgetpaste.conf
+awesome/rc.lua                          ~/.config/awesome/rc.lua
+awesome/autostart/klipper.desktop       ~/.config/autostart/klipper.desktop
+awesome/autostart/kmix.desktop          ~/.config/autostart/kmix.desktop
+awesome/autostart/xscreensaver.desktop  ~/.config/autostart/xscreensaver.desktop
+awesome/themes/quentin/theme.lua        ~/.config/awesome/themes/quentin/theme.lua
+bash/bashrc                             ~/.bashrc
+bash/bash_aliases                       ~/.bash_aliases
+bash/bash_greetings                     ~/.bash_greetings
+elinks/elinks.conf                      ~/.elinks/elinks.conf
+git/gitconfig                           ~/.gitconfig
+gnupg/gpg-agent.conf                    ~/.gnupg/gpg-agent.conf
+gnupg/gpg.conf                          ~/.gnupg/gpg.conf
+htop/htoprc                             ~/.config/htop/htoprc
+indent/indent.pro                       ~/.indent.pro
+most/mostrc                             ~/.mostrc
+tclsh/tclshrc                           ~/.tclshrc
+tmux/tmux.conf                          ~/.tmux.conf
+vim/vimrc                               ~/.vimrc
+wgetpaste/wgetpaste.conf                ~/.wgetpaste.conf
 

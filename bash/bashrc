@@ -22,6 +22,11 @@ fi
 # all files and zero or more directories and subdirectories.
 shopt -s globstar
 
+# Setup a useful history
+export HISTCONTROL=ignore-both
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+
 # Extend the paths to the .local directories
 path prepend -e bin ~/.local/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin

@@ -47,6 +47,9 @@ export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 # Exit from MC into last working directory
 . /usr/libexec/mc/mc.sh
 
+# Default to no display when the X server is remote (this greatly improves Vim startup time over slow connections)
+[[ "$DISPLAY" == "localhost:"* ]] && nodisplay
+
 # If available, setup some useful aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 

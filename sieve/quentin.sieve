@@ -114,6 +114,9 @@ if header :contains ["List-Id"] "gentoo.org" {
     } elsif header :contains ["List-Id"] "gentoo-qa.gentoo.org" {
         fileinto "Gentoo.gentoo-dev";
         stop;
+    } elsif header :contains ["List-Id"] "gentoo-keys.gentoo.org" {
+        fileinto "Gentoo.gentoo-dev";
+        stop;
     } elsif header :contains ["List-Id"] "gentoo-dev-announce.gentoo.org" {
         fileinto "Gentoo.gentoo-dev";
         stop;

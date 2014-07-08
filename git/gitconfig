@@ -4,8 +4,6 @@
 	name = quentin
 	email = quentin@minster.io
 	signingkey = 0F5F912C
-[push]
-	default = simple
 [diff]
 	tool = vimdiff
 [merge]

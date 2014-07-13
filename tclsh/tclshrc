@@ -7,6 +7,7 @@ if {!$tcl_interactive} return
 if {[info exists ::env(NO_TCLSHRC)] && $::env(NO_TCLSHRC)} return
 
 ## tclreadline
+lappend auto_path /usr/share/tcltk
 package require tclreadline
 # Setup a prompt
 proc ::tclreadline::prompt1 {} {

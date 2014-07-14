@@ -309,7 +309,9 @@ globalkeys = awful.util.table.join(
     awful.key({},                    "Print", function () awful.util.spawn("ksnapshot")                  end),
     awful.key({ modkey,           }, "F1",    function () awful.util.spawn("setxkbmap fr bepo")          end),
     awful.key({ modkey,           }, "F2",    function () awful.util.spawn("setxkbmap fr oss")           end),
-    awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end)
+    awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
+    awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end)
 )
 
 clientkeys = awful.util.table.join(

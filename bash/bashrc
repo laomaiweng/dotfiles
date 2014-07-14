@@ -47,7 +47,7 @@ source $BASH_MODULES_SCRIPT
 bashmod gnupg
 
 # Add Git key-less SSH keys to the SSH agent
-ssh-add .ssh/git@github.rsa &> /dev/null
+ssh-add ~/.ssh/git@github.rsa &> /dev/null
 
 # Start or discover the GPG agent
 export GPG_TTY=$(tty)

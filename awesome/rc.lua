@@ -346,7 +346,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey,           }, "!", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -360,21 +360,21 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    awful.key({ modkey,           }, "i",     function () awful.tag.incmwfact( 0.05)    end),
+    awful.key({ modkey,           }, "u",     function () awful.tag.incmwfact(-0.05)    end),
+    awful.key({ modkey, "Shift"   }, "i",     function () awful.tag.incnmaster( 1)      end),
+    awful.key({ modkey, "Shift"   }, "u",     function () awful.tag.incnmaster(-1)      end),
+    awful.key({ modkey, "Control" }, "i",     function () awful.tag.incncol( 1)         end),
+    awful.key({ modkey, "Control" }, "u",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey,           }, "r", function () mypromptbox[mouse.screen]:run() end),
 
-    awful.key({ modkey },            "x",
+    awful.key({ modkey,           }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
                   mypromptbox[mouse.screen].widget,
@@ -383,9 +383,10 @@ globalkeys = awful.util.table.join(
               end),
 
     -- User bindings
-    awful.key({},                    "Print", function () awful.util.spawn("ksnapshot") end),
-    awful.key({ modkey },            "F1",    function () awful.util.spawn("setxkbmap fr bepo") end),
-    awful.key({ modkey },            "F2",    function () awful.util.spawn("setxkbmap fr oss") end)
+    awful.key({},                    "Print", function () awful.util.spawn("ksnapshot")                  end),
+    awful.key({ modkey,           }, "F1",    function () awful.util.spawn("setxkbmap fr bepo")          end),
+    awful.key({ modkey,           }, "F2",    function () awful.util.spawn("setxkbmap fr oss")           end),
+    awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end)
 )
 
 clientkeys = awful.util.table.join(

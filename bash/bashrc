@@ -36,7 +36,7 @@ path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
 
 # Add Git key-less SSH keys to the SSH agent
-ssh-add ~/.ssh/git@forge.rsa ~/.ssh/git@github.rsa ~/.ssh/git@gitorious.rsa.pub ~/.ssh/laomaiweng,tclreadline@sourceforge.rsa &> /dev/null
+ssh-add ~/.ssh/git@forge.rsa ~/.ssh/git@github.rsa ~/.ssh/git@gitorious.rsa ~/.ssh/laomaiweng,tclreadline@sourceforge.rsa &> /dev/null
 
 # Start or discover the GPG agent
 export GPG_TTY=$(tty)

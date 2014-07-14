@@ -39,6 +39,7 @@ path prepend -e lib ~/.local/lib64 ~/.local/lib
 path prepend -e inc ~/.local/include
 path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
+path append -e man /usr/share/man
 
 # Source some useful Bash modules
 export BASH_MODULES_SCRIPT="$HOME/Programming/Quentin/scripts/github/bash/functions/bashmod"

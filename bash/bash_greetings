@@ -5,11 +5,11 @@
 if [ "$NOGREET" != "true" ]
 then
     # Get host information
-    CPU_NAME="`uname -p`"
+    CPU_NAME="`sed -n -e '/^model name/ { s/^model name[[:space:]]*: //p ; Q }' /proc/cpuinfo`"
     CPU_NUM="`grep '^processor' /proc/cpuinfo | wc -l`"
     MEM_MAIN="`free -m | sed -n -e '/^Mem:/ s/Mem:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
     MEM_SWAP="`free -m | sed -n -e '/^Swap:/ s/Swap:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
-    UNAME="`uname -snrvmio`"
+    UNAME="`uname -a`"
 
     # Clear the screen
     clear

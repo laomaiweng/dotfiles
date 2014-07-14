@@ -27,6 +27,11 @@ export HISTCONTROL=ignore-both
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 
+# Preferred tools
+export PAGER=/usr/bin/most
+export EDITOR=/usr/bin/vim
+export BROWSER=$HOME/.local/bin/vimb
+
 # Extend the paths to the .local directories
 path prepend -e bin ~/.local/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin
@@ -35,22 +40,19 @@ path prepend -e inc ~/.local/include
 path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
 
+# Source some useful Bash modules
+export BASH_MODULES_SCRIPT="$HOME/Programming/Quentin/scripts/github/bash/functions/bashmod"
+source $BASH_MODULES_SCRIPT
+bashmod gnupg
+
 # Add Git key-less SSH keys to the SSH agent
-ssh-add ".ssh/git@forge.rsa" ".ssh/git@github.rsa" ".ssh/git@gitorious.rsa.pub" ".ssh/laomaiweng,tclreadline@sourceforge.rsa" &> /dev/null
+ssh-add .ssh/git@github.rsa &> /dev/null
 
 # Start or discover the GPG agent
 export GPG_TTY=$(tty)
-gpg-agent-test ~/.gnupg/agent-cobalt || gpg-agent --daemon --write-env-file ~/.gnupg/agent-cobalt
-. ~/.gnupg/agent-cobalt
+gpg-agent-test ~/.gnupg/agent-thaleee || gpg-agent --daemon --write-env-file ~/.gnupg/agent-thaleee
+. ~/.gnupg/agent-thaleee
 export GPG_AGENT_INFO
-
-# Gentoo environment variables
-export GENTOO_AUTHOR_NAME="Quentin Minster"
-export GENTOO_AUTHOR_EMAIL=quentin@minster.io
-export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
-
-# Exit from MC into last working directory
-. /usr/libexec/mc/mc.sh
 
 # Default to no display when the X server is remote (this greatly improves Vim startup time over slow connections)
 [[ "$DISPLAY" == "localhost:"* ]] && nodisplay

@@ -8,7 +8,7 @@ local configdir = awful.util.getdir("config")
 theme = {}
 
 -- Wallpaper - this is the only custom thing in here for now
-theme.wallpaper = configdir .. "/themes/quentin/background.png"
+theme.wallpaper_cmd = { "awsetbg -f " .. configdir .. "/themes/quentin/background.png" }
 
 -- Main font
 theme.font          = "sans 8"

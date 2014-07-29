@@ -49,6 +49,9 @@ export GENTOO_AUTHOR_NAME="Quentin Minster"
 export GENTOO_AUTHOR_EMAIL=quentin@minster.io
 export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 
+# Source WeChall credentials
+[[ -f ~/.wechallrc ]] && . ~/.wechallrc
+
 # Exit from MC into last working directory
 . /usr/libexec/mc/mc.sh
 

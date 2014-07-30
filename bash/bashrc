@@ -37,7 +37,7 @@ path prepend -e man ~/.local/share/man
 
 # Add Git key-less SSH keys to the SSH agent
 SSH_AGENT_AUTOKEYS=(~/.ssh/git@forge.rsa ~/.ssh/git@github.rsa ~/.ssh/git@gitorious.rsa ~/.ssh/laomaiweng,tclreadline@sourceforge.rsa)
-ssh-agent-test ~/.ssh/agent-cobalt && ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &> /dev/null || ssh-agent-respawn
+ssh-agent-test ~/.ssh/agent-cobalt && ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &> /dev/null || ssh-agent-respawn ~/.ssh/agent-cobalt
 
 # Start or discover the GPG agent
 export GPG_TTY=$(tty)

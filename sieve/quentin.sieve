@@ -148,6 +148,12 @@ if header :contains ["List-Id"] "gentoo.org" {
     stop;
 }
 
+# rule:[Bash]
+if header :contains ["List-Id"] "bug-bash.gnu.org" {
+    fileinto "OSS.bash";
+    stop;
+}
+
 # rule:[MXE]
 if header :contains ["List-Id"] "mingw-cross-env-list.nongnu.org" {
     fileinto "OSS.mxe";

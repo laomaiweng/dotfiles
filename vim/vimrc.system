@@ -1,0 +1,44 @@
+" /etc/vim/vimrc.local: system-wide user settings for vim
+
+" Activate Pathogen
+execute pathogen#infect()
+
+
+" Misc settings
+set wildmenu            " Enhanced tab completion
+set number              " Show line numbers
+set noswapfile          " Don't use them swap files
+set laststatus=2        " Always put a status line, event when there's only one window
+set modeline            " Enable the modeline
+
+" Tab/indent settings
+set tabstop=4           " A tab is 4 spaces
+set softtabstop=4
+set shiftwidth=4        " Indentation width
+set expandtab           " Expand tabs to spaces
+
+" Fold settings
+set foldmethod=manual   " Let the user decide what to fold
+set nofoldenable        " Don't fold anything by default
+
+" Search settings
+set smartcase           " Ignore case if search pattern is all lowercase
+set incsearch           " Show matches as you type
+
+" Mouse settings
+if &term ==? "xterm-256color" || &term ==? "konsole-256color" || &term ==? "putty-256color" || &term ==? "screen-256color"
+  set ttymouse=xterm2   " Terminal mouse fixes
+endif
+set mouse=a             " Use the mouse
+
+
+" Specific overrides
+if has('autocmd')
+    " Retain tabs in Makefiles
+    autocmd FileType make setlocal noexpandtab
+    " Open .tm files as Tcl modules
+    autocmd BufNewFile,BufRead *.tm set filetype=tcl
+    " Use the n man section in Tcl files
+    autocmd FileType tcl set keywordprg=man\ n
+endif
+

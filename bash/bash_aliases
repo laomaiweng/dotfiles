@@ -10,6 +10,7 @@ alias hd='hexdump -C'
 
 alias wot='playonlinux --run "World Of Tanks"'
 alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'
+alias reboot-windows='safeshutdown -g "Windows 7 (loader) (on /dev/sda1)" -- -r now'
 
 alias git='hub'
 

@@ -42,7 +42,7 @@ path prepend -e man ~/.local/share/man
 path append -e man /usr/share/man
 
 # Source some useful Bash modules
-export BASH_MODULES_SCRIPT="$HOME/Programming/Quentin/scripts/github/bash/functions/bashmod"
+export BASH_MODULES_SCRIPT="$HOME/Code/Quentin/scripts/github/bash/functions/bashmod"
 source $BASH_MODULES_SCRIPT
 bashmod gnupg
 

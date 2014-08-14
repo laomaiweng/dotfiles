@@ -7,6 +7,7 @@ alias mp3='mpg123 -v -C'
 alias rab='mpg123 --fuzzy --no-resync --mono --quiet ~/.local/share/sounds/rab.mp3'
 
 alias hd='hexdump -C'
+alias lcat='lolcat'
 
 alias wot='playonlinux --run "World Of Tanks"'
 alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'

@@ -311,7 +311,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F2",    function () awful.util.spawn("setxkbmap fr oss")           end),
     awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end)
+    awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),
+    awful.key({ modkey, "Shift"   }, "t",     function () awful.util.spawn("xclip2tmux -selection clipboard") end),
+    awful.key({ modkey, "Control" }, "t",     function () awful.util.spawn("xclip2tmux -selection primary") end),
+    awful.key({ modkey, "Shift"   }, "x",     function () awful.util.spawn("tmux2xclip -- -selection clipboard") end),
+    awful.key({ modkey, "Control" }, "x",     function () awful.util.spawn("tmux2xclip -- -selection primary") end)
 )
 
 clientkeys = awful.util.table.join(

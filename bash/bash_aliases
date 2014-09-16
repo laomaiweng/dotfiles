@@ -5,5 +5,7 @@ alias tmux='NOGREET=false tmux'
 
 alias mp3='mpg123 -v -C'
 
+alias lcat='lolcat'
+
 alias git='hub'
 

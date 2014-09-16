@@ -33,7 +33,7 @@ export EDITOR=/usr/bin/vim
 export BROWSER=$HOME/.local/bin/vimb
 
 # Extend the paths to the .local directories
-path prepend -e bin ~/.local/bin
+path prepend -e bin ~/.local/bin ~/.gem/ruby/1.9.1/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin
 path prepend -e lib ~/.local/lib64 ~/.local/lib
 path prepend -e inc ~/.local/include
@@ -44,10 +44,12 @@ path append -e man /usr/share/man
 # Source some useful Bash modules
 export BASH_MODULES_SCRIPT="$HOME/Code/Quentin/scripts/github/bash/functions/bashmod"
 source $BASH_MODULES_SCRIPT
+bashmod ssh
 bashmod gnupg
 
 # Add Git key-less SSH keys to the SSH agent
-ssh-add ~/.ssh/git@github.rsa &> /dev/null
+SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.rsa)
+ssh-agent-test ~/.ssh/agent-thaleee && ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &> /dev/null || ssh-agent-respawn ~/.ssh/agent-thaleee
 
 # Start or discover the GPG agent
 export GPG_TTY=$(tty)

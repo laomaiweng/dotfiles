@@ -18,6 +18,7 @@ gnupg/gpg-agent.conf                    ~/.gnupg/gpg-agent.conf
 gnupg/gpg.conf                          ~/.gnupg/gpg.conf
 htop/htoprc                             ~/.config/htop/htoprc
 indent/indent.pro                       ~/.indent.pro
+moc/config                              ~/.moc/config
 most/mostrc                             ~/.mostrc
 tclsh/tclshrc                           ~/.tclshrc
 tmux/tmux.conf                          ~/.tmux.conf

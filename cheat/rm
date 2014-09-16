@@ -1,0 +1,14 @@
+# Remove files and subdirs (optionally without descending onto other filesystems)
+rm -rf [--one-file-system] path/to/the/target/
+
+# Ignore non existent files
+rm -f path/to/the/target
+
+# Remove empty direcories (rmdir mode)
+rm -d path/to/directory
+
+# Prompt for every removal
+rm -i path/to/the/target ...
+
+# Prompt when removing recursively or when removing more than 3 targets
+rm -i [-r] path/to/the/target ...

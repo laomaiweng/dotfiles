@@ -31,9 +31,9 @@ if header :contains ["List-Id"] "kernel-janitors.vger.kernel.org" {
 
 # rule:[Security]
 if header :contains ["List-Id"] "list-id.securityfocus.com" {
-    # Lists that go into security-bugtraq
+    # Lists that go into bugtraq
     if header :contains ["List-Id"] "bugtraq.list-id.securityfocus.com" {
-        fileinto "Security.security-bugtraq";
+        fileinto "Security.bugtraq";
         stop;
     # Lists that go into securityfocus
     } elsif header :contains ["List-Id"] "security-basics.list-id.securityfocus.com" {

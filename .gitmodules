@@ -1,0 +1,84 @@
+[submodule "vim/bundle/ag.vim"]
+	path = vim/bundle/ag.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/ag.vim
+[submodule "vim/bundle/bash-support.vim"]
+	path = vim/bundle/bash-support.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/bash-support.vim
+[submodule "vim/bundle/c.vim"]
+	path = vim/bundle/c.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/c.vim
+[submodule "vim/bundle/dbext.vim"]
+	path = vim/bundle/dbext.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/dbext.vim
+[submodule "vim/bundle/DirDiff.vim"]
+	path = vim/bundle/DirDiff.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/DirDiff.vim
+[submodule "vim/bundle/Figlet.vim"]
+	path = vim/bundle/Figlet.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/Figlet.vim
+[submodule "vim/bundle/gist-vim"]
+	path = vim/bundle/gist-vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/gist-vim
+[submodule "vim/bundle/github-issues.vim"]
+	path = vim/bundle/github-issues.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/github-issues.vim
+[submodule "vim/bundle/gitv"]
+	path = vim/bundle/gitv
+	url = /home/quentin/Documents/dotfiles/vim/bundle/gitv
+[submodule "vim/bundle/gundo.vim"]
+	path = vim/bundle/gundo.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/gundo.vim
+[submodule "vim/bundle/mediawiki.vim"]
+	path = vim/bundle/mediawiki.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/mediawiki.vim
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = /home/quentin/Documents/dotfiles/vim/bundle/syntastic
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = /home/quentin/Documents/dotfiles/vim/bundle/tagbar
+[submodule "vim/bundle/vifm.vim"]
+	path = vim/bundle/vifm.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vifm.vim
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-airline
+[submodule "vim/bundle/VimCalc"]
+	path = vim/bundle/VimCalc
+	url = /home/quentin/Documents/dotfiles/vim/bundle/VimCalc
+[submodule "vim/bundle/vim-colortoggle"]
+	path = vim/bundle/vim-colortoggle
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-colortoggle
+[submodule "vim/bundle/vim-conque"]
+	path = vim/bundle/vim-conque
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-conque
+[submodule "vim/bundle/vim-ctrlspace"]
+	path = vim/bundle/vim-ctrlspace
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-ctrlspace
+[submodule "vim/bundle/vim-easy-align"]
+	path = vim/bundle/vim-easy-align
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-easy-align
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-fugitive
+[submodule "vim/bundle/vim-multiple-cursors"]
+	path = vim/bundle/vim-multiple-cursors
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-multiple-cursors
+[submodule "vim/bundle/vim-startify"]
+	path = vim/bundle/vim-startify
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-startify
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-surround
+[submodule "vim/bundle/vim-togglemouse"]
+	path = vim/bundle/vim-togglemouse
+	url = /home/quentin/Documents/dotfiles/vim/bundle/vim-togglemouse
+[submodule "vim/bundle/webapi-vim"]
+	path = vim/bundle/webapi-vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/webapi-vim
+[submodule "vim/bundle/YankRing.vim"]
+	path = vim/bundle/YankRing.vim
+	url = /home/quentin/Documents/dotfiles/vim/bundle/YankRing.vim
+[submodule "vim/bundle/OLD/vimcommander"]
+	path = vim/bundle/OLD/vimcommander
+	url = /home/quentin/Documents/dotfiles/vim/bundle/OLD/vimcommander

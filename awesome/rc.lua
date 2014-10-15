@@ -315,7 +315,14 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "t",     function () awful.util.spawn("xclip2tmux -selection clipboard") end),
     awful.key({ modkey, "Control" }, "t",     function () awful.util.spawn("xclip2tmux -selection primary") end),
     awful.key({ modkey, "Shift"   }, "x",     function () awful.util.spawn("tmux2xclip -- -selection clipboard") end),
-    awful.key({ modkey, "Control" }, "x",     function () awful.util.spawn("tmux2xclip -- -selection primary") end)
+    awful.key({ modkey, "Control" }, "x",     function () awful.util.spawn("tmux2xclip -- -selection primary") end),
+    awful.key({}, "XF86AudioPlay",            function () awful.util.spawn("mocp --toggle-pause") end),
+    awful.key({}, "XF86AudioStop",            function () awful.util.spawn("mocp --stop") end),
+    awful.key({}, "XF86AudioPrev",            function () awful.util.spawn("mocp --previous") end),
+    awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
+    awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
+    awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
+    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol mute") end)
 )
 
 clientkeys = awful.util.table.join(

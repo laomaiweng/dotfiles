@@ -322,7 +322,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
     awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
-    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol mute") end)
+    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end)
 )
 
 clientkeys = awful.util.table.join(

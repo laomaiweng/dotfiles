@@ -4,14 +4,13 @@ alias screen='NOGREET=false screen'
 alias tmux='NOGREET=false tmux'
 
 alias mp3='mpg123 -v -C'
-alias rab='mpg123 --fuzzy --no-resync --mono --quiet ~/.local/share/sounds/rab.mp3'
-
 alias hd='hexdump -C'
 alias lcat='lolcat'
+alias git='hub'
 
+alias rab='mpg123 --fuzzy --no-resync --mono --quiet ~/.local/share/sounds/rab.mp3'
 alias wot='playonlinux --run "World Of Tanks"'
 alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'
 alias reboot-windows='safeshutdown -g "Windows 7 (loader) (on /dev/sda1)" -- -r now'
-
-alias git='hub'
+alias display='display -resize "$(xdpyinfo | sed -ne "/^ *dimensions:/ s/ *dimensions: *\([0-9]\+x[0-9]\+\).*/\1/p")"'
 

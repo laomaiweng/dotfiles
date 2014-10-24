@@ -43,6 +43,10 @@ set cursorline
 set fillchars=vert:\ 
 highlight VertSplit cterm=NONE ctermbg=234
 
+" Navigate the buffers
+nmap gb :bnext<CR>
+nmap gB :bprevious<CR>
+
 " Clear the current search with ;/
 nmap <silent> <leader>/ :nohlsearch<CR>
 

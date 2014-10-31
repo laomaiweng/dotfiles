@@ -322,7 +322,9 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
     awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
-    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end)
+    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
+    awful.key({}, "XF86HomePage",             function () awful.util.spawn("chromium --ssl-version-min=tls1") end),
+    awful.key({}, "XF86Calculator",           function () awful.util.spawn("kcalc") end)
 )
 
 clientkeys = awful.util.table.join(

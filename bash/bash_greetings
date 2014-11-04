@@ -2,6 +2,8 @@
 #
 # Commands run on every new Bash shell to make the user feel at ease.
 
+
+# Don't display the greetings if the NOGREET variable is set
 if [[ ! -v NOGREET ]]
 then
     # Get host information
@@ -49,5 +51,9 @@ then
     # Prevent subsequent shells from greeting the user
     export NOGREET=
 fi
+
+# Set up an alias to display the greetings again/anyway
+alias greetings='unset NOGREET ; source ~/.bash_greetings'
+
 
 # vim:ft=sh

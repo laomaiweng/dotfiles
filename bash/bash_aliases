@@ -1,7 +1,7 @@
 # ~/.bash_aliases - user-specific aliases
 
-alias screen='NOGREET=false screen'
-alias tmux='NOGREET=false tmux'
+alias screen='unset NOGREET ; screen'
+alias tmux='unset NOGREET ; tmux'
 
 alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'

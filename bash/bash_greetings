@@ -1,52 +1,53 @@
 # ~/.bash_greetings
 #
-# Commands run on every new BASH shell to make the user feel at ease.
+# Commands run on every new Bash shell to make the user feel at ease.
 
-if [ "$NOGREET" != "true" ]
+if [[ ! -v NOGREET ]]
 then
     # Get host information
-    CPU_NAME="`uname -p`"
-    CPU_NUM="`grep '^processor' /proc/cpuinfo | wc -l`"
-    MEM_MAIN="`free -m | sed -n -e '/^Mem:/ s/Mem:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
-    MEM_SWAP="`free -m | sed -n -e '/^Swap:/ s/Swap:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -`"
-    UNAME="`uname -snrvmio`"
+    cpu_name="$(uname -p)"
+    cpu_num="$(grep '^processor' /proc/cpuinfo | wc -l)"
+    mem_main="$(free -m | sed -n -e '/^Mem:/ s/Mem:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -)"
+    mem_swap="$(free -m | sed -n -e '/^Swap:/ s/Swap:[[:space:]]*\([^[:space:]]\+\).*/\1/p' -)"
+    uname="$(uname -snrvmio)"
 
     # Clear the screen
     clear
     echo
     # Print host information
-    echo -e "\E[01;33mHost:\E[00m $UNAME"
-    [[ -f /proc/cpuinfo ]] && echo -e "\E[01;33mCPU: \E[00m $CPU_NAME   ($CPU_NUM logical CPUs)"
-    echo -e "\E[01;33mMem: \E[00m $MEM_MAIN MB   (+ $MEM_SWAP MB swap)"
+    echo -e "\E[01;33mHost:\E[00m $uname"
+    [[ -f /proc/cpuinfo ]] && echo -e "\E[01;33mCPU: \E[00m $cpu_name   ($cpu_num logical CPUs)"
+    echo -e "\E[01;33mMem: \E[00m $mem_main MB   (+ $mem_swap MB swap)"
     echo
     # Print the display
     echo -e "\E[01;31mDisplay:\E[00m $DISPLAY"
     echo
     # Print a fortune-telling cow
-    if [ `which cowrand &> /dev/null` ]
+    if [[ -n "$(command -v fortune)" && -n "$(command -v cowrand)" ]]
     then
         fortune | cowrand -n
         echo
     fi
     # Print current directory
-    echo -e "   \E[01;37m`pwd`:\E[00m"
+    echo -e "   \E[01;37m$(pwd):\E[00m"
     ls --color
     echo
     # Print todo-list (if any) for this directory
-    if [ -f ./TODO ]
+    if [[ -f ./TODO ]]
     then
-        if ! echo "`file -L ./TODO`" | grep -q "XML"    # 'tudu' uses XML todos, rule those out
+        if ! echo "$(file -L ./TODO)" | grep -q "XML"    # 'tudu' uses XML todos, rule those out
         then
             echo -e "   \E[01;37mTODO:\E[00m"
-            echo -e "`sed -e 's/^\(\*\+\)/\\\\E[01;33m\1\\\\E[00m/' TODO`"
+            echo -e "$(sed -e 's/^\(\*\+\)/\\E[01;33m\1\\E[00m/' TODO)"
             echo
         fi
     fi
 
     # Fight environment pollution
-    unset CPU_NAME CPU_NUM MEM_MAIN MEM_SWAP
+    unset cpu_name cpu_num mem_main mem_swap uname
 
     # Prevent subsequent shells from greeting the user
-    export NOGREET="true"
+    export NOGREET=
 fi
 
+# vim:ft=sh

@@ -160,5 +160,11 @@ if header :contains ["List-Id"] "mingw-cross-env-list.nongnu.org" {
     stop;
 }
 
+# rule:[OpenMW]
+if header :contains ["List-Id"] "openmw.OpenMW.github.com" {
+    fileinto "OSS.OpenMW";
+    stop;
+}
+
 
 # Implicit keep

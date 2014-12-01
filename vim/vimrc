@@ -61,6 +61,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " airline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_exclude_preview = 1
 
 " syntastic options
 "let g:syntastic_tcl_nagelfar_args = "-s /usr/share/nagelfar-1.2/syntaxdb86.tcl"

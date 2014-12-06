@@ -1,0 +1,8 @@
+# Display information about the window manager
+wmctrl -m
+
+# List windows managed by the window manager
+wmctrl -Gpx -l
+
+# Close a window managed by the window manager
+wmctrl -c <window ID|window title (substring)>

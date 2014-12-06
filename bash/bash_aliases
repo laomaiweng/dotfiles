@@ -13,4 +13,5 @@ alias wot='playonlinux --run "World Of Tanks"'
 alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'
 alias reboot-windows='safeshutdown -g "Windows 7 (loader) (on /dev/sda1)" -- -r now'
 alias display='display -resize "$(xdpyinfo | sed -ne "/^ *dimensions:/ s/ *dimensions: *\([0-9]\+x[0-9]\+\).*/\1/p")"'
+alias torvimb='http_proxy=socks://localhost:9050 https_proxy=socks://localhost:9050 vimb https://check.torproject.org'
 

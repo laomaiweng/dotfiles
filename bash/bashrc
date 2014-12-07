@@ -27,8 +27,8 @@ export HISTCONTROL=ignore-both
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 
-# Extend the paths to the .local directories
-path prepend -e bin ~/.local/bin ~/.gem/ruby/2.1.0/bin
+# Extend the paths to the .local directories (and some others)
+path prepend -e bin ~/.local/bin ~/Code/Security/metasploit-framework ~/.gem/ruby/2.1.0/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin
 path prepend -e lib ~/.local/lib64 ~/.local/lib
 path prepend -e inc ~/.local/include

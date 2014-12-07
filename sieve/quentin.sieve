@@ -35,47 +35,47 @@ if header :contains ["List-Id"] "list-id.securityfocus.com" {
     if header :contains ["List-Id"] "bugtraq.list-id.securityfocus.com" {
         fileinto "Security.bugtraq";
         stop;
-    # Lists that go into securityfocus
-    } elsif header :contains ["List-Id"] "security-basics.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "secureshell.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "pen-test.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "webappsec.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "wifisec.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "honeypots.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-ids.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-virus.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "loganalysis.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "forensics.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-ms.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-apple.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    # Lists that go into openwall
-    } elsif header :contains ["List-Id"] "oss-security.lists.openwall.com" {
-        fileinto "Security.openwall";
-        stop;
+    ## Lists that go into securityfocus
+    #} elsif header :contains ["List-Id"] "security-basics.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "secureshell.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "pen-test.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "webappsec.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "wifisec.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "honeypots.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-ids.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-virus.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "loganalysis.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "forensics.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-ms.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-apple.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    ## Lists that go into openwall
+    #} elsif header :contains ["List-Id"] "oss-security.lists.openwall.com" {
+    #    fileinto "Security.openwall";
+    #    stop;
     }
 }
 

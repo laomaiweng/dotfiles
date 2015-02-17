@@ -16,9 +16,11 @@
 	co = checkout
 	ci = commit
 	st = status -sb
+	stn = status -sb -uno
 	br = branch
 	cp = cherry-pick
 	dc = diff --cached
+	dt = difftool
 	last = !git --no-pager log -1 --stat
 	unstage = reset HEAD --
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all

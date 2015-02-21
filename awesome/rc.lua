@@ -501,6 +501,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Programs to run on startup
 --awful.util.spawn('/usr/bin/xmodmap /home/quentin/.xmodmaprc')
 awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.numlock   numlockx on')
-awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.autostart dex -va -e Awesome')
+awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.autostart dex -va -e X-Awesome')
 -- }}}
 

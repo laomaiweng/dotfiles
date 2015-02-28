@@ -44,10 +44,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.getdir("config") .. "/themes/quentin/theme.lua")
 
--- This is used later as the default terminal and editor to run.
+-- This is used later as the default terminal, editor and browser to run.
 terminal = "konsole"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
+browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -101,7 +102,7 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "chromium", "chromium" },
+                                    { "chromium", browser },
                                     { "firefox", "firefox" },
                                     { "file browser", "dolphin" },
                                     { "terminal", terminal }
@@ -323,7 +324,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
     awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
-    awful.key({}, "XF86HomePage",             function () awful.util.spawn("chromium --ssl-version-min=tls1") end),
+    awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
     awful.key({}, "XF86Calculator",           function () awful.util.spawn("kcalc") end)
 )
 

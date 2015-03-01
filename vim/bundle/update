@@ -4,7 +4,7 @@ for d in */.git
 do
     cd "${d%/.git}"
     echo -e "  \033[01;31m${d%/.git}\033[00m"
-    git pull
+    git pull origin master
     echo
     cd ..
 done

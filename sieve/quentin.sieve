@@ -171,10 +171,10 @@ if header :contains ["List-Id"] "openmw.OpenMW.github.com" {
 }
 
 # rule:[phone]
-#if header :contains ["List-Id"] "gta04-owner.goldelico.com" {
-#    fileinto "OSS.phone";
-#    stop;
-#}
+if header :contains ["List-Id"] "gta04-owner.goldelico.com" {
+    fileinto "OSS.phone";
+    stop;
+}
 
 
 # Implicit keep

@@ -23,7 +23,7 @@ fi
 shopt -s globstar
 
 # Setup a useful history
-export HISTCONTROL=ignore-both
+export HISTCONTROL=ignoreboth
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 

@@ -7,7 +7,6 @@
 " <F3>:  Toggle light/dark background
 " <F5>:  Toggle tag bar
 " <F7>:  Toggle undo tree
-" <F10>: Toggle VimCommander
 " <F11>: Execute current buffer
 " <F12>: Toggle mouse ownership
 
@@ -15,33 +14,23 @@
 " Change the mapleader
 let mapleader = ";"
 
-" Use a dark background by default
+" Setup the Solarized dark theme
 set background=dark
-let g:default_background_type = "dark"
+colorscheme solarized
 
 " F1-12 key bindings
 set pastetoggle=<F2>
 map <silent><F3> :ToggleBg<CR>
 nnoremap <F5> :Tagbar<CR>
 nnoremap <F7> :GundoToggle<CR>
-nnoremap <silent> <F10> :cal VimCommanderToggle()<CR>
 
 " Display tabs and trailing spaces
 set list
 set listchars=nbsp:¤,tab:\|\ ,trail:•
-highlight SpecialKey ctermfg=236
-
-" Make line numbers less aggressive
-highlight LineNr ctermfg=240 ctermbg=233
-highlight CursorLineNr ctermbg=233
+highlight SpecialKey ctermfg=Black
 
 " Highlight the current line
-highlight CursorLine ctermbg=233 cterm=NONE
 set cursorline
-
-" Make the vertical separator less aggressive
-set fillchars=vert:\ 
-highlight VertSplit cterm=NONE ctermbg=234
 
 " Navigate the buffers
 nmap gb :bnext<CR>

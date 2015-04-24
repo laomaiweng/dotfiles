@@ -1,3 +1,9 @@
+# git submodules
+
+[submodule "dircolors/dircolors-solarized"]
+	path = dircolors/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized
+
 [submodule "vim/bundle/ag.vim"]
 	path = vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim
@@ -46,9 +52,9 @@
 [submodule "vim/bundle/VimCalc"]
 	path = vim/bundle/VimCalc
 	url = https://github.com/gregsexton/VimCalc
-[submodule "vim/bundle/vim-colortoggle"]
-	path = vim/bundle/vim-colortoggle
-	url = https://github.com/saghul/vim-colortoggle
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/vim-conque"]
 	path = vim/bundle/vim-conque
 	url = https://github.com/basepi/vim-conque
@@ -88,7 +94,3 @@
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe
-
-[submodule "vim/bundle/OLD/vimcommander"]
-	path = vim/bundle/OLD/vimcommander
-	url = https://github.com/lpenz/vimcommander

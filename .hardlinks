@@ -2,26 +2,27 @@
 #
 # Be sure to watch out for diverged files!
 
-abcde/abcde.conf                        ~/.abcde.conf
-awesome/rc.lua                          ~/.config/awesome/rc.lua
-awesome/autostart/klipper.desktop       ~/.config/autostart/klipper.desktop
-awesome/autostart/pasystray.desktop     ~/.config/autostart/pasystray.desktop
-awesome/autostart/xscreensaver.desktop  ~/.config/autostart/xscreensaver.desktop
-awesome/themes/quentin/theme.lua        ~/.config/awesome/themes/quentin/theme.lua
-bash/bashrc                             ~/.bashrc
-bash/bash_aliases                       ~/.bash_aliases
-bash/bash_greetings                     ~/.bash_greetings
-elinks/elinks.conf                      ~/.elinks/elinks.conf
-git/gitconfig                           ~/.gitconfig
-gnupg/gpg-agent.conf                    ~/.gnupg/gpg-agent.conf
-gnupg/gpg.conf                          ~/.gnupg/gpg.conf
-htop/htoprc                             ~/.config/htop/htoprc
-indent/indent.pro                       ~/.indent.pro
-moc/config                              ~/.moc/config
-most/mostrc                             ~/.mostrc
-pybugz/bugzrc                           ~/.bugzrc
-tclsh/tclshrc                           ~/.tclshrc
-tmux/tmux.conf                          ~/.tmux.conf
-vim/vimrc                               ~/.vimrc
-wgetpaste/wgetpaste.conf                ~/.wgetpaste.conf
+abcde/abcde.conf                                    ~/.abcde.conf
+awesome/rc.lua                                      ~/.config/awesome/rc.lua
+awesome/autostart/klipper.desktop                   ~/.config/autostart/klipper.desktop
+awesome/autostart/pasystray.desktop                 ~/.config/autostart/pasystray.desktop
+awesome/autostart/xscreensaver.desktop              ~/.config/autostart/xscreensaver.desktop
+awesome/themes/quentin/theme.lua                    ~/.config/awesome/themes/quentin/theme.lua
+bash/bashrc                                         ~/.bashrc
+bash/bash_aliases                                   ~/.bash_aliases
+bash/bash_greetings                                 ~/.bash_greetings
+dircolors/dircolors-solarized/dircolors.ansi-dark   ~/.dir_colors
+elinks/elinks.conf                                  ~/.elinks/elinks.conf
+git/gitconfig                                       ~/.gitconfig
+gnupg/gpg-agent.conf                                ~/.gnupg/gpg-agent.conf
+gnupg/gpg.conf                                      ~/.gnupg/gpg.conf
+htop/htoprc                                         ~/.config/htop/htoprc
+indent/indent.pro                                   ~/.indent.pro
+moc/config                                          ~/.moc/config
+most/mostrc                                         ~/.mostrc
+pybugz/bugzrc                                       ~/.bugzrc
+tclsh/tclshrc                                       ~/.tclshrc
+tmux/tmux.conf                                      ~/.tmux.conf
+vim/vimrc                                           ~/.vimrc
+wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf
 

@@ -20,7 +20,7 @@ colorscheme solarized
 
 " F1-12 key bindings
 set pastetoggle=<F2>
-map <silent><F3> :ToggleBg<CR>
+call togglebg#map("<F3>")
 nnoremap <F5> :Tagbar<CR>
 nnoremap <F7> :GundoToggle<CR>
 

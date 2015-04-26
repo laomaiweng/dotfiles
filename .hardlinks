@@ -20,6 +20,7 @@ htop/htoprc                                         ~/.config/htop/htoprc
 indent/indent.pro                                   ~/.indent.pro
 moc/config                                          ~/.moc/config
 most/mostrc                                         ~/.mostrc
+mutt/colors.solarized                               ~/.mutt/colors.solarized
 pybugz/bugzrc                                       ~/.bugzrc
 tclsh/tclshrc                                       ~/.tclshrc
 tmux/tmux.conf                                      ~/.tmux.conf

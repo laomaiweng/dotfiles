@@ -45,25 +45,25 @@ mono  error         bold
 
 # index ----------------------------------------------------------------
 
-#color index         red             default         "~D(!~p|~p)"               # deleted
-#color index         black           default         ~F                         # flagged
-#color index         brightred       default         ~=                         # duplicate messages
-#color index         brightgreen     default         "~A!~N!~T!~p!~Q!~F!~D!~P"  # the rest
-#color index         J_base          default         "~A~N!~T!~p!~Q!~F!~D"      # the rest, new
-#color index         brightgreen             default         "~A"                        # all messages
+#color index         red             default         "~D(!~p|~p)"                # deleted
+#color index         black           default         ~F                          # flagged
+#color index         brightred       default         ~=                          # duplicate messages
+#color index         brightgreen     default         "~A!~N!~T!~p!~Q!~F!~D!~P"   # the rest
+#color index         J_base          default         "~A~N!~T!~p!~Q!~F!~D"       # the rest, new
+#color index         brightgreen     default         "~A"                        # all messages
 color index         brightred       default         "~E"                        # expired messages
 color index         cyan            default         "~N"                        # new messages
 color index         cyan            default         "~O"                        # old messages
-color index         brightgreen     default         "~R!~Q"                        # read messages that have not been replied to
-color index         green           default         "~R~Q"                        # read messages that have been replied to
+color index         brightgreen     default         "~R!~Q"                     # read messages that have not been replied to
+color index         green           default         "~R~Q"                      # read messages that have been replied to
 color index         cyan            default         "~U"                        # unread messages
 color index         cyan            default         "~U~$"                      # unread, unreferenced messages
 color index         brightyellow    default         "~v"                        # messages part of a collapsed thread
 color index         brightyellow    default         "~P"                        # messages from me
-#color index         cyan            default         "~p!~F"                     # messages to me
+#color index         cyan            default         "~p!~F"                    # messages to me
 color index         blue            default         "~N~p!~F"                   # new messages to me
 color index         blue            default         "~U~p!~F"                   # unread messages to me
-#color index         brightgreen     default         "~R~p!~F"                   # read messages to me
+#color index         brightgreen     default         "~R~p!~F"                  # read messages to me
 color index         red             default         "~F"                        # flagged messages
 color index         red             default         "~F~p"                      # flagged messages to me
 color index         brightred       default         "~N~F"                      # new flagged messages
@@ -81,11 +81,11 @@ color index         green           black           "~N~v~(~F~N)"               
 color index         green           black           "~N~v~(~F)"                 # collapsed thread with unread parent, no unread inside, but some flagged
 color index         blue            black           "~v~(~p)"                   # collapsed thread with unread parent, no unread inside, some to me directly
 color index         yellow          red             "~v~(~D)"                   # thread with deleted (doesn't differentiate between all or partial)
-#color index         yellow          default         "~(~N)"                    # messages in threads with some unread
+#color index         yellow          default         "~(~N)"                     # messages in threads with some unread
 color index         green           default         "~S"                        # superseded messages
 color index         brightblack     cyan            "~T~U"                      # tagged unread messages
-color index         black           cyan            "~T"                        # tagged messages
-#color index         brightred       red             "~="                       # duplicated messages
+color index         black           cyan            "~T~R"                     # tagged read messages
+#color index         brightred       red             "~="                        # duplicated messages
 
 # message headers ------------------------------------------------------
 

@@ -1,0 +1,20 @@
+! urxvt Xresources
+
+URxvt.depth: 32
+
+URxvt.font: xft:DejaVu Sans Mono:size=9
+URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=9
+
+URxvt*saveLines: 1000
+URxvt*scrollBar: false
+URxvt*scrollstyle: plain
+URxvt*scrollBar_right: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
+
+URxvt*secondaryWheel: true
+
+URxvt.perl-ext-common: url-select
+URxvt.url-select.launcher: chromium
+URxvt.url-select.underline: true
+

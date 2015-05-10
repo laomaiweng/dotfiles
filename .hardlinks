@@ -26,4 +26,7 @@ tclsh/tclshrc                                       ~/.tclshrc
 tmux/tmux.conf                                      ~/.tmux.conf
 vim/vimrc                                           ~/.vimrc
 wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf
+Xresources/Xresources                               ~/.Xresources
+Xresources/solarized.rc                             ~/.xresources/solarized.rc
+Xresources/urxvt.rc                                 ~/.xresources/urxvt.rc
 

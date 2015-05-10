@@ -45,8 +45,8 @@ end
 beautiful.init(awful.util.getdir("config") .. "/themes/quentin/theme.lua")
 
 -- This is used later as the default terminal, editor and browser to run.
-terminal = "konsole"
-editor = os.getenv("EDITOR") or "vi"
+terminal = "urxvtcd"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
 

@@ -43,12 +43,12 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "vim/bundle/vifm.vim"]
-	path = vim/bundle/vifm.vim
-	url = https://github.com/xaizek/vifm.vim
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "vim/bundle/vim-bbye"]
+	path = vim/bundle/vim-bbye
+	url = https://github.com/moll/vim-bbye.git
 [submodule "vim/bundle/VimCalc"]
 	path = vim/bundle/VimCalc
 	url = https://github.com/gregsexton/VimCalc
@@ -64,6 +64,9 @@
 [submodule "vim/bundle/vim-easy-align"]
 	path = vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
+[submodule "vim/bundle/vifm.vim"]
+	path = vim/bundle/vifm.vim
+	url = https://github.com/xaizek/vifm.vim
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive

@@ -1,0 +1,5 @@
+! Debian-specific Xft configuration
+! https://unix.stackexchange.com/questions/118641/font-rendering-issue-in-urxvt-too-much-space-between-characters
+
+Xft.rgba: none
+Xft.hintstyle: hintfull

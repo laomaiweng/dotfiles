@@ -31,47 +31,51 @@ if header :contains ["List-Id"] "kernel-janitors.vger.kernel.org" {
 
 # rule:[Security]
 if header :contains ["List-Id"] "list-id.securityfocus.com" {
-    # Lists that go into security-bugtraq
+    # Lists that go into bugtraq
     if header :contains ["List-Id"] "bugtraq.list-id.securityfocus.com" {
-        fileinto "Security.security-bugtraq";
+        fileinto "Security.bugtraq";
         stop;
-    # Lists that go into securityfocus
-    } elsif header :contains ["List-Id"] "security-basics.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "secureshell.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "pen-test.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "webappsec.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "wifisec.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "honeypots.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-ids.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-virus.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "loganalysis.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "forensics.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-ms.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
-    } elsif header :contains ["List-Id"] "focus-apple.list-id.securityfocus.com" {
-        fileinto "Security.securityfocus";
-        stop;
+    ## Lists that go into securityfocus
+    #} elsif header :contains ["List-Id"] "security-basics.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "secureshell.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "pen-test.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "webappsec.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "wifisec.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "honeypots.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-ids.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-virus.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "loganalysis.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "forensics.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-ms.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    #} elsif header :contains ["List-Id"] "focus-apple.list-id.securityfocus.com" {
+    #    fileinto "Security.securityfocus";
+    #    stop;
+    ## Lists that go into openwall
+    #} elsif header :contains ["List-Id"] "oss-security.lists.openwall.com" {
+    #    fileinto "Security.openwall";
+    #    stop;
     }
 }
 
@@ -157,6 +161,18 @@ if header :contains ["List-Id"] "bug-bash.gnu.org" {
 # rule:[MXE]
 if header :contains ["List-Id"] "mingw-cross-env-list.nongnu.org" {
     fileinto "OSS.mxe";
+    stop;
+}
+
+# rule:[OpenMW]
+if header :contains ["List-Id"] "openmw.OpenMW.github.com" {
+    fileinto "OSS.OpenMW";
+    stop;
+}
+
+# rule:[phone]
+if header :contains ["List-Id"] "gta04-owner.goldelico.com" {
+    fileinto "OSS.phone";
     stop;
 }
 

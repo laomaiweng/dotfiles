@@ -1,4 +1,4 @@
-% Rebind pour bépo
+% Rebind for the bépo layout
 unsetkey    s
 setkey      "up"        s
 
@@ -16,3 +16,10 @@ setkey      "page_left" i
 
 unsetkey    e
 setkey      "page_right"    e
+
+
+% Solarized color scheme
+%color normal gray brightblack
+color status blue black
+%color underline green brightblack
+%color overstrike red brightblack

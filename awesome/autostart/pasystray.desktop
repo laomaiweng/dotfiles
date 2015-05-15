@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=PulseAudio system tray
+Comment=Start the PulseAudio system tray applet
+Exec=/home/quentin/.local/bin/pasystray
+Terminal=false
+Type=Application
+Categories=
+GenericName=
+OnlyShowIn=X-Awesome;

@@ -1,0 +1,58 @@
+## Mutt colors
+# vim: ft=muttrc
+
+# General settings
+color status        color214        color234
+
+# Mailbox
+color normal        white           black
+#color indicator     black           cyan
+color indicator     black           white
+color markers       brightred       black
+#color status        brightgreen     blue
+#color status        brightyellow    blue
+color tilde         blue            black
+color tree          red             black
+#color index         brightwhite     black           "nathalie.picavet@gmail.com"
+color index         green           black           "~Q"                        # messages that have been replied to
+color index         brightcolor166  color235        "~F"                        # flagged
+color index         color166        black           "~N"                        # new messages
+color index         brightcolor234  color166        "~N~F"                      # new flagged messages
+color index         color130        black           "~O"                        # old messages
+color index         brightcolor234  color130        "~O~F"                      # old flagged messages
+color index         brightblack     black           "~D"                        # deleted
+color index         brightyellow    black           "~T"                        # tagged messages
+
+# Sidebar
+color sidebar_new   color166        default
+
+# Messages
+color hdrdefault    cyan            black
+color header        brightwhite     black           "^Date:"
+color header        brightgreen     black           "^From:"
+color header        brightcyan      black           "^To:"
+color header        cyan            black           "^Reply-To:"
+color header        brightcyan      black           "^Cc:"
+color header        brightred       black           "^Subject:"
+color header        brightblack     black           "^User-Agent:"
+color bold          brightwhite     black
+color underline     brightwhite     black
+color body          brightred       black           "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+"
+color body          brightblue      black           "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+"
+color body          brightwhite     black           "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)"
+color body          brightwhite     black           "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)"
+color body          brightwhite     black           "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"
+color body          black           brightred       "gpg: BAD signature.*"
+color body          brightgreen     black           "(Good signature)"
+color body          brightcolor178  black           "WARNING: This key is not certified with a trusted signature!"
+color quoted        green           black
+color quoted1       cyan            black
+color quoted2       magenta         black
+color quoted3       yellow          black
+color quoted4       green           black
+color quoted5       cyan            black
+color quoted6       magenta         black
+color quoted7       yellow          black
+color attachment    brightyellow    black
+color signature     yellow          black
+

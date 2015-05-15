@@ -17,32 +17,27 @@ execute pathogen#infect()
 " Change the mapleader
 let mapleader = ";"
 
-" Use a dark background by default
+" Setup the Solarized dark theme
 set background=dark
-let g:default_background_type = "dark"
+colorscheme solarized
 
 " F1-12 key bindings
 set pastetoggle=<F2>
-map <silent><F3> :ToggleBg<CR>
+call togglebg#map("<F3>")
 nnoremap <F5> :Tagbar<CR>
 nnoremap <F7> :GundoToggle<CR>
 
 " Display tabs and trailing spaces
 set list
 set listchars=nbsp:¤,tab:\|\ ,trail:•
-highlight SpecialKey ctermfg=236
-
-" Make line numbers less aggressive
-highlight LineNr ctermfg=240 ctermbg=233
-highlight CursorLineNr ctermbg=233
+highlight SpecialKey ctermfg=Black
 
 " Highlight the current line
-highlight CursorLine ctermbg=233 cterm=NONE
 set cursorline
 
-" Make the vertical separator less aggressive
-set fillchars=vert:\ 
-highlight VertSplit cterm=NONE ctermbg=234
+" Navigate the buffers
+nmap gb :bnext<CR>
+nmap gB :bprevious<CR>
 
 " Clear the current search with ;/
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -58,6 +53,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " airline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_exclude_preview = 1
 
 " syntastic options
 "let g:syntastic_tcl_nagelfar_args = "-s /usr/share/nagelfar-1.2/syntaxdb86.tcl"

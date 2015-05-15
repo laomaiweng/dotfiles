@@ -12,7 +12,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 
 -- Load Debian menu entries
-require("debian.menu")
+debianm = require("debian.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -43,10 +43,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.getdir("config") .. "/themes/quentin/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
+-- This is used later as the default terminal, editor and browser to run.
+terminal = "urxvtcd"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -92,9 +93,10 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "chromium", "chromium" },
-                                    { "file browser", "dolphin" },
+                                    { "Debian", debianm.Debian_menu.Debian },
+                                    { "chromium", browser },
+                                    { "file browser", "spacefm" },
+                                    { "text editor", "evim" },
                                     { "terminal", terminal }
                                   }
                         })
@@ -389,10 +391,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
     awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),
-    awful.key({ modkey, "Shift"   }, "t",     function () awful.util.spawn("xclip2tmux -selection clipboard") end),
-    awful.key({ modkey, "Control" }, "t",     function () awful.util.spawn("xclip2tmux -selection primary") end),
-    awful.key({ modkey, "Shift"   }, "x",     function () awful.util.spawn("tmux2xclip -- -selection clipboard") end),
-    awful.key({ modkey, "Control" }, "x",     function () awful.util.spawn("tmux2xclip -- -selection primary") end)
+    awful.key({}, "XF86AudioPlay",            function () awful.util.spawn("mocp --toggle-pause") end),
+    awful.key({}, "XF86AudioStop",            function () awful.util.spawn("mocp --stop") end),
+    awful.key({}, "XF86AudioPrev",            function () awful.util.spawn("mocp --previous") end),
+    awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
+    awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
+    awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
+    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
+    awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
+    awful.key({}, "XF86Calculator",           function () awful.util.spawn("kcalc") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -536,6 +543,6 @@ awful.hooks.timer.register(10, function () hook_fraxbat(fraxbat,'BAT0') end)
 -- Programs to run on startup
 awful.util.spawn('/usr/bin/setxkbmap fr oss')
 awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.synaptics synclient TapButton1=1')
-awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.autostart dex -va -e Awesome')
+awful.util.spawn('/usr/local/bin/xrdb-runonce awesome.autostart dex -va -e X-Awesome')
 -- }}}
 

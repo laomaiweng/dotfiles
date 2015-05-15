@@ -39,6 +39,6 @@ if has('autocmd')
     " Open .tm files as Tcl modules
     autocmd BufNewFile,BufRead *.tm set filetype=tcl
     " Use the n man section in Tcl files
-    autocmd FileType tcl set keywordprg=man\ n
+    autocmd FileType tcl setlocal keywordprg=man\ n
 endif
 

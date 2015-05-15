@@ -23,7 +23,7 @@ fi
 shopt -s globstar
 
 # Setup a useful history
-export HISTCONTROL=ignore-both
+export HISTCONTROL=ignoreboth
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 
@@ -42,10 +42,11 @@ path prepend -e man ~/.local/share/man
 path append -e man /usr/share/man
 
 # Source some useful Bash modules
-export BASH_MODULES_SCRIPT="$HOME/Code/Quentin/scripts/github/bash/functions/bashmod"
+export BASH_MODULES_SCRIPT="$HOME/Code/Quentin/scripts/github/bash/modules/bashmod"
 source $BASH_MODULES_SCRIPT
 bashmod ssh
 bashmod gnupg
+bashmod display
 
 # Add Git key-less SSH keys to the SSH agent
 SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.rsa)

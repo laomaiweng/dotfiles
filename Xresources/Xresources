@@ -1,0 +1,5 @@
+! user Xresources
+
+#include ".xresources/solarized.rc"
+#include ".xresources/urxvt.rc"
+#include ".xresources/Xft.rc"

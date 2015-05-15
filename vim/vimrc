@@ -17,8 +17,12 @@ execute pathogen#infect()
 " Change the mapleader
 let mapleader = ";"
 
-" Setup the Solarized dark theme
-set background=dark
+" Setup the Solarized theme
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 colorscheme solarized
 
 " F1-12 key bindings

@@ -58,6 +58,16 @@ gpg-agent-test ~/.gnupg/agent-thaleee || gpg-agent --daemon --write-env-file ~/.
 . ~/.gnupg/agent-thaleee
 export GPG_AGENT_INFO
 
+# Setup wcd
+export WCDHOME=~/.wcd
+wcd ()
+{
+    local gofile="${WCDHOME:-${HOME}}/bin/wcd.go"
+    rm -f "$gofile"
+    wcd.exec "$@"
+    [[ -f "$gofile" ]] && source "$gofile"
+}
+
 # Default to no display when the X server is remote (this greatly improves Vim startup time over slow connections)
 [[ "$DISPLAY" == "localhost:"* ]] && nodisplay
 

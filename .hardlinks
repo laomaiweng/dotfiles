@@ -4,8 +4,6 @@
 
 abcde/abcde.conf                                    ~/.abcde.conf
 awesome/rc.lua                                      ~/.config/awesome/rc.lua
-awesome/autostart/klipper.desktop                   ~/.config/autostart/klipper.desktop
-awesome/autostart/pasystray.desktop                 ~/.config/autostart/pasystray.desktop
 awesome/autostart/xscreensaver.desktop              ~/.config/autostart/xscreensaver.desktop
 awesome/themes/quentin/theme.lua                    ~/.config/awesome/themes/quentin/theme.lua
 bash/bashrc                                         ~/.bashrc

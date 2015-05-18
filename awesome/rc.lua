@@ -104,7 +104,8 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "chromium", browser },
                                     { "firefox", "firefox" },
-                                    { "file browser", "dolphin" },
+                                    { "file browser", "spacefm" },
+                                    { "text editor", "evim" },
                                     { "terminal", terminal }
                                   }
                         })
@@ -307,7 +308,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "p", function() menubar.show() end),
 
     -- User bindings
-    awful.key({},                    "Print", function () awful.util.spawn("ksnapshot")                  end),
+    awful.key({},                    "Print", function () awful.util.spawn("screengrab")                 end),
     awful.key({ modkey,           }, "F1",    function () awful.util.spawn("setxkbmap fr bepo")          end),
     awful.key({ modkey,           }, "F2",    function () awful.util.spawn("setxkbmap fr oss")           end),
     awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
@@ -321,7 +322,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
     awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
     awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
-    awful.key({}, "XF86Calculator",           function () awful.util.spawn("kcalc") end)
+    awful.key({}, "XF86Calculator",           function () awful.util.spawn("speedcrunch") end)
 )
 
 clientkeys = awful.util.table.join(

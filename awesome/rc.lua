@@ -124,19 +124,17 @@ mytextclock = awful.widget.textclock()
 -- Keyboard map indicator and changer
 mykbdcfg = wibox.widget.textbox()
 mykbdcfg.cmd = "setxkbmap"
-mykbdcfg.layout = { { "fr", "oss" }, { "fr", "bepo" }, { "us", "" } }
-mykbdcfg.current = 1  -- fr oss is our default layout
---mykbdcfg.widget = wibox.widget.textbox()
---mykbdcfg.widget:set_text(" " .. mykbdcfg.layout[mykbdcfg.current][1] .. " ")
-mykbdcfg:set_text(" " .. mykbdcfg.layout[mykbdcfg.current][1] .. " ")
+mykbdcfg.layout = { "fr oss", "fr bepo", "us" }
+mykbdcfg.current = 1  -- irrelevant: the current layout at startup might be anything
+io.input(io.popen("setxkbmap -query | sed -n '/^layout:/ {s/layout:[[:space:]]*//;h}; /^variant:/ {s/variant:[[:space:]]*//;H;}; ${x;s/\\n/ /;p}'"))
+mykbdcfg:set_text(io.read("*l"))
+io.close()
 mykbdcfg.switch = function (i)
-    mykbdcfg.current = ( mykbdcfg.current + i - 1 ) % #(mykbdcfg.layout) + 1
+    mykbdcfg.current = (mykbdcfg.current + i - 1) % #(mykbdcfg.layout) + 1
     local t = mykbdcfg.layout[mykbdcfg.current]
-    --mykbdcfg.widget:set_text(" " .. t[1] .. " ")
-    mykbdcfg:set_text(" " .. t[1] .. " ")
-    os.execute( mykbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+    mykbdcfg:set_text(t)
+    os.execute(mykbdcfg.cmd .. " " .. t)
 end
---mykbdcfg.widget:buttons(
 mykbdcfg:buttons(
     awful.util.table.join(
     awful.button({ }, 1, function () mykbdcfg.switch(1) end),
@@ -309,8 +307,8 @@ globalkeys = awful.util.table.join(
 
     -- User bindings
     awful.key({},                    "Print", function () awful.util.spawn("screengrab")                 end),
-    awful.key({ modkey,           }, "F1",    function () awful.util.spawn("setxkbmap fr bepo")          end),
-    awful.key({ modkey,           }, "F2",    function () awful.util.spawn("setxkbmap fr oss")           end),
+    awful.key({ modkey,           }, "F1",    function () mykbdcfg.switch(1)                             end),
+    awful.key({ modkey, "Shift"   }, "F1",    function () mykbdcfg.switch(-1)                            end),
     awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
     awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),

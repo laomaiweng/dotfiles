@@ -205,7 +205,7 @@ StartInMusicDir = yes
 #
 # Example:    Theme = laras_theme
 #
-Theme = darkdot_theme
+Theme = green_theme
 
 # The theme used when running on an xterm.
 #

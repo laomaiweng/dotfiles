@@ -14,7 +14,11 @@ URxvt*scrollTtyKeypress: true
 
 URxvt*secondaryWheel: true
 
-URxvt.perl-ext-common: url-select
+URxvt.perl-ext-common: url-select,clipboard
+
 URxvt.url-select.launcher: chromium
 URxvt.url-select.underline: true
+
+URxvt.keysym.C-Insert:   perl:clipboard:copy
+URxvt.keysym.S-Insert:   perl:clipboard:paste
 

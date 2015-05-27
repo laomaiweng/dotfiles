@@ -1,0 +1,85 @@
+# user-specific mailcap
+
+application/msword; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc
+application/msword; antiword -tf '%s'; copiousoutput; description="Microsoft Word Document"; nametemplate=%s.doc
+application/pdf; zathura '%s'; test=test -n "$DISPLAY"; description="PDF Document"; nametemplate=%s.pdf
+application/pdf; pdftotext '%s' -; copiousoutput; description="PDF Document"; nametemplate=%s.pdf
+
+image/bmp; display '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"; description="BMP Image"; nametemplate=%s.bmp
+image/gif; display '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"; description="GIF Image"; nametemplate=%s.gif
+image/jpg; display '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"; description="JPG Image"; nametemplate=%s.jpg
+image/jpg; jp2a '%s'; copiousoutput; description="JPG Image"; nametemplate=%s.jpg
+image/jpeg; display '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"; description="JPEG Image"; nametemplate=%s.jpeg
+image/jpeg; jp2a '%s'; copiousoutput; description="JPEG Image"; nametemplate=%s.jpeg
+image/png; display '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"; description="PNG Image"; nametemplate=%s.png
+
+text/html; vimb '%s'; test=test -n "$DISPLAY"; description="HTML Document"; nametemplate=%s.html
+
+# LibreOffice stuff
+application/vnd.oasis.opendocument.database; libreoffice --nologo --base '%s'; edit=libreoffice --nologo --base '%s'; test=test -n "$DISPLAY"; description="OpenDocument Database"; nametemplate=%s.odb
+application/vnd.oasis.opendocument.chart; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Chart"; nametemplate=%s.odc
+application/vnd.oasis.opendocument.spreadsheet; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Spreadsheet"; nametemplate=%s.ods
+application/vnd.oasis.opendocument.spreadsheet-template; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Spreadsheet Template"; nametemplate=%s.ots
+application/vnd.oasis.opendocument.graphics; libreoffice --nologo --draw '%s'; edit=libreoffice --nologo --draw '%s'; test=test -n "$DISPLAY"; description="OpenDocument Drawing"; nametemplate=%s.odg
+application/vnd.oasis.opendocument.graphics-template; libreoffice --nologo --draw '%s'; edit=libreoffice --nologo --draw '%s'; test=test -n "$DISPLAY"; description="OpenDocument Drawing Template"; nametemplate=%s.otg
+application/vnd.oasis.opendocument.presentation; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="OpenDocument Presentation"; nametemplate=%s.odp
+application/vnd.oasis.opendocument.presentation-template; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="OpenDocument Presentation Template"; nametemplate=%s.otp
+application/vnd.oasis.opendocument.formula; libreoffice --nologo --math '%s'; edit=libreoffice --nologo --math '%s'; test=test -n "$DISPLAY"; description="OpenDocument Formula"; nametemplate=%s.odf
+application/vnd.oasis.opendocument.text; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Text Document"; nametemplate=%s.odt
+application/vnd.oasis.opendocument.text-master; libreoffice --nologo -global '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Master Document"; nametemplate=%s.odm
+application/vnd.oasis.opendocument.text-template; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Text Document Template"; nametemplate=%s.ott
+application/vnd.oasis.opendocument.text-web; libreoffice --nologo -web '%s'; edit=libreoffice --nologo -web '%s'; test=test -n "$DISPLAY"; description="OpenDocument HTML Document Template"; nametemplate=%s.oth
+application/vnd.sun.xml.base; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; description="OpenOffice.org Database"; nametemplate=%s.sdb
+application/vnd.sun.xml.calc; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Spreadsheet"; nametemplate=%s.sxc
+application/vnd.sun.xml.calc.template; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Spreadsheet Template"; nametemplate=%s.stc
+application/vnd.sun.xml.draw; libreoffice --nologo --draw '%s'; edit=libreoffice --nologo --draw '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Drawing"; nametemplate=%s.sxd
+application/vnd.sun.xml.draw.template; libreoffice --nologo --draw '%s'; edit=libreoffice --nologo --draw '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Drawing Template"; nametemplate=%s.std
+application/vnd.stardivision.calc; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="StarCalc 5.0"; nametemplate=%s.sdc
+application/vnd.stardivision.chart; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="StarChart 5.0"; nametemplate=%s.sds
+application/vnd.stardivision.draw; libreoffice --nologo --draw '%s'; edit=libreoffice --nologo --draw '%s'; test=test -n "$DISPLAY"; description="StarDraw 5.0"; nametemplate=%s.sda
+application/vnd.stardivision.impress; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="StarImpress 5.0"; nametemplate=%s.sdd
+application/vnd.stardivision.math; libreoffice --nologo --math '%s'; edit=libreoffice --nologo --math '%s'; test=test -n "$DISPLAY"; description="StarMath 5.0"; nametemplate=%s.sdf
+application/vnd.stardivision.writer-global; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="StarWriter 5.0 Master Document"; nametemplate=%s.sgl
+application/vnd.stardivision.writer; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="StarWriter 5.0"; nametemplate=%s.sdw
+application/vnd.sun.xml.impress; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Presentation"; nametemplate=%s.sxi
+application/vnd.sun.xml.impress.template; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Presentation Template"; nametemplate=%s.sti
+application/vnd.sun.xml.math; libreoffice --nologo --math '%s'; edit=libreoffice --nologo --math '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Formula"; nametemplate=%s.sxm
+application/vnd.sun.xml.writer; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; description="OpenOffice.org Text Document"; nametemplate=%s.sxw
+application/vnd.sun.xml.writer.global; libreoffice --nologo -global '%s'; edit=libreoffice --nologo --writer '%s'; description="OpenOffice.org Master Document"; nametemplate=%s.sxg
+application/vnd.sun.xml.writer.template; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; description="OpenOffice.org Text Document Template"; nametemplate=%s.stw
+text/csv; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="CSV Document"; nametemplate=%s.csv
+text/spreadsheet; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Spreadsheet Interchange Document"; nametemplate=%s.slk
+application/x-quattropro; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Quattro Pro 6 for Windows Spreadsheet"; nametemplate=%s.wb2
+application/x-dbf; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="xBase Document"; nametemplate=%s.dbf
+application/vnd.ms-excel.sheet.macroEnabled.12; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet with Macros Enabled"; nametemplate=%s.xlsm
+application/vnd.ms-excel.template.macroEnabled.12; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xltm
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet"; nametemplate=%s.xlsx
+application/vnd.openxmlformats-officedocument.spreadsheetml.template; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template"; nametemplate=%s.xltx
+application/vnd.lotus-1-2-3; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Lotus 1-2-3 spreadsheet"; nametemplate=%s.123
+application/vnd.ms-excel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls
+application/msexcel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls
+application/x-dbase; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="xBase Document"; nametemplate=%s.dbf
+text/x-csv; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="CSV Document"; nametemplate=%s.csv
+application/vnd.ms-powerpoint.presentation.macroEnabled.12; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation with Macros Enabled"; nametemplate=%s.pptm
+application/vnd.ms-powerpoint.slideshow.macroEnabled.12; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Slide Show with Macros Enabled"; nametemplate=%s.ppsm
+application/vnd.ms-powerpoint.template.macroEnabled.12; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Template with Macros Enabled"; nametemplate=%s.potm
+application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation"; nametemplate=%s.pptx
+application/vnd.openxmlformats-officedocument.presentationml.slideshow; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Slide Show"; nametemplate=%s.ppsx
+application/vnd.openxmlformats-officedocument.presentationml.template; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Template"; nametemplate=%s.potx
+application/vnd.ms-powerpoint; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt
+application/mspowerpoint; libreoffice --nologo --impress '%s'; edit=libreoffice --nologo --impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt
+text/mathml; libreoffice --nologo --math '%s'; edit=libreoffice --nologo --math '%s'; test=test -n "$DISPLAY"; description="MathML Formula"; nametemplate=%s.mml
+application/rtf; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Rich Text Format"; nametemplate=%s.rtf
+#application/x-extension-txt; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Plain Text Document"; nametemplate=%s.txt
+application/x-t602; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="T602 Document"; nametemplate=%s.602
+application/vnd.wordperfect; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="WordPerfect Document"; nametemplate=%s.wp
+application/vnd.ms-word.document.macroEnabled.12; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document with Macros Enabled"; nametemplate=%s.docm
+application/vnd.ms-word.template.macroEnabled.12; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document Template with Macros Enabled"; nametemplate=%s.dotm
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document"; nametemplate=%s.docx
+application/vnd.openxmlformats-officedocument.wordprocessingml.template; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document Template"; nametemplate=%s.dotx
+application/vnd.ms-works; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Works Document"; nametemplate=%s.wps
+application/msword; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc
+application/wordperfect; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="WordPerfect Document"; nametemplate=%s.wp
+#text/plain; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Plain Text Document"; nametemplate=%s.txt
+text/rtf; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Rich Text Format"; nametemplate=%s.rtf
+

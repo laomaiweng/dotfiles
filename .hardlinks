@@ -19,6 +19,7 @@ indent/indent.pro                                   ~/.indent.pro
 moc/config                                          ~/.moc/config
 most/mostrc                                         ~/.mostrc
 mutt/colors.solarized                               ~/.mutt/colors.solarized
+mutt/mailcap                                        ~/.mutt/mailcap
 pybugz/bugzrc                                       ~/.bugzrc
 tclsh/tclshrc                                       ~/.tclshrc
 tmux/tmux.conf                                      ~/.tmux.conf

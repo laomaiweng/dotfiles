@@ -7,12 +7,18 @@
 [submodule "vim/bundle/ag.vim"]
 	path = vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/argtextobj.vim"]
+	path = vim/bundle/argtextobj.vim
+	url = git://github.com/vim-scripts/argtextobj.vim.git
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = https://github.com/vim-scripts/bash-support.vim
 [submodule "vim/bundle/c.vim"]
 	path = vim/bundle/c.vim
 	url = https://github.com/vim-scripts/c.vim
+[submodule "vim/bundle/CamelCaseMotion"]
+	path = vim/bundle/CamelCaseMotion
+	url = git://github.com/bkad/CamelCaseMotion.git
 [submodule "vim/bundle/dbext.vim"]
 	path = vim/bundle/dbext.vim
 	url = https://github.com/vim-scripts/dbext.vim
@@ -79,6 +85,9 @@
 [submodule "vim/bundle/vim-g"]
 	path = vim/bundle/vim-g
 	url = https://github.com/szw/vim-g
+[submodule "vim/bundle/vim-indent-object"]
+	path = vim/bundle/vim-indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/vim-multiple-cursors"]
 	path = vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors

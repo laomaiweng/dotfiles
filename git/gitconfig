@@ -13,18 +13,22 @@
 [difftool]
 	prompt = false
 [alias]
-	co = checkout
-	ci = commit
-	st = status -sb
-	stn = status -sb -uno
 	br = branch
+	ci = commit
+	co = checkout
 	cp = cherry-pick
+	d = diff
 	dc = diff --cached
 	dt = difftool
 	last = !git --no-pager log -1 --stat
-	unstage = reset HEAD --
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 	mwpull = pull --rebase
 	mwpush = !git push && git pull --rebase
+	st = status -sb
+	stn = status -sb -uno
+	t = task
+	unstage = reset HEAD --
 [github]
 	user = laomaiweng
+
+# vim: noet

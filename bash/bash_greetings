@@ -4,8 +4,7 @@
 
 
 # Don't display the greetings if the NOGREET variable is set
-if [[ ! -v NOGREET ]]
-then
+if [[ ! -v NOGREET ]] ; then
     # Get host information
     cpu_name="$(uname -p)"
     cpu_num="$(grep '^processor' /proc/cpuinfo | wc -l)"
@@ -25,8 +24,7 @@ then
     echo -e "\E[01;31mDisplay:\E[00m $DISPLAY"
     echo
     # Print a fortune-telling cow
-    if [[ -n "$(command -v fortune)" && -n "$(command -v cowrand)" ]]
-    then
+    if [[ -n "$(command -v fortune)" && -n "$(command -v cowrand)" ]] ; then
         fortune | cowrand -n
         echo
     fi
@@ -35,14 +33,15 @@ then
     ls --color
     echo
     # Print todo-list (if any) for this directory
-    if [[ -f ./TODO ]]
-    then
-        if ! echo "$(file -L ./TODO)" | grep -q "XML"    # 'tudu' uses XML todos, rule those out
-        then
-            echo -e "   \E[01;37mTODO:\E[00m"
-            echo -e "$(sed -e 's/^\(\*\+\)/\\E[01;33m\1\\E[00m/' TODO)"
-            echo
-        fi
+    if [[ -f ./TODO ]] ; then
+        echo -e "   \E[01;37mTODO:\E[00m"
+        echo -e "$(sed -e 's/^\(\*\+\)/\\E[01;33m\1\\E[00m/' TODO)"
+        echo
+    fi
+    # Print taskwarrior's todos
+    if command -v task &>/dev/null ; then
+        task
+        echo
     fi
 
     # Fight environment pollution

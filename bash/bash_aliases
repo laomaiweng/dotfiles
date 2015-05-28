@@ -7,6 +7,8 @@ alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'
 alias lcat='lolcat'
 alias git='hub'
+alias g='git'
+alias t='task'
 
 alias rab='mpg123 --fuzzy --no-resync --mono --quiet ~/.local/share/sounds/rab.mp3'
 alias wot='playonlinux --run "World Of Tanks"'

@@ -94,6 +94,9 @@
 [submodule "vim/bundle/vim-obsession"]
 	path = vim/bundle/vim-obsession
 	url = https://github.com/tpope/vim-obsession
+[submodule "vim/bundle/Vimpress"]
+	path = vim/bundle/Vimpress
+	url = git://github.com/PotHix/Vimpress.git
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git

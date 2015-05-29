@@ -154,8 +154,8 @@ if header :contains ["List-Id"] "gentoo.org" {
 
 # rule:[Bash]
 if header :contains ["List-Id"] "bug-bash.gnu.org" {
-    fileinto "OSS.bash";
-    stop;
+    # fileinto "OSS.bash";
+    # stop;
 }
 
 # rule:[MXE]

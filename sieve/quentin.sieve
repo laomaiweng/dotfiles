@@ -72,9 +72,9 @@ if header :contains ["List-Id"] "list-id.securityfocus.com" {
     #} elsif header :contains ["List-Id"] "focus-apple.list-id.securityfocus.com" {
     #    fileinto "Security.securityfocus";
     #    stop;
-    ## Lists that go into openwall
+    ## Lists that go into oss-security
     #} elsif header :contains ["List-Id"] "oss-security.lists.openwall.com" {
-    #    fileinto "Security.openwall";
+    #    fileinto "Security.oss-security";
     #    stop;
     }
 }

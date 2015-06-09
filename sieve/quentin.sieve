@@ -2,7 +2,7 @@
 
 
 # Extensions
-require ["fileinto"];
+require ["fileinto","editheader","variables","regex"];
 
 
 # rule:[mine]
@@ -154,6 +154,11 @@ if header :contains ["List-Id"] "gentoo.org" {
 
 # rule:[Bash]
 if header :contains ["List-Id"] "bug-bash.gnu.org" {
+    # Add "[bug-bash]" in the Subject:
+    if header :regex "Subject" "((Re|Fwd): *) *(.*)" {
+        deleteheader "Subject";
+        addheader "Subject" "${1}[bug-bash] ${3}";
+    }
     # fileinto "OSS.bash";
     # stop;
 }

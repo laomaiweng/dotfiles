@@ -155,9 +155,10 @@ if header :contains ["List-Id"] "gentoo.org" {
 # rule:[Bash]
 if header :contains ["List-Id"] "bug-bash.gnu.org" {
     # Add "[bug-bash]" in the Subject:
-    if header :regex "Subject" "((Re|Fwd): *) *(.*)" {
+    if header :regex "Subject" "((Re|Fwd): *)? *(.*)" {
         deleteheader "Subject";
         addheader "Subject" "${1}[bug-bash] ${3}";
+        addheader "X-Sieve-Edited" "Subject";
     }
     # fileinto "OSS.bash";
     # stop;

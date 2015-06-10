@@ -18,6 +18,10 @@ include /usr/share/task/rc/holidays.fr-FR.rc
 # Color theme (see /usr/share/task/rc)
 include /usr/share/task/rc/solarized-dark-256.theme
 
-# My settings
-regex=on
-journal.time=on
+# Report settings
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency      # task next: use the 'count' format (only hint number of annotations) for the 'description' column (other columns are default)
+
+# Misc settings
+regex=on            # handle regexps
+journal.time=on     # let tasks be timed
+

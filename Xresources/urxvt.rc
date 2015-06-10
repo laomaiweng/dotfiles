@@ -2,8 +2,9 @@
 
 URxvt.depth: 32
 
-URxvt.font: xft:DejaVu Sans Mono:size=9
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=9
+URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9
+URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:bold:size=9
+URxvt.intensityStyles: false
 
 URxvt*saveLines: 1000
 URxvt*scrollBar: false

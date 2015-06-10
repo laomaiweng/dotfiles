@@ -26,6 +26,7 @@
 	mwpull = pull --rebase
 	mwpush = !git push && git pull --rebase
 	st = status -sb
+	sti = status -sb --ignored
 	stn = status -sb -uno
 	t = task
 	unstage = reset HEAD --

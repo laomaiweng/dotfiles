@@ -21,6 +21,7 @@ most/mostrc                                         ~/.mostrc
 mutt/colors.solarized                               ~/.mutt/colors.solarized
 mutt/mailcap                                        ~/.mutt/mailcap
 pybugz/bugzrc                                       ~/.bugzrc
+readline/inputrc                                    ~/.inputrc
 task/taskrc                                         ~/.taskrc
 tclsh/tclshrc                                       ~/.tclshrc
 tmux/tmux.conf                                      ~/.tmux.conf

@@ -1,0 +1,5 @@
+# user-specific readline bindings
+
+# shift-tab: menu-complete
+"\e[Z": menu-complete
+

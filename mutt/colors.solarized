@@ -106,6 +106,7 @@ color header        color12         default         "^(X-Original-To)"
 color header        color12         default         "^(Sender)"
 color header        yellow          default         "^(User-Agent)"
 color header        yellow          default         "^(X-Mailer)"
+color header        brightcolor14   default         "^(X-Sieve-Edited)"
 color header        brightcolor14   default         "^(X-Virus-Scanned)"
 color header        color12         default         "^(X-Spam-Flag: NO)"
 color header        black           red             "^(X-Spam-Flag: YES)"
@@ -119,7 +120,7 @@ color quoted3       green           default
 color quoted4       yellow          default
 color quoted5       color9          default
 
-color signature     brightgreen     default
+color signature     color10         default
 color bold          black           default
 color underline     black           default
 color normal        default         default

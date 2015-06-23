@@ -7,8 +7,9 @@ local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
--- Widget and layout library
+-- Widget and layout libraries
 local wibox = require("wibox")
+local vicious = require("vicious")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -118,6 +119,16 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+-- Create separator widgets
+myseplr = wibox.widget.textbox()
+myseplr:set_text(" │ ")
+mysepl = wibox.widget.textbox()
+mysepl:set_text(" │")
+mysepr = wibox.widget.textbox()
+mysepr:set_text("│ ")
+myseps = wibox.widget.textbox()
+myseps:set_text("  ")
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -141,6 +152,28 @@ mykbdcfg:buttons(
     awful.button({ }, 3, function () mykbdcfg.switch(-1) end)
     )
 )
+
+-- RAM usage widget
+mymembar = awful.widget.progressbar()
+mymembar:set_width(15)
+mymembar:set_height(30)
+mymembar:set_vertical(true)
+mymembar:set_background_color('#494B4F')
+mymembar:set_color('#AECF96')
+mymembar.tooltip = awful.tooltip({ objects = { mymembar },})
+vicious.cache(vicious.widgets.mem)
+vicious.register(mymembar, vicious.widgets.mem,
+                 function (widget, args)
+                    mymembar.tooltip:set_text("RAM: " .. args[2] .. "MB / " .. args[3] .. "MB")
+                    return args[1]
+                 end, 1)
+
+-- CPU usage graph
+mycpugraph = awful.widget.graph()
+mycpugraph:set_width(50)
+mycpugraph:set_background_color("#494B4F")
+mycpugraph:set_color("#FF5656")
+vicious.register(mycpugraph, vicious.widgets.cpu, "$1", 1)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -221,7 +254,16 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mysepr)
+    local mycpugraph_m = wibox.layout.mirror()      -- graphs append data to the left -- I prefer to the right
+    mycpugraph_m:set_reflection({vertical = true, horizontal = false})
+    mycpugraph_m:set_widget(mycpugraph)
+    right_layout:add(mycpugraph_m)
+    right_layout:add(myseps)
+    right_layout:add(mymembar)
+    right_layout:add(myseplr)
     right_layout:add(mykbdcfg)
+    right_layout:add(mysepl)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 

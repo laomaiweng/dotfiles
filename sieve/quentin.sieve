@@ -160,8 +160,8 @@ if header :contains ["List-Id"] "bug-bash.gnu.org" {
         addheader "Subject" "${1}[bug-bash] ${3}";
         addheader "X-Sieve-Edited" "Subject";
     }
-    # fileinto "OSS.bash";
-    # stop;
+    #fileinto "OSS.bash";
+    #stop;
 }
 
 # rule:[MXE]
@@ -180,6 +180,16 @@ if header :contains ["List-Id"] "openmw.OpenMW.github.com" {
 if header :contains ["List-Id"] "gta04-owner.goldelico.com" {
     fileinto "OSS.phone";
     stop;
+}
+if header :contains ["List-Id"] "community.openphoenux.org" {
+    # Add "[OpenPhoenux]" in the Subject:
+    if header :regex "Subject" "((Re|Fwd): *)? *(.*)" {
+        deleteheader "Subject";
+        addheader "Subject" "${1}[OpenPhoenux] ${3}";
+        addheader "X-Sieve-Edited" "Subject";
+    }
+    #fileinto "OSS.phone";
+    #stop;
 }
 
 

@@ -192,5 +192,11 @@ if header :contains ["List-Id"] "community.openphoenux.org" {
     #stop;
 }
 
+# rule:[nouveau]
+if header :contains ["List-Id"] "nouveau.lists.freedesktop.org" {
+    fileinto "OSS.nouveau";
+    stop;
+}
+
 
 # Implicit keep

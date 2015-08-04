@@ -198,5 +198,17 @@ if header :contains ["List-Id"] "nouveau.lists.freedesktop.org" {
     stop;
 }
 
+# rule:[awesome]
+if header :contains ["List-Id"] "awesome.naquadah.org" {
+    # Add "[awesome]" in the Subject:
+    if header :regex "Subject" "((Re|Fwd): *)? *(.*)" {
+        deleteheader "Subject";
+        addheader "Subject" "${1}[awesome] ${3}";
+        addheader "X-Sieve-Edited" "Subject";
+    }
+    #fileinto "OSS.awesome";
+    #stop;
+}
+
 
 # Implicit keep

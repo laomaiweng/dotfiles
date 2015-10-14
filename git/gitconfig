@@ -28,6 +28,7 @@
 	st = status -sb
 	sti = status -sb --ignored
 	stn = status -sb -uno
+	stm = status -sb --ignore-submodules
 	t = task
 	unstage = reset HEAD --
 [github]

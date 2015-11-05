@@ -43,8 +43,8 @@
 [submodule "vim/bundle/mediawiki.vim"]
 	path = vim/bundle/mediawiki.vim
 	url = https://github.com/chikamichi/mediawiki.vim
-[submodule "vim/bundle/pachreview-vim"]
-	path = vim/bundle/pachreview-vim
+[submodule "vim/bundle/patchreview-vim"]
+	path = vim/bundle/patchreview-vim
 	url = git://github.com/junkblocker/patchreview-vim.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic

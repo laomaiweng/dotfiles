@@ -73,6 +73,9 @@
 [submodule "vim/bundle/vim-ctrlspace"]
 	path = vim/bundle/vim-ctrlspace
 	url = https://github.com/szw/vim-ctrlspace
+[submodule "vim/bundle/vim-dispatch"]
+	path = vim/bundle/vim-dispatch
+	url = git://github.com/tpope/vim-dispatch.git
 [submodule "vim/bundle/vim-easy-align"]
 	path = vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align
@@ -109,6 +112,9 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-tags"]
+	path = vim/bundle/vim-tags
+	url = git://github.com/szw/vim-tags.git
 [submodule "vim/bundle/vim-taskwarrior"]
 	path = vim/bundle/vim-taskwarrior
 	url = git://github.com/farseer90718/vim-taskwarrior.git

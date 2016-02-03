@@ -1,5 +1,10 @@
 # user-specific readline bindings
 
+# color file completion options according to LS_COLORS
+set colored-stats On
+
 # shift-tab: menu-complete
 "\e[Z": menu-complete
 
+# alt-w: unix-filename-rubout
+"\ew": unix-filename-rubout

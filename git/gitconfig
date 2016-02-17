@@ -33,5 +33,7 @@
 	unstage = reset HEAD --
 [github]
 	user = laomaiweng
+[transfer]
+	fsckObjects = true
 
 # vim: noet

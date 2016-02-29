@@ -50,6 +50,7 @@ terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
+fileman = "spacefm"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -105,7 +106,7 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "chromium", browser },
                                     { "firefox", "firefox" },
-                                    { "file browser", "spacefm" },
+                                    { "file browser", fileman },
                                     { "text editor", "evim" },
                                     { "terminal", terminal }
                                   }
@@ -351,6 +352,7 @@ globalkeys = awful.util.table.join(
     awful.key({},                    "Print", function () awful.util.spawn("screengrab")                 end),
     awful.key({ modkey,           }, "F1",    function () mykbdcfg.switch(1)                             end),
     awful.key({ modkey, "Shift"   }, "F1",    function () mykbdcfg.switch(-1)                            end),
+    awful.key({ modkey,           }, "e",     function () awful.util.spawn(fileman)                      end),
     awful.key({ modkey,           }, "l",     function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
     awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),

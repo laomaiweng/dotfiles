@@ -94,6 +94,9 @@
 [submodule "vim/bundle/vim-g"]
 	path = vim/bundle/vim-g
 	url = https://github.com/szw/vim-g
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
 [submodule "vim/bundle/vim-indent-object"]
 	path = vim/bundle/vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git

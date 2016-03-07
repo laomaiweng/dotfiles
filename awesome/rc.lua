@@ -360,9 +360,9 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioStop",            function () awful.util.spawn("mocp --stop") end),
     awful.key({}, "XF86AudioPrev",            function () awful.util.spawn("mocp --previous") end),
     awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
-    awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set +5%") end),
-    awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set -5%") end),
-    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
+    awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol -C PCH set 5%+") end),
+    awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol -C PCH set 5%-") end),
+    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol -C PCH toggle") end),
     awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
     awful.key({}, "XF86Calculator",           function () awful.util.spawn("speedcrunch") end)
 )

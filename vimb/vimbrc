@@ -1,0 +1,6 @@
+# ~/.vimbrc - user vimb configuration file
+
+set editor-command=gvim -f %s
+set home-page=http://www.startpage.com
+
+# vim: ft=vimrc

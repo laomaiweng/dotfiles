@@ -26,6 +26,7 @@ task/taskrc                                         ~/.taskrc
 tclsh/tclshrc                                       ~/.tclshrc
 tmux/tmux.conf                                      ~/.tmux.conf
 vim/vimrc                                           ~/.vimrc
+vimb/vimbrc                                         ~/.vimbrc
 wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf
 Xresources/Xresources                               ~/.Xresources
 Xresources/solarized.rc                             ~/.xresources/solarized.rc

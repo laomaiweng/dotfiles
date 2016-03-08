@@ -1,20 +1,23 @@
 # /etc/bash/bash_prompt: system-wide prompt
 
-PS1_TIMECOLOR="\[\033[01;37m\]"
-PS1_TIME="$PS1_TIMECOLOR[\t]"
-PS1_USERCOLOR="\[`[ $EUID -eq 0 ] && echo -n '\033[01;31m' || echo -n '\033[01;32m'`\]"
-PS1_USER="$PS1_USERCOLOR`[ $EUID -eq 0 ] || echo '\u@'`"
-PS1_WDCOLOR="\[\033[01;34m\]"
-PS1_WD="$PS1_WDCOLOR`[ $EUID -eq 0 ] && echo -n '\W' || echo -n '\w'`"
-PS1_JOBCOLOR="\[\033[01;35m\]"
-PS1_JOB="$PS1_JOBCOLOR[\j]"
-PS1_SHLVLCOLOR="\[\033[01;34m\]"
-#PS1_SHLVL="$PS1_SHLVLCOLOR`seq -s ' ' $SHLVL | sed -e 's:[^[:space:]\+]:\\\\$:g' -e 's: ::g'`"
-PS1_SHLVLSEQ="`seq $SHLVL`"
-PS1_SHLVL="$PS1_SHLVLCOLOR`printf '\\$%.s' $PS1_SHLVLSEQ`"
+source /usr/share/git/git-prompt.sh
 
-export PS1="$PS1_TIME $PS1_USER\h $PS1_WD $PS1_JOB$PS1_SHLVL\[\033[00m\] "
+ps1_bold=01
+ps1_timecolor="\[\033[${ps1_bold};37m\]"
+ps1_time="${ps1_timecolor}[\t]"
+ps1_usercolor="\[\$( (( $EUID == 0 )) && printf '\033[${ps1_bold};31m' || printf '\033[${ps1_bold};32m')\]"
+ps1_user="${ps1_usercolor}\$( (( $EUID == 0 )) || printf '\u@')"
+ps1_wdcolor="\[\033[${ps1_bold};34m\]"
+ps1_wd="${ps1_wdcolor}\$( (( $EUID == 0 )) && printf '\W' || printf '\w')"
+ps1_gitcolor="\[\033[${ps1_bold};33m\]"
+ps1_git="${ps1_gitcolor}\$(__git_ps1 ' ( %s)')"
+ps1_jobcolor="\[\033[${ps1_bold};35m\]"
+ps1_job="${ps1_jobcolor}[\j]"
+ps1_shlvlcolor="\[\033[${ps1_bold};34m\]"
+ps1_shlvl="${ps1_shlvlcolor}\$(printf '\$%.s' \$(eval echo {1..$SHLVL}))"
 
-unset PS1_TIMECOLOR PS1_TIME PS1_USERCOLOR PS1_USER PS1_WDCOLOR PS1_WD PS1_JOBCOLOR PS1_JOB PS1_SHLVLCOLOR PS1_SHLVL
+export PS1="${ps1_time} ${ps1_user}\h ${ps1_wd}${ps1_git} ${ps1_job}${ps1_shlvl}\[\033[00m\] "
+
+unset ps1_bold ps1_timecolor ps1_time ps1_usercolor ps1_user ps1_wdcolor ps1_wd ps1_gitcolor ps1_git ps1_jobcolor ps1_job ps1_shlvlcolor ps1_shlvl
 
 # vim: ft=sh

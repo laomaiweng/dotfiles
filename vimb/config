@@ -1,6 +1,10 @@
 # ~/.vimbrc - user vimb configuration file
 
-set editor-command=gvim -f %s
 set home-page=http://www.startpage.com
 
-# vim: ft=vimrc
+set editor-command=gvim -f %s
+
+# reject third-party cookies
+set cookie-accept=origin
+# make cookies session-only
+set cookie-expire-time=0

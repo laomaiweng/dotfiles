@@ -51,6 +51,7 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
 fileman = "spacefm"
+calculator = "orpie"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -364,7 +365,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol -C PCH set 5%-") end),
     awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol -C PCH toggle") end),
     awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
-    awful.key({}, "XF86Calculator",           function () awful.util.spawn("speedcrunch") end)
+    awful.key({}, "XF86Calculator",           function () awful.util.spawn(terminal .. " -e " .. calculator) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -457,6 +458,10 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "Display" },
+      properties = { floating = true } },
+    { rule = { class = "Speedcrunch" },
+      properties = { floating = true } },
+    { rule = { name = "orpie" },
       properties = { floating = true } },
     { rule = { class = "Tor Browser" },
       properties = { floating = true } },

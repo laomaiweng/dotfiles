@@ -138,10 +138,18 @@ mytextclock = awful.widget.textclock()
 mykbdcfg = wibox.widget.textbox()
 mykbdcfg.cmd = "setxkbmap"
 mykbdcfg.layout = { "fr oss", "fr bepo", "us" }
-mykbdcfg.current = 1  -- irrelevant: the current layout at startup might be anything
+--get the current layout
 io.input(io.popen("setxkbmap -query | sed -n '/^layout:/ {s/layout:[[:space:]]*//;h}; /^variant:/ {s/variant:[[:space:]]*//;H;}; ${x;s/\\n/ /;p}'"))
-mykbdcfg:set_text(io.read("*l"))
+mykbdcfg.init = io.read("*l")
 io.close()
+--try to find it in the available ones
+mykbdcfg.current = 1
+mykbdcfg:set_text(mykbdcfg.init)
+for i = 1, #(mykbdcfg.layout) do
+  if mykbdcfg.layout[i] == mykbdcfg.init then
+    mykbdcfg.current = i
+  end
+end
 mykbdcfg.switch = function (i)
     mykbdcfg.current = (mykbdcfg.current + i - 1) % #(mykbdcfg.layout) + 1
     local t = mykbdcfg.layout[mykbdcfg.current]

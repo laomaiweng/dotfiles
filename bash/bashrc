@@ -39,11 +39,8 @@ path prepend -e man ~/.local/share/man
 SSH_AGENT_AUTOKEYS=(~/.ssh/git@forge.rsa ~/.ssh/git@github.rsa ~/.ssh/git@gitorious.rsa ~/.ssh/laomaiweng,tclreadline@sourceforge.rsa)
 ssh-agent-test ~/.ssh/agent-cobalt && ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &> /dev/null || ssh-agent-respawn ~/.ssh/agent-cobalt
 
-# Start or discover the GPG agent
+# GPG agent environment variables
 export GPG_TTY=$(tty)
-gpg-agent-test ~/.gnupg/agent-cobalt || gpg-agent --daemon --write-env-file ~/.gnupg/agent-cobalt
-. ~/.gnupg/agent-cobalt
-export GPG_AGENT_INFO
 
 # Gentoo environment variables
 export GENTOO_AUTHOR_NAME="Quentin Minster"

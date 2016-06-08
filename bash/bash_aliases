@@ -5,19 +5,14 @@ alias tmux='unset NOGREET ; tmux'
 
 alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'
-alias lcat='lolcat'
+alias line='head -n1'
 alias git='hub'
 alias g='git'
 alias t='task'
 
-# http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
-alias strings='strings -a'
-
-alias rab='mpg123 --fuzzy --no-resync --mono --quiet ~/.local/share/sounds/rab.mp3'
-alias sieve-connect-q@mio='sieve-connect -s minster.io -u quentin@minster.io -p 4190'
-alias reboot-windows='safeshutdown -g "Windows 7 (loader) (on /dev/sda1)" -- -r now'
-alias display='display -resize "$(xdpyinfo | sed -ne "/^ *dimensions:/ { s/ *dimensions: *\([0-9]\+x[0-9]\+\).*/\1/p ; q }")"'
-alias torvimb='http_proxy=socks://localhost:9050 https_proxy=socks://localhost:9050 vimb https://check.torproject.org'
-alias apodget='apodget -p -d /media/vault/Pictures/Astro/APOD'
+alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
+alias gdb='gdb -q'
+alias mkisofs='mkisofs -JR'
+alias alsamixer='alsamixer -c PCH'
 
 # vim:ft=sh

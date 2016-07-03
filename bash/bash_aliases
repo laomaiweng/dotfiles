@@ -14,5 +14,6 @@ alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-st
 alias gdb='gdb -q'
 alias mkisofs='mkisofs -JR'
 alias alsamixer='alsamixer -c PCH'
+alias pwgen='pwgen -cny -s 16'
 
 # vim:ft=sh

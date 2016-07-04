@@ -49,8 +49,11 @@ beautiful.init(awful.util.getdir("config") .. "/themes/quentin/theme.lua")
 terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-browser = "chromium --ssl-version-min=tls1 --enable-spdy4"
+chromium = "chromium --ssl-version-min=tls1 --enable-spdy4"
+firefox = "firefox"
+torbrowser = os.getenv("HOME") .. "/Tor\\ Browser/start-tor-browser"
 fileman = "spacefm"
+guieditor = "evim"
 calculator = "orpie"
 
 -- Default modkey.
@@ -105,10 +108,11 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "chromium", browser },
-                                    { "firefox", "firefox" },
+                                    { "chromium", chromium },
+                                    { "firefox", firefox },
+                                    { "tor browser", torbrowser },
                                     { "file browser", fileman },
-                                    { "text editor", "evim" },
+                                    { "text editor", guieditor },
                                     { "terminal", terminal }
                                   }
                         })
@@ -372,7 +376,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol -C PCH set 5%+") end),
     awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol -C PCH set 5%-") end),
     awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol -C PCH toggle") end),
-    awful.key({}, "XF86HomePage",             function () awful.util.spawn(browser) end),
+    awful.key({}, "XF86HomePage",             function () awful.util.spawn(chromium) end),
     awful.key({}, "XF86Calculator",           function () awful.util.spawn(terminal .. " -e " .. calculator) end)
 )
 

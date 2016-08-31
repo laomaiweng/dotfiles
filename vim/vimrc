@@ -51,6 +51,29 @@ cmap w$$ w !sudo tee % >/dev/null
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" cscope options
+if has("cscope")
+    set cscopetagorder=0    " 0: search cscope then tags; 1: search tags then cscope
+    set cscopetag           " use :cstag instead of :tag
+    set nocscopeverbose     " hide database loading error messages (for the next few lines)
+    if filereadable("cscope.out")
+        cscope add cscope.out
+    elseif $CSCOPE_DB != ""
+        cscope add $CSCOPE_DB
+    endif
+    set nocscopeverbose     " restore database loading error messages
+endif
+" g[ / cscope find s: find C symbol under cursor
+" g) / cscope find d: find functions called by function under cursor
+" g( / cscope find c: find functions calling function under cursor
+" g» / cscope find f: find file under cursor
+" g« / cscope find i: find file #including file under cursor
+nmap g[ :cscope find s <C-R>=expand("<cword>")<CR><CR>
+nmap g) :cscope find d <C-R>=expand("<cword>")<CR><CR>
+nmap g( :cscope find c <C-R>=expand("<cword>")<CR><CR>
+nmap g» :cscope find f <C-R>=expand("<cword>")<CR><CR>
+nmap g« :cscope find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+
 " airline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1

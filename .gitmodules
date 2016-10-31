@@ -136,6 +136,9 @@
 [submodule "vim/bundle/vim-togglemouse"]
 	path = vim/bundle/vim-togglemouse
 	url = https://github.com/nvie/vim-togglemouse
+[submodule "vim/bundle/vim-visual-star-search"]
+	path = vim/bundle/vim-visual-star-search
+	url = git://github.com/bronson/vim-visual-star-search.git
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim

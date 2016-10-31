@@ -171,5 +171,6 @@ color body          magenta        default         "((@(([0-9a-z-]+\\.)*[0-9a-z-
 #folder-hook gmail/important    "color status        J_black         yellow          "
 
 # sidebar ---------------------------------------------------------
-color sidebar_new   yellow          default
+color sidebar_new       yellow          default
+color sidebar_divider   default         black
 

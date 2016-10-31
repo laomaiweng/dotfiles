@@ -61,7 +61,7 @@ if has("cscope")
     elseif $CSCOPE_DB != ""
         cscope add $CSCOPE_DB
     endif
-    set nocscopeverbose     " restore database loading error messages
+    set cscopeverbose       " restore database loading error messages
 endif
 " g[ / cscope find s: find C symbol under cursor
 " g) / cscope find d: find functions called by function under cursor

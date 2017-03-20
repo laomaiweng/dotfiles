@@ -46,6 +46,9 @@
 [submodule "vim/bundle/patchreview-vim"]
 	path = vim/bundle/patchreview-vim
 	url = git://github.com/junkblocker/patchreview-vim.git
+[submodule "vim/bundle/rust.vim"]
+	path = vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic

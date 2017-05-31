@@ -1,7 +1,8 @@
 # ~/.bash_aliases - user-specific aliases
 
-alias screen='unset NOGREET ; screen'
-alias tmux='unset NOGREET ; tmux'
+alias screen='unset NOGREET; screen'
+alias tmux='unset NOGREET; tmux'
+alias pass='EDITOR="vim -S $HOME/.password-store/.vimopts" pass'
 
 alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'
@@ -9,11 +10,20 @@ alias line='head -n1'
 alias git='hub'
 alias g='git'
 alias t='task'
+alias diff='colordiff'
 
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
+alias qsize='LC_ALL=C qsize'
+alias sort='LC_ALL=C sort'  # https://twitter.com/hdmoore/status/808035256188235778
 alias gdb='gdb -q'
+alias rust-gdb='rust-gdb -q'
+alias disown='disown -r'
 alias mkisofs='mkisofs -JR'
 alias alsamixer='alsamixer -c PCH'
 alias pwgen='pwgen -cny -s 16'
+
+alias bpython2.7='python2.7 -m bpython'
+alias bpython3.5='python3.5 -m bpython'
+alias bpython3.6='python3.6 -m bpython'
 
 # vim:ft=sh

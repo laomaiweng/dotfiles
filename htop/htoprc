@@ -1,13 +1,14 @@
 # Beware! This file is rewritten by htop when settings are changed in the interface.
 # The parser is also very primitive, and not human-friendly.
-fields=0 3 48 37 17 18 2 46 47 38 39 40 59 60 49 20 1 
+fields=0 3 4 48 37 17 18 2 46 47 38 39 40 102 109 103 110 49 20 1 
 sort_key=47
 sort_direction=1
 hide_threads=0
 hide_kernel_threads=1
-hide_userland_threads=0
+hide_userland_threads=1
 shadow_other_users=1
 show_thread_names=1
+show_program_path=1
 highlight_base_name=1
 highlight_megabytes=1
 highlight_threads=1

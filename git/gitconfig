@@ -3,7 +3,7 @@
 [user]
 	name = quentin
 	email = quentin@minster.io
-	signingkey = 0F5F912C
+	signingkey = AA0929D0263BE9D6C260BDC5FF79BF270F5F912C
 [push]
 	default = simple
 [diff]

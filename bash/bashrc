@@ -48,6 +48,9 @@ export GENTOO_AUTHOR_EMAIL=quentin@minster.io
 export PORTAGE_GPG_KEY=0x0F5F912C
 export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 
+# Enable pass extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
+
 # Chromium default flags
 export CHROMIUM_USER_FLAGS='--site-per-process --enable-potentially-annoying-security-features --enable-google-branded-context-menu --enable-grouped-history --enable-tcp-fastopen --enable-leak-detection' #--enable-wayland-server --enable-heap-profiling
 

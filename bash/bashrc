@@ -45,7 +45,7 @@ export GPG_TTY=$(tty)
 # Gentoo environment variables
 export GENTOO_AUTHOR_NAME="Quentin Minster"
 export GENTOO_AUTHOR_EMAIL=quentin@minster.io
-export PORTAGE_GPG_KEY=0x0F5F912C
+export PORTAGE_GPG_KEY=0xAA0929D0263BE9D6C260BDC5FF79BF270F5F912C
 export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 
 # Enable pass extensions

@@ -10,8 +10,8 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+    # Shell is non-interactive.  Be done now!
+    return
 fi
 
 
@@ -35,9 +35,14 @@ path prepend -e inc ~/.local/include
 path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
 
-# Add Git key-less SSH keys to the SSH agent
-SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.rsa ~/.ssh/git@gitorious.rsa ~/.ssh/laomaiweng,tclreadline@sourceforge.rsa)
-ssh-agent-test ~/.ssh/agent-cobalt && ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &> /dev/null || ssh-agent-respawn ~/.ssh/agent-cobalt
+# Ensure an SSH agent is running and add passwordless SSH keys to it
+SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.ed25519 ~/.ssh/hg@bitbucket.ed25519 ~/.ssh/laomaiweng@sourceforge.ed25519)
+if ssh-agent-test ~/.ssh/agent-cobalt
+then
+    ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &>/dev/null
+else
+    ssh-agent-respawn ~/.ssh/agent-cobalt &>/dev/null
+fi
 
 # GPG agent environment variables
 export GPG_TTY=$(tty)

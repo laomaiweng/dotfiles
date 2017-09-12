@@ -1,0 +1,10 @@
+[ui]
+username = laomaiweng
+
+[alias]
+log = log -G
+
+[extensions]
+mq =
+rebase =
+shelve =

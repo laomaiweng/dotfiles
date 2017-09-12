@@ -17,6 +17,7 @@ gdb/gdbinit                                         ~/.gdbinit
 gnupg/dirmngr.conf                                  ~/.gnupg/dirmngr.conf
 gnupg/gpg.conf                                      ~/.gnupg/gpg.conf
 gnupg/gpg-agent.conf                                ~/.gnupg/gpg-agent.conf
+hg/hgrc                                             ~/.hgrc
 htop/htoprc                                         ~/.config/htop/htoprc
 indent/indent.pro                                   ~/.indent.pro
 moc/config                                          ~/.moc/config

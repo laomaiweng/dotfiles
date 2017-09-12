@@ -9,6 +9,7 @@ bash/bashrc                                         ~/.bashrc
 bash/bash_aliases                                   ~/.bash_aliases
 bash/bash_completion                                ~/.bash_completion
 bash/bash_greetings                                 ~/.bash_greetings
+ctags/ctags                                         ~/.ctags
 dircolors/dircolors-solarized/dircolors.ansi-dark   ~/.dir_colors
 elinks/elinks.conf                                  ~/.elinks/elinks.conf
 git/gitconfig                                       ~/.gitconfig

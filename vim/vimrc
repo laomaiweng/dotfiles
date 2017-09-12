@@ -114,8 +114,8 @@ endif
 nmap g[ :cscope find s <C-R>=expand("<cword>")<CR><CR>
 nmap g) :cscope find d <C-R>=expand("<cword>")<CR><CR>
 nmap g( :cscope find c <C-R>=expand("<cword>")<CR><CR>
-nmap g» :cscope find f <C-R>=expand("<cword>")<CR><CR>
-nmap g« :cscope find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap g» :cscope find f <C-R>=expand("<cfile>")<CR><CR>
+nmap g« :cscope find i <C-R>=expand("<cfile>")<CR><CR>
 
 " airline options
 let g:airline_powerline_fonts = 1

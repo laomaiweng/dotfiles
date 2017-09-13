@@ -31,9 +31,6 @@
 [submodule "vim/bundle/gist-vim"]
 	path = vim/bundle/gist-vim
 	url = https://github.com/mattn/gist-vim
-[submodule "vim/bundle/github-issues.vim"]
-	path = vim/bundle/github-issues.vim
-	url = https://github.com/jaxbot/github-issues.vim
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv

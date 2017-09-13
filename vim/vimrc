@@ -134,6 +134,7 @@ if has("autocmd")
 endif
 
 " gundo options
+let g:gundo_prefer_python3 = 1
 let g:gundo_right = 1
 let g:gundo_help = 0
 

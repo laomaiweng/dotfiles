@@ -26,4 +26,7 @@ alias bpython2.7='python2.7 -m bpython'
 alias bpython3.5='python3.5 -m bpython'
 alias bpython3.6='python3.6 -m bpython'
 
+alias dbus-suspend='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Suspend boolean:true'
+alias dbus-hibernate='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Hibernate boolean:true'
+
 # vim:ft=sh

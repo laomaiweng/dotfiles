@@ -56,9 +56,6 @@ export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 # Enable pass extensions
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 
-# Chromium default flags
-export CHROMIUM_USER_FLAGS='--site-per-process --enable-potentially-annoying-security-features --enable-google-branded-context-menu --enable-grouped-history --enable-tcp-fastopen --enable-leak-detection' #--enable-wayland-server --enable-heap-profiling
-
 # *cough cough*
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
@@ -73,4 +70,3 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Greet the user
 [[ -f ~/.bash_greetings ]] && . ~/.bash_greetings
-

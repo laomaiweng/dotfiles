@@ -1,0 +1,10 @@
+# ~/.xprofile - user X11 profile
+
+# Local path extensions
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib64:$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+# Chromium default flags
+export CHROMIUM_USER_FLAGS='--site-per-process --enable-potentially-annoying-security-features --enable-google-branded-context-menu --enable-grouped-history --enable-tcp-fastopen --enable-leak-detection' #--enable-wayland-server --enable-heap-profiling
+
+# vim: ft=sh

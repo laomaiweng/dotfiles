@@ -35,4 +35,4 @@ wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf
 X11/Xresources                                      ~/.Xresources
 X11/solarized.rc                                    ~/.xresources/solarized.rc
 X11/urxvt.rc                                        ~/.xresources/urxvt.rc
-
+X11/xprofile                                        ~/.xprofile

@@ -32,7 +32,7 @@ tmux/tmux.conf                                      ~/.tmux.conf
 vim/vimrc                                           ~/.vimrc
 vimb/config                                         ~/.config/vimb/config
 wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf
-Xresources/Xresources                               ~/.Xresources
-Xresources/solarized.rc                             ~/.xresources/solarized.rc
-Xresources/urxvt.rc                                 ~/.xresources/urxvt.rc
+X11/Xresources                                      ~/.Xresources
+X11/solarized.rc                                    ~/.xresources/solarized.rc
+X11/urxvt.rc                                        ~/.xresources/urxvt.rc
 

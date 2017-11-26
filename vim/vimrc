@@ -106,16 +106,20 @@ if has("cscope")
     endif
     set cscopeverbose       " restore database loading error messages
 endif
-" g[ / cscope find s: find C symbol under cursor
+" g[ / cscope find s: find symbol under cursor
 " g) / cscope find d: find functions called by function under cursor
 " g( / cscope find c: find functions calling function under cursor
 " g» / cscope find f: find file under cursor
 " g« / cscope find i: find file #including file under cursor
+" g> / cscope find t: find text string under cursor
+" g< / cscope find a: find assignments to symbol under cursor
 nmap g[ :cscope find s <C-R>=expand("<cword>")<CR><CR>
 nmap g) :cscope find d <C-R>=expand("<cword>")<CR><CR>
 nmap g( :cscope find c <C-R>=expand("<cword>")<CR><CR>
 nmap g» :cscope find f <C-R>=expand("<cfile>")<CR><CR>
 nmap g« :cscope find i <C-R>=expand("<cfile>")<CR><CR>
+nmap g> :cscope find t <C-R>=expand("<cword>")<CR><CR>
+nmap g< :cscope find a <C-R>=expand("<cword>")<CR><CR>
 
 " airline options
 let g:airline_powerline_fonts = 1
@@ -184,5 +188,6 @@ let g:tagbar_type_mediawiki = {
         \'s:sections',
         \'u:subsections',
         \'b:subsubsections',
-    \]
+    \],
+    \ 'sort': 0,
 \}

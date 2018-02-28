@@ -4,9 +4,9 @@
 	path = dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
 
-[submodule "vim/bundle/ag.vim"]
-	path = vim/bundle/ag.vim
-	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/ack.vim"]
+	path = vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim
 [submodule "vim/bundle/argtextobj.vim"]
 	path = vim/bundle/argtextobj.vim
 	url = git://github.com/vim-scripts/argtextobj.vim.git

@@ -133,7 +133,7 @@ if executable('rg')
     let g:ackprg = 'rg --vimgrep'
 endif
 cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+nnoremap <Leader>a :Ack!<Space><cword><CR>
 
 " syntastic options
 "let g:syntastic_tcl_nagelfar_args = "-s /usr/share/nagelfar-1.2/syntaxdb86.tcl"

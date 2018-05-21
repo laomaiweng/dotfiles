@@ -17,6 +17,7 @@ alias qsize='LC_ALL=C qsize'
 alias sort='LC_ALL=C sort'  # https://twitter.com/hdmoore/status/808035256188235778
 alias gdb='gdb -q'
 alias rust-gdb='rust-gdb -q'
+alias readelf='readelf -W'
 alias disown='disown -r'
 alias mkisofs='mkisofs -JR'
 alias alsamixer='alsamixer -c PCH'

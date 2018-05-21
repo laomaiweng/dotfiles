@@ -88,9 +88,6 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/vim-g"]
-	path = vim/bundle/vim-g
-	url = https://github.com/szw/vim-g
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
@@ -124,9 +121,6 @@
 [submodule "vim/bundle/vim-tags"]
 	path = vim/bundle/vim-tags
 	url = https://github.com/szw/vim-tags
-[submodule "vim/bundle/vim-taskwarrior"]
-	path = vim/bundle/vim-taskwarrior
-	url = https://github.com/farseer90718/vim-taskwarrior
 [submodule "vim/bundle/vim-tmux-focus-events"]
 	path = vim/bundle/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git

@@ -36,7 +36,7 @@
 	url = https://github.com/gregsexton/gitv
 [submodule "vim/bundle/gundo.vim"]
 	path = vim/bundle/gundo.vim
-	url = http://github.com/sjl/gundo.vim
+	url = https://github.com/sjl/gundo.vim
 [submodule "vim/bundle/mediawiki.vim"]
 	path = vim/bundle/mediawiki.vim
 	url = https://github.com/chikamichi/mediawiki.vim
@@ -73,9 +73,6 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "vim/bundle/Conque-Shell"]
-	path = vim/bundle/Conque-Shell
-	url = https://github.com/vim-scripts/Conque-Shell
 [submodule "vim/bundle/vim-ctrlspace"]
 	path = vim/bundle/vim-ctrlspace
 	url = https://github.com/szw/vim-ctrlspace

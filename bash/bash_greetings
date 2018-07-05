@@ -4,7 +4,8 @@
 
 
 # Don't display the greetings if the NOGREET variable is set
-if [[ ! -v NOGREET ]] ; then
+# or if we're being resurrected by the tmux-resurrect tmux plugin
+if [[ ! -v NOGREET && ! -v TMUX_RESURRECT_PANE ]] ; then
     # Get host information
     cpu_name="$(uname -p)"
     cpu_num="$(grep '^processor' /proc/cpuinfo | wc -l)"
@@ -51,8 +52,12 @@ if [[ ! -v NOGREET ]] ; then
     export NOGREET=
 fi
 
+# Don't export the resurrected pane ID for subsequent shells
+export -n TMUX_RESURRECT_PANE
+
 # Set up an alias to display the greetings again/anyway
-alias greetings='unset NOGREET ; source ~/.bash_greetings'
+# (use a subshell to avoid unsetting NOGREET, append a # to prevent arguments from causing a syntax error)
+alias greetings='( unset NOGREET ; source ~/.bash_greetings ) #'
 
 
 # vim:ft=sh

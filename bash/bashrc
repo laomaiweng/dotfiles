@@ -24,8 +24,8 @@ shopt -s globstar
 
 # Setup a useful history
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=10000
-export HISTSIZE=10000
+export HISTFILESIZE=-1
+export HISTSIZE=-1
 
 # Extend the paths to the .local directories (and some others)
 path prepend -e bin ~/.local/bin ~/.cargo/bin
@@ -36,7 +36,7 @@ path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
 
 # Ensure an SSH agent is running and add passwordless SSH keys to it
-SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.ed25519 ~/.ssh/hg@bitbucket.ed25519 ~/.ssh/laomaiweng@sourceforge.ed25519)
+SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.ed25519 ~/.ssh/hg@bitbucket.ed25519 ~/.ssh/laomaiweng@sourceforge.ed25519 ~/.ssh/quentin@forge.moria.lan.ed25519)
 if ssh-agent-test ~/.ssh/agent-cobalt
 then
     ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &>/dev/null

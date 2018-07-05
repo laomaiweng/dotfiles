@@ -1,0 +1,5 @@
+setxkbmap fr bepo
+xrdb -merge /home/quentin/.Xresources
+#unagi &
+urxvtd -q -o -f
+exec awesome

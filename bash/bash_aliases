@@ -23,6 +23,8 @@ alias mkisofs='mkisofs -JR'
 alias alsamixer='alsamixer -c PCH'
 alias pwgen='pwgen -cny -s 16'
 
+alias ida='~/.idafree-7.0/ida64'
+
 alias bpython2.7='python2.7 -m bpython'
 alias bpython3.5='python3.5 -m bpython'
 alias bpython3.6='python3.6 -m bpython'

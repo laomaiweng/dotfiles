@@ -12,6 +12,7 @@ bash/bash_greetings                                 ~/.bash_greetings
 ctags/ctags                                         ~/.ctags
 dircolors/dircolors-solarized/dircolors.ansi-dark   ~/.dir_colors
 elinks/elinks.conf                                  ~/.elinks/elinks.conf
+git/cvsignore                                       ~/.cvsignore
 git/gitconfig                                       ~/.gitconfig
 gdb/gdbinit                                         ~/.gdbinit
 gnupg/dirmngr.conf                                  ~/.gnupg/dirmngr.conf

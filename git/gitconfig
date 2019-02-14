@@ -35,5 +35,7 @@
 	user = laomaiweng
 [transfer]
 	fsckObjects = true
+[core]
+	excludesfile = ~/.cvsignore
 
 # vim: noet

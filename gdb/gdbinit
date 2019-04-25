@@ -1,3 +1,8 @@
+# ~/.gdbinit - gdb init script
+
+# fancy prompt w/ current thread and frame (but no inferior indication :-( )
+set extended-prompt \[\e[1;34m\](gdb @ \t:\f) \[\e[0m\]
+
 # https://gist.github.com/packz/2788213
 define assemble
  # dont enter routine again if user hits enter

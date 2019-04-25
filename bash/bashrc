@@ -27,6 +27,13 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=-1
 export HISTSIZE=-1
 
+# Source functions
+if [[ -d ~/.bash_functions ]]; then
+    for f in ~/.bash_functions/*; do
+        [[ -x "$f" ]] && . "$f"
+    done
+fi
+
 # Extend the paths to the .local directories (and some others)
 path prepend -e bin ~/.local/bin ~/.cargo/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin
@@ -53,11 +60,15 @@ export GENTOO_AUTHOR_EMAIL=quentin@minster.io
 export PORTAGE_GPG_KEY=0xAA0929D0263BE9D6C260BDC5FF79BF270F5F912C
 export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
 
-# Enable pass extensions
+# Password store settings
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
+export PASSWORD_STORE_SIGNING_KEY="AA0929D0263BE9D6C260BDC5FF79BF270F5F912C"
 
 # *cough cough*
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Enable TODO auto-print
+todo on -q
 
 # Source WeChall credentials
 [[ -f ~/.wechallrc ]] && . ~/.wechallrc
@@ -65,8 +76,11 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # Default to no display when the X server is remote (this greatly improves Vim startup time over slow connections)
 [[ "$DISPLAY" == "localhost:"* ]] && nodisplay
 
-# If available, setup some useful aliases
+# Setup some useful aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+
+# Customize the prompt
+[[ -f ~/.bash_prompt ]] && . ~/.bash_prompt
 
 # Greet the user
 [[ -f ~/.bash_greetings ]] && . ~/.bash_greetings

@@ -11,6 +11,9 @@ alias git='hub'
 alias g='git'
 alias t='task'
 alias diff='colordiff'
+alias ll='ls -alh'
+alias la='ls -A'
+alias l='ls -CF'
 
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
 alias qsize='LC_ALL=C qsize'
@@ -24,8 +27,8 @@ alias alsamixer='alsamixer -c PCH'
 alias pwgen='pwgen -cny -s 16'
 
 alias bpython2.7='python2.7 -m bpython'
-alias bpython3.5='python3.5 -m bpython'
 alias bpython3.6='python3.6 -m bpython'
+alias bpython3.7='python3.7 -m bpython'
 
 alias dbus-suspend='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Suspend boolean:true'
 alias dbus-hibernate='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Hibernate boolean:true'

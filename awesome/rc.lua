@@ -18,24 +18,6 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
 
--- {{{ Custom stuff
--- os.capture: execute a command (in a shell) and return the output
--- adapted from: https://stackoverflow.com/a/326715
-function os.capture(cmd, mode)
-  local f = assert(io.popen(cmd, 'r'))
-  local s = assert(f:read('*all'))
-  f:close()
-  if mode == "raw" then return s end
-  if mode == "striplastnewline" then return string.gsub(s, '[\n\r]+$', '') end
-  s = string.gsub(s, '^%s+', '')
-  s = string.gsub(s, '%s+$', '')
-  s = string.gsub(s, '[\n\r]+', ' ')
-  return s
-end
-
-nowplaying_notificationid = nil
--- }}}
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -69,13 +51,13 @@ beautiful.init(awful.util.getdir("config") .. "/themes/quentin/theme.lua")
 terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-chromium = "chromium"   -- arguments defined via CHROMIUM_USER_FLAGS in ~/.bashrc
+chromium = "chromium"   -- arguments defined via CHROMIUM_FLAGS in /etc/chromium/default
 firefox = "firefox"
 torbrowser = os.getenv("HOME") .. "/Tor\\ Browser/start-tor-browser"
 fileman = "spacefm"
 guieditor = "evim"
-calculator = "orpie"
-top = "htop"
+calculator = terminal .. " -e orpie"
+top = terminal .. " -e htop"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -103,6 +85,9 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+
+-- "Now playing" notification popup
+nowplaying_notificationid = nil
 -- }}}
 
 -- {{{ Helper functions
@@ -117,6 +102,13 @@ local function client_menu_toggle_fn()
             instance = awful.menu.clients({ theme = { width = 250 } })
         end
     end
+end
+
+-- "Now playing" notification popup
+function nowplaying_cb(out, err, reason, code)
+    local text = out
+    if code == 2 then text = "Server stopped." end
+    nowplaying_notificationid = naughty.notify({ text="\n" .. text, title='Now playing', timeout=5, replaces_id=nowplaying_notificationid }).id
 end
 -- }}}
 
@@ -401,24 +393,24 @@ globalkeys = gears.table.join(
     --awful.key({ modkey },            "p", function() menubar.show() end,
     --          {description = "show the menubar", group = "launcher"}),
     -- User bindings
-    awful.key({},                    "Print", function () awful.util.spawn("scrot -q100 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
-    awful.key({ "Shift" },           "Print", function () awful.util.spawn("scrot -q100 -u 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
+    awful.key({},                    "Print", function () awful.spawn("scrot -q100 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
+    awful.key({ "Shift" },           "Print", function () awful.spawn("scrot -q100 -u 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
     --awful.key({ modkey,           }, "F1",    function () mykbdcfg.switch(1)                             end),
     --awful.key({ modkey, "Shift"   }, "F1",    function () mykbdcfg.switch(-1)                            end),
-    awful.key({ modkey,           }, "e",     function () awful.util.spawn(fileman)                      end),
-    awful.key({ modkey,           }, "l",     function () awful.util.spawn("dm-tool lock")               end),
-    awful.key({ modkey, "Control" }, "s",     function () awful.util.spawn_with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.util.spawn_with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),
-    awful.key({ modkey },            "p",     function () nowplaying_notificationid = naughty.notify({ text="\n" .. os.capture("mocp --info", 'striplastnewline'), title='Now playing', timeout=5, replaces_id=nowplaying_notificationid }).id end),
-    awful.key({}, "XF86AudioPlay",            function () awful.util.spawn("mocp --toggle-pause") end),
-    awful.key({}, "XF86AudioStop",            function () awful.util.spawn("mocp --stop") end),
-    awful.key({}, "XF86AudioPrev",            function () awful.util.spawn("mocp --previous") end),
-    awful.key({}, "XF86AudioNext",            function () awful.util.spawn("mocp --next") end),
-    awful.key({}, "XF86AudioRaiseVolume",     function () awful.util.spawn("awvol set 5%+") end),
-    awful.key({}, "XF86AudioLowerVolume",     function () awful.util.spawn("awvol set 5%-") end),
-    awful.key({}, "XF86AudioMute",            function () awful.util.spawn("awvol toggle") end),
-    awful.key({}, "XF86HomePage",             function () awful.util.spawn(chromium) end),
-    awful.key({}, "XF86Calculator",           function () awful.util.spawn(terminal .. " -e " .. calculator) end)
+    awful.key({ modkey,           }, "e",     function () awful.spawn(fileman)                      end),
+    awful.key({ modkey,           }, "l",     function () awful.spawn("dm-tool lock")               end),
+    awful.key({ modkey, "Control" }, "s",     function () awful.spawn.with_shell("pm-is-supported --suspend   && sudo pm-suspend")   end),
+    awful.key({ modkey, "Control" }, "h",     function () awful.spawn.with_shell("pm-is-supported --hibernate && sudo pm-hibernate") end),
+    awful.key({ modkey },            "p",     function () awful.spawn.easy_async("mocp --info", nowplaying_cb) end),
+    awful.key({}, "XF86AudioPlay",            function () awful.spawn("mocp --toggle-pause") end),
+    awful.key({}, "XF86AudioStop",            function () awful.spawn("mocp --stop") end),
+    awful.key({}, "XF86AudioPrev",            function () awful.spawn("mocp --previous") end),
+    awful.key({}, "XF86AudioNext",            function () awful.spawn("mocp --next") end),
+    awful.key({}, "XF86AudioRaiseVolume",     function () awful.spawn("awvol set 5%+") end),
+    awful.key({}, "XF86AudioLowerVolume",     function () awful.spawn("awvol set 5%-") end),
+    awful.key({}, "XF86AudioMute",            function () awful.spawn("awvol toggle") end),
+    awful.key({}, "XF86HomePage",             function () awful.spawn(chromium) end),
+    awful.key({}, "XF86Calculator",           function () awful.spawn(calculator) end)
 )
 
 clientkeys = gears.table.join(
@@ -554,6 +546,7 @@ awful.rules.rules = {
         name = {
           "Event Tester",  -- xev.
           "orpie",
+          "QEMU",
         },
         role = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
@@ -638,4 +631,14 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Autostart
+local xresource_autostart = "awesome.autostart"
+awful.spawn.easy_async("xrdb -query", function(out)
+    if not out:match(xresource_autostart) then
+        awful.spawn.with_shell("xrdb -merge <<<'" .. xresource_autostart .. ":true'")
+        awful.spawn("dex --environment Awesome --autostart")
+    end
+end)
 -- }}}

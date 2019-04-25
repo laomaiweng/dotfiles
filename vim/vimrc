@@ -11,10 +11,7 @@
 " <F12>: Toggle mouse ownership
 
 
-" Activate Pathogen
-execute pathogen#infect()
-
-" Change the mapleader
+" Change the mapleader for bépo
 let mapleader = ";"
 
 " Setup the Solarized theme
@@ -65,9 +62,8 @@ if has('autocmd')
 endif
 
 
-" F1-12 key bindings
+" Fn key bindings
 set pastetoggle=<F2>
-call togglebg#map("<F3>")
 nnoremap <F5> :Tagbar<CR>
 nnoremap <F7> :GundoToggle<CR>
 

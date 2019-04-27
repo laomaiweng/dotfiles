@@ -542,6 +542,7 @@ awful.rules.rules = {
           "pinentry",
           "Display",
           "feh",
+          "filesoup",
         },
         name = {
           "Event Tester",  -- xev.

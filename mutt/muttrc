@@ -1,0 +1,197 @@
+## Mutt configuration file
+
+#======================================================#
+# Passwords
+set my_minster_io_pass = "`pass quentin/mail/minster.io | head -n1`"
+
+#======================================================#
+# Boring details
+set realname = "Quentin Minster"
+set from = "Quentin Minster <quentin@minster.io>"
+# 'alternates' addresses are set in the alias file
+set envelope_from
+set reverse_name                    # Use the address the message was sent to rather than your local address
+set signature = ~/.mutt/signature   # Use a signature
+
+#======================================================#
+# Local mail
+set mbox_type = Maildir             # Mailbox type
+set mbox = ~/.maildir/              # Mailbox location
+set folder = ~/.maildir/
+mailboxes + +Sent +Drafts +Trash +Logs      # Local mailboxes to monitor and show in sidebar
+set spoolfile = +
+folder-hook         ~/\.maildir/.*                     "\
+    set folder          = ~/.maildir/                   \
+        from            = 'Quentin <quentin@cobalt>'    \
+        realname        = 'Quentin'                     \
+        spoolfile       = +                             \
+        postponed       = +Drafts                       \
+        record          = +Sent                         \
+        trash           = +Trash                        \
+        smtp_url        = smtp://localhost              \
+        smtp_pass       = ''                            \
+        ssl_force_tls   = no                            "
+
+#======================================================#
+# Remote mail (minster.io)
+set folder = imaps://"quentin@minster.io"@imap.minster.io/
+mailboxes +INBOX                    # IMAP mailboxes to monitor and show in sidebar
+set spoolfile = +
+folder-hook         imaps://"quentin@minster\.io"@minster\.io/         "\
+    set folder          = imaps://\"quentin@minster.io\"@imap.minster.io/    \
+        from            = 'Quentin Minster <quentin@minster.io>'        \
+        realname        = 'Quentin Minster'                             \
+        spoolfile       = +                                             \
+        postponed       = +Drafts                                       \
+        record          = +Sent                                         \
+        trash           = +Trash                                        \
+        smtp_url        = smtp://\"quentin@minster.io\"@smtp.minster.io:587/ \
+        smtp_pass       = \"$my_minster_io_pass\"                       \
+        ssl_force_tls   = yes                                           "
+
+#======================================================#
+# Trash settings (universal)
+folder-hook         Trash$  'unset trash'
+
+#======================================================#
+# Index
+set sort = reverse-threads  # Sort by threads with newest first
+set strict_threads = yes
+#set thread_received         # Use the date received rather than date sent when sorting a thread
+set to_chars = " @>~=L"     # Characters indicating who mail is addressed to
+#set to_chars = " +TCFL"     # Mutt's default characters
+#set auto_tag                # Apply individual commands to all tagged messages without prefix
+set delete = yes            # Don't prompt for deletion when closing/synchronizing
+#unset mark_old              # Let new messages remain new if exiting without reading them
+set simple_search = "~f %s | ~C %s | ~s %s"   # Make default search pattern to search in To, Cc and Subject
+set beep_new = yes          # Beep when new messages arrive in mailbox
+
+#======================================================#
+# Composing
+set fast_reply              # Skip asking for reply-to and subject when replying
+set include = yes           # Automatically include previous message in reply
+set send_charset="utf-8"    # Character set on sent messages
+set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8 tw=72 noexpandtab' +nohlsearch" # Make sure Vim knows mutt is a mail client and that we compose an UTF-8 encoded message
+set edit_headers            # See the headers when editing
+set tilde                   # Pad blank lines to the bottom of the screen with a '~'
+set ispell = "/usr/bin/hunspell"  # Spell-checking
+set mime_forward            # Forward messages as MIME attachments rather than inline
+
+#======================================================#
+# Viewing
+set assumed_charset = "iso-8859-1"  # If there is no character set given on incoming messages, it is probably Windows
+#set resolve = no        # Don't advance to next message when modifiying the current one
+set pager_index_lines = 6   # Show a few lines of index in pager view
+set pager_stop          # Don't move to next message when asking for next page of current one
+set markers             # Mark wrapped lines of text in the pager with a +
+set smart_wrap          # Don't wrap mid-word
+set pager_context = 3   # Retain 3 lines of previous page when scrolling
+set menu_scroll = yes   # Just scroll one line instead of full page
+set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
+ignore          *       # Only show a few headers
+unignore        From To Cc Bcc Date Subject
+unhdr_order     *       # Show the headers in a specific order
+hdr_order       From: To: Cc: Bcc: Date: Subject:
+
+#======================================================#
+# GPG stuff
+source ~/.mutt/gpg.rc           # Mutt configuration file for use with GPG
+set pgp_sign_as = "0xAA0929D0263BE9D6C260BDC5FF79BF270F5F912C"  # Default signing identity (Quentin Minster)
+#set crypt_autosign              # Always attempt to sign outgoing messages
+set crypt_replysign             # Sign replies to signed messages
+set crypt_replyencrypt          # Encrypt replies to encrypted messages
+set crypt_replysignencrypted    # Sign-encrypt replies to sign-encrypted messages
+set pgp_timeout = 600           # Timeout for passphrases
+set pgp_use_gpg_agent = yes     # Use the agent if available
+
+#======================================================#
+# Aliases
+set alias_file = ~/.mutt/aliases    # In their own file
+source $alias_file                  # Source them
+set sort_alias = unsorted           # Keep alias file order
+set reverse_alias                   # Use aliases also for incoming mail
+
+#======================================================#
+# Colors
+source ~/.mutt/colors               # Source the color file (actually it's a symlink to the real color file)
+
+#======================================================#
+# Lists
+#lists mutt-users
+#subscribe mutt-users
+#subscribe "gentoo-.*@gentoo\\.org"
+#set followup_to = yes      # Sets the 'Mail-Followup-To' header
+set honor_followup_to = yes # Honor the 'Mail-Followup-To' header
+#fcc-hook mutt-user +mutt   # See your own posts using fcc
+
+#======================================================#
+# Misc
+#set status_on_top       # Status bar on top
+set beep = no           # Don't beep on errors
+set timeout = 300       # Timeout before aborting current operation if the user just sits there doing nothing (in menus or at the prompt, that is)
+set quit = ask-yes      # Ask for confirmation before quitting
+push <show-version>     # Shows mutt version at startup
+
+#======================================================#
+# Attachments
+set mailcap_path = ~/.mutt/mailcap  # Use a local mailcap file
+#auto_view application/msword        # View Word documents inline
+#auto_view application/pdf           # View PDF documents inline
+auto_view text/html                 # View HTML documents inline
+alternative_order text/plain text/html  # Specify the preference order for attachments
+
+#======================================================#
+# Sidebar
+set sidebar_width = 24              # Sidebar width
+set sidebar_visible                 # Visible by default
+set sidebar_divider_char = " "      # No character as sidebar divider, there's already a background color
+set sidebar_sort_method = "path"    # Sort by mailbox path
+set sidebar_short_path              # Shorten the path shown
+set sidebar_folder_indent           # Indent folders in the sidebar
+set sidebar_indent_string = " "     # Indent string
+
+#======================================================#
+# IMAP settings
+set certificate_file = ~/.mutt/certificates # File to store trusted server certificates
+# IMAP connection settings
+set mail_check = 30                         # Check for new mail every 30s
+unset imap_passive                          # Don't wait to enter mailbox manually
+set imap_login = quentin@minster.io
+set imap_user = quentin@minster.io
+set imap_pass = $my_minster_io_pass
+set imap_keepalive = 300                    # Keepalive the IMAP connection
+set imap_idle = yes                         # Use the IMAP IDLE extension to check for new mail (disable if connection seems to freeze periodically)
+set imap_list_subscribed = no               # Look for all folders, not only subscribed ones
+set imap_check_subscribed = yes             # Check for subscribed folders and add them to the mailbox list
+# IMAP header cache (make sure this is a directory for performance!)
+set header_cache = ~/.mutt/cache
+
+#======================================================#
+# Key bindings
+bind    generic         §       shell-escape                            # Execute a shell command
+macro   index,pager     !       <flag-message><previous-undeleted>      "toggle a message's 'important' flag"
+bind    index           x       tag-entry                               # Mark an entry
+macro   pager           x       <exit><tag-entry>                       "tag current message and exit to index"
+bind    index           G       imap-fetch-mail                         # Fetch mail from IMAP
+bind    pager           <Up>    previous-line                           # Rebind <Up> to move up one line instead of changing the current message
+bind    pager           <Down>  next-line                               # Rebind <Down> to move down one line instead of changing the current message
+macro   index,pager     \cb     "\
+    <enter-command> set my_pdsave=\$pipe_decode<enter>\
+    <enter-command> unset pipe_decode<enter>\
+    <pipe-message>extract_url<enter>\
+    <enter-command> set pipe_decode=\$my_pdsave<enter>"                 "extract URLs from the message"
+macro   pager           N       <exit><toggle-new><previous-undeleted><previous-undeleted>  "mark the current message as new and exit to index"
+macro   pager           d       <exit><delete-message><previous-undeleted>  "delete current message and exit to index"
+macro   pager           s       <exit><save-message>                    "save current message and exit to index"
+macro   index,pager     b       '<enter-command>toggle sidebar_visible<enter>'  "open/close the sidebar"
+bind    index           B       bounce-message                          # Remapped (was on 'b')
+bind    index,pager     \cp     sidebar-prev                            # Select previous folder in sidebar
+bind    index,pager     \cn     sidebar-next                            # Select next folder in sidebar
+bind    index,pager     \co     sidebar-open                            # Open selected folder in sidebar
+#bind   index,pager      ?       sidebar-page-up
+#bind   index,pager      ?       sidebar-page-down
+
+
+# brighten up stuff with colours, for more colouring examples see:
+# http://aperiodic.net/phil/configs/mutt/colors
+

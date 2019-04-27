@@ -42,6 +42,9 @@ path prepend -e inc ~/.local/include
 path prepend -e pkc ~/.local/lib/pkgconfig
 path prepend -e man ~/.local/share/man
 
+# Default browser
+export BROWSER=chromium
+
 # Ensure an SSH agent is running and add passwordless SSH keys to it
 SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.ed25519 ~/.ssh/hg@bitbucket.ed25519 ~/.ssh/laomaiweng@sourceforge.ed25519 ~/.ssh/quentin@forge.moria.lan.ed25519)
 if ssh-agent-test ~/.ssh/agent-cobalt

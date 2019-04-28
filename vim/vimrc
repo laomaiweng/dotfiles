@@ -1,16 +1,6 @@
 " ~/.vimrc
 " User-specific vim settings
 
-"" Key bindings
-" <F1>:  Help
-" <F2>:  Toggle paste mode
-" <F3>:  Toggle light/dark background
-" <F5>:  Toggle tag bar
-" <F7>:  Toggle undo tree
-" <F11>: Execute current buffer
-" <F12>: Toggle mouse ownership
-
-
 " Change the mapleader for bépo
 let mapleader = ";"
 
@@ -65,6 +55,7 @@ endif
 " Fn key bindings
 set pastetoggle=<F2>
 nnoremap <F5> :Tagbar<CR>
+nnoremap <F6> :Calc<CR>
 nnoremap <F7> :GundoToggle<CR>
 
 " Display tabs and trailing spaces
@@ -131,17 +122,6 @@ endif
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space><cword><CR>
 
-" syntastic options
-"let g:syntastic_tcl_nagelfar_args = "-s /usr/share/nagelfar-1.2/syntaxdb86.tcl"
-let g:syntastic_rust_checkers = ['rustc']
-
-" yankring options
-let g:yankring_history_dir = '$HOME/.vim'
-if has("autocmd")
-  " Disable yankring for encrypted files
-  autocmd BufNewFile,BufReadCmd *.\(gpg\|asc\|pgp\) let g:yankring_enabled = 0
-endif
-
 " gundo options
 let g:gundo_prefer_python3 = 1
 let g:gundo_right = 1
@@ -153,21 +133,6 @@ let g:gist_detect_filetype = 1
 
 " CtrlSpace options
 set hidden
-
-" Rust support for tagbar
-let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds' : [
-        \'T:types,type definitions',
-        \'f:functions,function definitions',
-        \'g:enum,enumeration names',
-        \'s:structure names',
-        \'m:modules,module names',
-        \'c:consts,static constants',
-        \'t:traits,traits',
-        \'i:impls,trait implementations',
-    \]
-\}
 
 " reStructuredText support for tagbar (needs jszakmeister/rst2ctags)
 let g:tagbar_type_rst = {

@@ -37,6 +37,7 @@ fi
 # Extend the paths to the .local directories (and some others)
 path prepend -e bin ~/.local/bin ~/.cargo/bin
 path append -e bin /usr/local/sbin /usr/sbin /sbin
+path prepend -e bin /usr/local/firejail                 # keep this last so that firejail'ed programs remain firejail'ed!
 path prepend -e lib ~/.local/lib64 ~/.local/lib
 path prepend -e inc ~/.local/include
 path prepend -e pkc ~/.local/lib/pkgconfig

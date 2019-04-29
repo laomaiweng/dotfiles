@@ -2,7 +2,7 @@
 
 #======================================================#
 # Passwords
-set my_minster_io_pass = "`pass quentin/mail/minster.io | head -n1`"
+set my_minster_io_pass = "`gpg2 --decrypt ~/.mutt/password.gpg | head -n1`"
 
 #======================================================#
 # Boring details

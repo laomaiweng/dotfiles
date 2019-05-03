@@ -49,6 +49,9 @@ if has('autocmd')
     autocmd BufNewFile,BufRead *.tm set filetype=tcl
     " Use the n man section in Tcl files
     autocmd FileType tcl setlocal keywordprg=man\ n
+    " Syntax-highlight apparmor profiles
+    autocmd BufNewFile,BufRead /etc/apparmor.d/*                      set filetype=apparmor
+    autocmd BufNewFile,BufRead /usr/share/apparmor/extra-profiles/*   set filetype=apparmor
 endif
 
 

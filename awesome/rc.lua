@@ -408,6 +408,8 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioLowerVolume",     function () awful.spawn("awvol set 5%-") end),
     awful.key({}, "XF86AudioMute",            function () awful.spawn("awvol toggle") end),
     awful.key({}, "XF86HomePage",             function () awful.spawn(chromium) end),
+    awful.key({ "Shift" }, "XF86HomePage",    function () awful.spawn(firefox) end),
+    awful.key({ modkey },  "XF86HomePage",    function () awful.spawn(torbrowser) end),
     awful.key({}, "XF86Calculator",           function () awful.spawn(calculator) end)
 )
 

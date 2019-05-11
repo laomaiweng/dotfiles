@@ -2,7 +2,7 @@
 
 alias screen='unset NOGREET; screen'
 alias tmux='unset NOGREET; tmux'
-alias pass='EDITOR="vim -S $HOME/.password-store/.vimopts" pass'
+alias pass='EDITOR="safevim -S $HOME/.password-store/.vimopts" pass'
 
 alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'
@@ -14,6 +14,7 @@ alias diff='colordiff'
 alias ll='ls -alh'
 alias la='ls -A'
 alias l='ls -CF'
+alias rcp='cp --reflink=always'
 
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
 alias qsize='LC_ALL=C qsize'

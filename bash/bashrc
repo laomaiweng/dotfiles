@@ -46,17 +46,17 @@ path prepend -e man ~/.local/share/man
 # Default browser
 export BROWSER=chromium
 
-# Ensure an SSH agent is running and add passwordless SSH keys to it
-SSH_AGENT_AUTOKEYS=(~/.ssh/git@github.ed25519 ~/.ssh/hg@bitbucket.ed25519 ~/.ssh/laomaiweng@sourceforge.ed25519 ~/.ssh/quentin@forge.moria.lan.ed25519)
-if ssh-agent-test ~/.ssh/agent-cobalt
-then
-    ssh-add "${SSH_AGENT_AUTOKEYS[@]}" &>/dev/null
-else
+# Ensure an SSH agent is running and add session SSH keys to it (keys in ~/.ssh/session-keys.d)
+if ! ssh-agent-test ~/.ssh/agent-cobalt; then
     ssh-agent-respawn ~/.ssh/agent-cobalt &>/dev/null
 fi
+ssh-agent-add-session-keys &>/dev/null
 
-# GPG agent environment variables
+# Get a GPG agent running (we do it ourselves so that it gets firejailed and backgrounded properly)
 export GPG_TTY=$(tty)
+if [[ "$(gpg-connect-agent --no-autostart /bye 2>&1)" == "gpg-connect-agent: no gpg-agent running in this session" ]]; then
+    gpg-agent --homedir ~/.gnupg --daemon &>/dev/null & disown
+fi
 
 # Gentoo environment variables
 export GENTOO_AUTHOR_NAME="Quentin Minster"

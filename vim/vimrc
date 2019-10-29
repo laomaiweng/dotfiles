@@ -137,6 +137,13 @@ let g:gist_detect_filetype = 1
 " CtrlSpace options
 set hidden
 
+" easy-align options
+vmap gA <Plug>(EasyAlign)
+nmap gA <Plug>(EasyAlign)
+
+" YouCompleteMe options
+let g:ycm_clangd_binary_path = '/usr/lib/llvm/9/bin/clangd'
+
 " reStructuredText support for tagbar (needs jszakmeister/rst2ctags)
 let g:tagbar_type_rst = {
     \ 'ctagstype': 'rst',
@@ -147,6 +154,22 @@ let g:tagbar_type_rst = {
         \ 'i:images'
     \ ],
     \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+" Markdown support for tagbar (needs jszakmeister/markdown2ctags -- from GitHub or pip)
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : 'markdown2ctags',
+    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '»',
     \ 'kind2scope' : {
         \ 's' : 'section',
     \ },

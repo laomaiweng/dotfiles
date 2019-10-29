@@ -11,9 +11,11 @@ alias git='hub'
 alias g='git'
 alias t='task'
 alias diff='colordiff'
+alias l='ls -CF'
 alias ll='ls -alh'
 alias la='ls -A'
-alias l='ls -CF'
+alias l.='ls -d .*'
+alias lt='ls -alhct'
 alias rcp='cp --reflink=always'
 
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html

@@ -142,3 +142,6 @@
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/vim-base64"]
+	path = vim/bundle/vim-base64
+	url = https://github.com/christianrondeau/vim-base64

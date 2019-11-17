@@ -6,7 +6,6 @@ alias pass='EDITOR="safevim -S $HOME/.password-store/.vimopts" pass'
 
 alias mp3='mpg123 -v -C'
 alias hd='hexdump -C'
-alias line='head -n1'
 alias git='hub'
 alias g='git'
 alias t='task'

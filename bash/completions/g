@@ -1,5 +1,2 @@
-# ~/.bash_completion - user-specific completions
-
 # completion for alias g='git' (expects alias git='hub')
 _xfunc hub __git_complete g __git_main
-

@@ -7,7 +7,7 @@ awesome/rc.lua                                      ~/.config/awesome/rc.lua
 awesome/themes/quentin/theme.lua                    ~/.config/awesome/themes/quentin/theme.lua
 bash/bashrc                                         ~/.bashrc
 bash/bash_aliases                                   ~/.bash_aliases
-bash/bash_completion                                ~/.bash_completion
+bash/completions/g                                  ~/.local/share/bash-completion/completions/g
 bash/bash_greetings                                 ~/.bash_greetings
 ctags/ctags                                         ~/.ctags
 dircolors/dircolors-solarized/dircolors.ansi-dark   ~/.dir_colors

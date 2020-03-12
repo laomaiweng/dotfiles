@@ -53,7 +53,8 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 chromium = "chromium"   -- arguments defined via CHROMIUM_FLAGS in /etc/chromium/default
 firefox = "firefox"
-torbrowser = os.getenv("HOME") .. "/Tor\\ Browser/start-tor-browser"
+torbrowser = os.getenv("HOME") .. "/.torbrowser/start-tor-browser"
+vimb = "vimb"
 fileman = "spacefm"
 guieditor = "evim"
 calculator = terminal .. " -e orpie"
@@ -395,6 +396,7 @@ globalkeys = gears.table.join(
     -- User bindings
     awful.key({},                    "Print", function () awful.spawn("scrot -q100 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
     awful.key({ "Shift" },           "Print", function () awful.spawn("scrot -q100 -u 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),
+    awful.key({ "Control" },         "Print", function () awful.spawn.with_shell("sleep .1; scrot -q100 -s 'scrot_%Y%m%dT%H%M%S_$wx$h.png'") end),  -- without the sleep, scrot somehow terminates (perhaps because of the key release?)
     awful.key({ modkey,           }, "e",     function () awful.spawn(fileman) end),
     awful.key({ modkey,           }, "l",     function () awful.spawn("light-locker-command -l") end),
     awful.key({ modkey, "Control" }, "s",     function () awful.spawn.with_shell("pm-is-supported --suspend   && sudo pm-suspend") end),
@@ -408,8 +410,10 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioLowerVolume",     function () awful.spawn("awvol set 5%-") end),
     awful.key({}, "XF86AudioMute",            function () awful.spawn("awvol toggle") end),
     awful.key({}, "XF86HomePage",             function () awful.spawn(chromium) end),
-    awful.key({ "Shift" }, "XF86HomePage",    function () awful.spawn(firefox) end),
-    awful.key({ modkey },  "XF86HomePage",    function () awful.spawn(torbrowser) end),
+    awful.key({ "Shift" },   "XF86HomePage",  function () awful.spawn(firefox) end),
+    awful.key({ modkey },    "XF86HomePage",  function () awful.spawn(torbrowser) end),
+    awful.key({ "Control" }, "XF86HomePage",  function () awful.spawn(vimb) end),
+    awful.key({ modkey, "Control" }, "XF86HomePage", function () awful.spawn("firejail-torify " .. vimb) end),
     awful.key({}, "XF86Calculator",           function () awful.spawn(calculator) end)
 )
 

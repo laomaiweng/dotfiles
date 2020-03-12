@@ -34,6 +34,14 @@ set nofoldenable        " Don't fold anything by default
 set smartcase           " Ignore case if search pattern is all lowercase
 set incsearch           " Show matches as you type
 
+" Display tabs and trailing spaces
+set list
+set listchars=nbsp:¤,tab:\|\ ,trail:•
+highlight SpecialKey ctermfg=Black
+
+" Highlight the current line
+set cursorline
+
 " Mouse settings
 if &term ==? "xterm-256color" || &term ==? "putty-256color" || &term ==? "screen-256color" || &term ==? "tmux-256color"
   set ttymouse=sgr      " Terminal mouse fixes
@@ -57,17 +65,10 @@ endif
 
 " Fn key bindings
 set pastetoggle=<F2>
-nnoremap <F5> :Tagbar<CR>
+nnoremap <F4> :call ReloadTags()<CR>
+nnoremap <F5> :TagbarOpen fjc<CR>
 nnoremap <F6> :Calc<CR>
 nnoremap <F7> :GundoToggle<CR>
-
-" Display tabs and trailing spaces
-set list
-set listchars=nbsp:¤,tab:\|\ ,trail:•
-highlight SpecialKey ctermfg=Black
-
-" Highlight the current line
-set cursorline
 
 " Navigate the buffers
 nmap gb :bnext<CR>
@@ -84,7 +85,29 @@ cmap w$$ w !sudo tee % >/dev/null
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" cscope options
+" Invoke clang-format
+map <C-K> :py3f /usr/lib/llvm/9/share/clang/clang-format.py<CR>
+imap <C-K> <C-O>:py3f /usr/lib/llvm/9/share/clang/clang-format.py<CR>
+
+
+" Custom functions
+function! ReloadTags()
+    !build-tags
+    cscope reset
+endfunction
+
+function! ClangFormatOnSave()
+    if filereadable(".clang-format") || filereadable("_clang-format")
+        let l:formatdiff = 1
+        py3f /usr/lib/llvm/9/share/clang/clang-format.py
+    endif
+endfunction
+if has('autocmd')
+    autocmd BufWritePre *.h,*.c,*.hh,*.cc,*.hpp,*.cpp call ClangFormatOnSave()
+endif
+
+
+" cscope settings
 if has("cscope")
     set cscopetagorder=0    " 0: search cscope then tags; 1: search tags then cscope
     set cscopetag           " use :cstag instead of :tag
@@ -111,13 +134,13 @@ nmap g« :cscope find i <C-R>=expand("<cfile>")<CR><CR>
 nmap g> :cscope find t <C-R>=expand("<cword>")<CR><CR>
 nmap g< :cscope find a <C-R>=expand("<cword>")<CR><CR>
 
-" airline options
+" airline settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_exclude_preview = 1
 set noshowmode                                  " hide the redundant mode message
 
-" ack options
+" ack settings
 let g:ackprg = 'ag --vimgrep'
 if executable('rg')
     let g:ackprg = 'rg --vimgrep'
@@ -125,23 +148,23 @@ endif
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space><cword><CR>
 
-" gundo options
+" gundo settings
 let g:gundo_prefer_python3 = 1
 let g:gundo_right = 1
 let g:gundo_help = 0
 
-" gist options
+" gist settings
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
 
-" CtrlSpace options
+" CtrlSpace settings
 set hidden
 
-" easy-align options
+" easy-align settings
 vmap gA <Plug>(EasyAlign)
 nmap gA <Plug>(EasyAlign)
 
-" YouCompleteMe options
+" YouCompleteMe settings
 let g:ycm_clangd_binary_path = '/usr/lib/llvm/9/bin/clangd'
 
 " reStructuredText support for tagbar (needs jszakmeister/rst2ctags)

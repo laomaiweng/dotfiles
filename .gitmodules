@@ -13,9 +13,6 @@
 [submodule "vim/bundle/bash-support.vim"]
 	path = vim/bundle/bash-support.vim
 	url = https://github.com/vim-scripts/bash-support.vim
-[submodule "vim/bundle/c.vim"]
-	path = vim/bundle/c.vim
-	url = https://github.com/vim-scripts/c.vim
 [submodule "vim/bundle/CamelCaseMotion"]
 	path = vim/bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion

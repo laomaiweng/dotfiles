@@ -8,6 +8,8 @@
 	default = simple
 [diff]
 	tool = vimdiff
+[pull]
+	ff = only
 [merge]
 	tool = vimdiff
 [difftool]
@@ -31,6 +33,7 @@
 	stm = status -sb --ignore-submodules
 	t = task
 	unstage = reset HEAD --
+	ff = merge --ff-only
 [github]
 	user = laomaiweng
 [transfer]

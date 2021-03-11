@@ -8,3 +8,6 @@ set colored-stats On
 
 # alt-w: unix-filename-rubout
 "\ew": unix-filename-rubout
+
+# prevent interpretation of pastes as commands
+set enable-bracketed-paste on

@@ -24,7 +24,8 @@
 	dt = difftool
 	h = help
 	last = !git --no-pager log -1 --stat
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative
+	lga = lg --all
 	mwpull = pull --rebase
 	mwpush = !git push && git pull --rebase
 	st = status -sb

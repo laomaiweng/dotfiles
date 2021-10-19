@@ -4,12 +4,12 @@
 	name = quentin
 	email = quentin@minster.io
 	signingkey = AA0929D0263BE9D6C260BDC5FF79BF270F5F912C
-[push]
-	default = simple
-[diff]
-	tool = vimdiff
+[init]
+	defaultBranch = main
 [pull]
 	ff = only
+[diff]
+	tool = vimdiff
 [merge]
 	tool = vimdiff
 [difftool]
@@ -41,5 +41,12 @@
 	fsckObjects = true
 [core]
 	excludesfile = ~/.cvsignore
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
 
 # vim: noet

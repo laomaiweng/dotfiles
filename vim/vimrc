@@ -216,3 +216,17 @@ let g:tagbar_type_mediawiki = {
     \],
     \ 'sort': 0,
 \}
+
+" Poppy settings
+if has('autocmd')
+    autocmd! cursormoved * call PoppyInit()
+endif
+
+" braceless settings
+if has('autocmd')
+    autocmd FileType python BracelessEnable +indent
+endif
+
+" vim-cpp-modern settings
+let g:cpp_function_highlight = 0  " may re-enable if the highlighting can be made different from the regular function definition highlighting
+let g:cpp_member_highlight = 0    " may re-enable if the highlighting can be made subtler (and different from the regular function definition highlighting)

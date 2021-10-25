@@ -142,3 +142,36 @@
 [submodule "vim/bundle/vim-base64"]
 	path = vim/bundle/vim-base64
 	url = https://github.com/christianrondeau/vim-base64
+[submodule "vim/bundle/vim-exchange"]
+	path = vim/bundle/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange
+[submodule "vim/bundle/traces.vim"]
+	path = vim/bundle/traces.vim
+	url = https://github.com/markonm/traces.vim
+[submodule "vim/bundle/poppy.vim"]
+	path = vim/bundle/poppy.vim
+	url = https://github.com/bounceme/poppy.vim
+[submodule "vim/bundle/vim-cursorword"]
+	path = vim/bundle/vim-cursorword
+	url = https://github.com/itchyny/vim-cursorword
+[submodule "vim/bundle/braceless.vim"]
+	path = vim/bundle/braceless.vim
+	url = https://github.com/tweekmonster/braceless.vim
+[submodule "vim/bundle/NeoDebug"]
+	path = vim/bundle/NeoDebug
+	url = https://github.com/cpiger/NeoDebug
+[submodule "vim/bundle/vim-angry"]
+	path = vim/bundle/vim-angry
+	url = https://github.com/b4winckler/vim-angry
+[submodule "vim/bundle/clever-f.vim"]
+	path = vim/bundle/clever-f.vim
+	url = https://github.com/rhysd/clever-f.vim
+[submodule "vim/bundle/vinarise.vim"]
+	path = vim/bundle/vinarise.vim
+	url = https://github.com/Shougo/vinarise.vim
+[submodule "vim/bundle/vim-cpp-modern"]
+	path = vim/bundle/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern
+[submodule "vim/bundle/qt-support.vim"]
+	path = vim/bundle/qt-support.vim
+	url = https://github.com/fedorenchik/qt-support.vim

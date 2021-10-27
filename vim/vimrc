@@ -228,5 +228,5 @@ if has('autocmd')
 endif
 
 " vim-cpp-modern settings
-let g:cpp_function_highlight = 0  " may re-enable if the highlighting can be made different from the regular function definition highlighting
-let g:cpp_member_highlight = 0    " may re-enable if the highlighting can be made subtler (and different from the regular function definition highlighting)
+let g:cpp_function_highlight = 1  " looks ok under Solarized Dark
+let g:cpp_member_highlight = 0    " may enable later if I manage to find the "right" color for it

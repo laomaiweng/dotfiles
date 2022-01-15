@@ -1,4 +1,24 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- User plugins for Neovim
+-- Sourced from init.vim.
+
+-- Setup:
+-- 1. install Packer:
+--      git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+-- 2. install the Python client:
+--      pip3 install --user pynvim
+-- 3. install the Node client:
+--      npm install -g neovim
+-- 4. install external tools:
+--      $package_manager install ripgrep
+--      $package_manager install yarn  # for markdown-preview
+--      $package_manager install universal-ctags  # for Coq
+-- 5. setup plugins:
+--      :PackerCompile
+--      :PackerSync
+-- 6. build telescope-fzf-native
+-- 7. install LSPs
+--      :LspInstallInfo
+-- 8. profit!
 
 -- Plugins to try out:
 --    will133/vim-dirdiff

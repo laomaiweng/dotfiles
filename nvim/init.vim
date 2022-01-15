@@ -155,7 +155,9 @@ let g:coq_settings = { 'keymap.manual_complete': '<c-tab>' } ", 'auto_start': 's
 let g:camelcasemotion_key = '<leader>'
 
 "" Poppy config
-autocmd! cursormoved * call PoppyInit()
+if exists("*PoppyInit") " Ensure the function exists, otherwise moving the cursor gets real old real fast.
+    autocmd! cursormoved * call PoppyInit()
+endif
 
 "" Braceless config
 autocmd FileType python BracelessEnable +indent +fold

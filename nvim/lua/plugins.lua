@@ -39,7 +39,7 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   use 'moll/vim-bbye'
   use 'mbbill/undotree'
   use 'tpope/vim-obsession'
-  use { 'junkblocker/patchreview-vim', opt = true, cmd = { 'DiffReview', 'PatchReview', 'ReversePatchReview' } }
+  use { 'junkblocker/patchreview-vim', cmd = { 'DiffReview', 'PatchReview', 'ReversePatchReview' } }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -151,10 +151,10 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
       require('gitsigns').setup()
     end
   }
-  use { 'tpope/vim-dispatch', opt = true, cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } }
+  use { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } }
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
   use 'vim-autoformat/vim-autoformat'
-  use { 'tpope/vim-dadbod', opt = true, cmd = 'DB' }
+  use { 'tpope/vim-dadbod', cmd = 'DB' }
   use 'christianrondeau/vim-base64'
   use 'jamessan/vim-gnupg'
   use 'jmcantrell/vim-virtualenv'

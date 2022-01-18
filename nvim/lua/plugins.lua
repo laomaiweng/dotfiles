@@ -51,7 +51,12 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
     requires = 'kyazdani42/nvim-web-devicons',
   }
   use { 'andymass/vim-matchup', event = 'VimEnter' }
-  use 'bounceme/poppy.vim'
+  use {
+    'bounceme/poppy.vim',
+    config = function()
+      vim.cmd('autocmd! cursormoved * call PoppyInit()')
+    end
+  }
   use 'rhysd/clever-f.vim'
   use 'bronson/vim-visual-star-search'
   use 'itchyny/vim-cursorword'
@@ -149,7 +154,12 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   use 'rstacruz/vim-closer'
   use 'vim-scripts/argtextobj.vim'
   use 'bkad/CamelCaseMotion'
-  use 'tweekmonster/braceless.vim'
+  use {
+    'tweekmonster/braceless.vim',
+    config = function()
+      vim.cmd('autocmd FileType python BracelessEnable +indent +fold')
+    end
+  }
   use 'b4winckler/vim-angry'
   use 'junegunn/vim-easy-align'
   use 'tommcdo/vim-exchange'

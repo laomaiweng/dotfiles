@@ -87,6 +87,7 @@ nnoremap g) <cmd>lua vim.lsp.buf.outgoing_calls()<cr>
 nnoremap <leader>tf <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
 nnoremap <leader>tG <cmd>Telescope live_grep<cr>
+vnoremap <leader>tG "zy:Telescope live_grep default_text=<c-r>z<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>gf <cmd>Telescope git_files<cr>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
@@ -153,14 +154,6 @@ let g:coq_settings = { 'keymap.manual_complete': '<c-tab>' } ", 'auto_start': 's
 "" CamelCaseMotion config
 " Maps <leader>{w,b,e,ge} to camel-case motions.
 let g:camelcasemotion_key = '<leader>'
-
-"" Poppy config
-if exists("*PoppyInit") " Ensure the function exists, otherwise moving the cursor gets real old real fast.
-    autocmd! cursormoved * call PoppyInit()
-endif
-
-"" Braceless config
-autocmd FileType python BracelessEnable +indent +fold
 
 "" vim-cpp-modern config
 "let g:cpp_function_highlight = 1  "TODO: check out how things look with treesitter first

@@ -65,13 +65,80 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   use 'mbbill/undotree'
   use 'tpope/vim-obsession'
   use { 'junkblocker/patchreview-vim', cmd = { 'DiffReview', 'PatchReview', 'ReversePatchReview' } }
+  use 'arkav/lualine-lsp-progress'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = {
+      { 'kyazdani42/nvim-web-devicons', opt = true },
+      { 'lewis6991/gitsigns.nvim', opt = true },
+      { 'nvim-treesitter/nvim-treesitter', opt = true },
+      { 'arkav/lualine-lsp-progress', opt = true },
+    },
     config = function()
+      -- formatting helper
+      -- source: https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#truncating-components-in-smaller-window
+      --- @param trunc_width number trunctates component when screen width is less then trunc_width
+      --- @param trunc_len number truncates component to trunc_len number of chars
+      --- @param hide_width number hides component when window width is smaller then hide_width
+      --- @param no_ellipsis boolean whether to disable adding '...' at end after truncation
+      --- return function that can format the component accordingly
+      local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
+        return function(str)
+          local win_width = vim.fn.winwidth(0)
+          if hide_width and win_width < hide_width then return ''
+          elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
+             return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+          end
+          return str
+        end
+      end
+
+      -- use gitsigns' diff info
+      -- source: https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff
+      -- (don't need the "Using external source for branch" from the above page, the 'fugitive' lualine extension already does this)
+      local function diff_source()
+        local gitsigns = vim.b.gitsigns_status_dict
+        if gitsigns then
+          return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed
+          }
+        end
+      end
+
+      -- get the current function from treesitter
+      -- from: https://github.com/nvim-lualine/lualine.nvim/issues/409
+      -- this is kind of buggy, e.g. here in plugins.lua, or elsewhere, see https://github.com/nvim-treesitter/nvim-treesitter/issues/1931
+      local treesitter = require('nvim-treesitter')
+      local function treelocation()
+        return treesitter.statusline({
+          indicator_size = vim.fn.winwidth(0),
+          type_patterns = { 'class', 'function', 'method' },
+          separator = ' -> '
+        })
+      end
+
       require('lualine').setup {
         options = { theme = 'nightfox' },
         extensions = { 'chadtree', 'fugitive', 'quickfix' },
+        sections = {
+          -- truncate the mode if the window gets too small
+          lualine_a = { { 'mode', fmt = trunc(80, 1, nil, true) }, },
+          -- draw diff info from gitsigns
+          lualine_b = { 'branch', { 'diff', source = diff_source }, 'filename' },
+          -- display current function & LSP progress messages
+          lualine_c = { 'diagnostics', { treelocation, fmt = trunc(120, 30, 80) },
+            {
+              'lsp_progress',
+              spinner_symbols = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+              fmt = trunc(120, 40, 80)
+            },
+          },
+          lualine_x = { 'encoding', 'fileformat' },
+          lualine_y = { 'filetype' },
+          lualine_z = { 'progress', 'location' },
+        },
       }
     end
   }

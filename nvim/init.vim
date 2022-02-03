@@ -57,7 +57,8 @@ augroup end
 " Fn keys
 set pastetoggle=<F2>
 nnoremap <F1> <cmd>CHADopen<cr>
-nnoremap <F3> <cmd>UndotreeToggle<cr>
+nnoremap <F3> <cmd>make<cr>
+nnoremap <F4> <cmd>UndotreeToggle<cr>
 nnoremap <F5> <cmd>Autoformat<cr>
 vnoremap <F5> <esc><cmd>Autoformat<cr>
 " Navigate the buffers

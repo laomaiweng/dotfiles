@@ -211,14 +211,21 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   }
 
   -- Editing helpers
+  -- NOTE: vim-endwise & vim-closer have been disabled because they both try to extend the Insert-mode <CR> mapping, but
+  --       this conflicts with and breaks Coq's expr mapping on <CR>
+  --       a choice had to be made: auto-completion or auto-closing syntax elements, auto-completion won
+  --       see also:
+  --         * https://github.com/ms-jpq/coq_nvim/issues/384
+  --         * https://github.com/tpope/vim-endwise/issues/109
+  --         * https://github.com/rstacruz/vim-closer/issues/37
   use 'tpope/vim-abolish'
   use 'tpope/vim-repeat'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-speeddating'
   use 'tpope/vim-commentary'
-  use 'tpope/vim-endwise'
   use 'tpope/vim-surround'
-  use 'rstacruz/vim-closer'
+  -- use 'tpope/vim-endwise'
+  -- use 'rstacruz/vim-closer'
   use 'vim-scripts/argtextobj.vim'
   use 'bkad/CamelCaseMotion'
   use {

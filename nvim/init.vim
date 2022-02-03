@@ -149,15 +149,11 @@ let g:CtrlSpaceDefaultMappingKey = '<c-space> '
 "" Coq config
 " The default keybind for manually triggering completions is <c-space>, which
 " collides with CtrlSpace. Use <c-tab> for manual completions.
-let g:coq_settings = { 'keymap.manual_complete': '<c-tab>' } ", 'auto_start': 'shut-up' }
+let g:coq_settings = { 'keymap.manual_complete': '<c-tab>', 'auto_start': 'shut-up' }
 
 "" CamelCaseMotion config
 " Maps <leader>{w,b,e,ge} to camel-case motions.
 let g:camelcasemotion_key = '<leader>'
-
-"" vim-cpp-modern config
-"let g:cpp_function_highlight = 1  "TODO: check out how things look with treesitter first
-"let g:cpp_member_highlight = 0    "TODO: check out how things look with treesitter first
 
 "" clever-f config
 let g:clever_f_across_no_line = 1

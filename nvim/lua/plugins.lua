@@ -330,7 +330,7 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
         sync_install = true,
         highlight = {
           enable = true,
-          disable = { 'bash', 'markdown' },  -- TS highlighting seems to suck in these
+          disable = { 'bash', 'markdown', 'toml' },  -- TS highlighting seems to suck in these
         },
         incremental_selection = {
           enable = true,

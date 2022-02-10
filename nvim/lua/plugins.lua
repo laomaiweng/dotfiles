@@ -328,7 +328,10 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'bash', 'c', 'c_sharp', 'cmake', 'cpp', 'css', 'dockerfile', 'dot', 'go', 'html', 'javascript', 'json', 'latex', 'llvm', 'lua', 'make', 'markdown', 'python', 'regex', 'rst', 'rust', 'toml', 'vim' },
         sync_install = true,
-        highlight = { enable = true },
+        highlight = {
+          enable = true,
+          disable = { 'bash', 'markdown' },  -- TS highlighting seems to suck in these
+        },
         incremental_selection = {
           enable = true,
           keymaps = {

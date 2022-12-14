@@ -27,7 +27,6 @@
 --    lervag/vimtex (+ enable as a source in coq.thirdparty)
 --    kristijanhusak/vim-dadbod-completion if I ever end up using vim-dadbod (+ enable as a source in coq.thirdparty)
 --    m-pilia/vim-mediawiki
---    simrat39/rust-tools.nvim
 
 return require('packer').startup(function(use) -- "Define" `use` to prevent "undefined global" diagnostics.
   -- Self-manage
@@ -77,9 +76,9 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
     config = function()
       -- formatting helper
       -- source: https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#truncating-components-in-smaller-window
-      --- @param trunc_width number trunctates component when screen width is less then trunc_width
-      --- @param trunc_len number truncates component to trunc_len number of chars
-      --- @param hide_width number hides component when window width is smaller then hide_width
+      --- @param trunc_width number  truncates component when screen width is less than trunc_width
+      --- @param trunc_len   number  truncates component to trunc_len number of chars
+      --- @param hide_width  number  hides component when window width is smaller then hide_width
       --- @param no_ellipsis boolean whether to disable adding '...' at end after truncation
       --- return function that can format the component accordingly
       local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
@@ -128,11 +127,11 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
           -- draw diff info from gitsigns
           lualine_b = { 'branch', { 'diff', source = diff_source }, 'filename' },
           -- display current function & LSP progress messages
-          lualine_c = { 'diagnostics', { treelocation, fmt = trunc(120, 30, 80) },
+          lualine_c = { 'diagnostics', { treelocation, fmt = trunc(120, 30, 80, false) },
             {
               'lsp_progress',
               spinner_symbols = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-              fmt = trunc(120, 40, 80)
+              fmt = trunc(120, 40, 80, false)
             },
           },
           lualine_x = { 'encoding', 'fileformat' },
@@ -313,12 +312,6 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
       dap.configurations.rust = dap.configurations.c
     end
   }
-  use {
-    'mfussenegger/nvim-dap-python',
-    config = function()
-      require('dap-python').setup('C:/Program Files/Python310/python.exe')
-    end
-  }
 
   -- Completers, analyzers
   use {
@@ -362,30 +355,55 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   }
 
   -- LSP stuff
+  use 'williamboman/mason.nvim'
+  use { 'williamboman/mason-lspconfig.nvim',
+    requires = 'williamboman/mason.nvim',
+  }
+  use 'simrat39/rust-tools.nvim'
   use {
     'neovim/nvim-lspconfig',
-    requires = 'ms-jpq/coq_nvim'
-  }
-  use {
-    'williamboman/nvim-lsp-installer',
+    requires = { 'williamboman/mason-lspconfig.nvim', 'simrat39/rust-tools.nvim', 'ms-jpq/coq_nvim', },
     config = function()
+      require('mason').setup()
+      local mason_lspconfig = require('mason-lspconfig')
+      mason_lspconfig.setup()
+      local lspconfig = require('lspconfig')
       local coq = require('coq')
-      require('nvim-lsp-installer').on_server_ready(function(server)
-        local opts = {}
-        server:setup(coq.lsp_ensure_capabilities(opts))
-      end)
+      mason_lspconfig.setup_handlers {
+        -- Default handler
+        function (server_name)
+          lspconfig[server_name].setup(coq.lsp_ensure_capabilities {})
+        end,
+
+        ['rust_analyzer'] = function()
+          require('rust-tools').setup(coq.lsp_ensure_capabilities {})
+        end,
+
+        ['sumneko_lua'] = function()
+          lspconfig.sumneko_lua.setup(coq.lsp_ensure_capabilities {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { 'vim' }
+                }
+              }
+            }
+          })
+        end,
+      }
     end
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = 'lewis6991/gitsigns.nvim',
+    requires = { 'lewis6991/gitsigns.nvim', 'ms-jpq/coq_nvim', },
     config = function()
       local null_ls = require('null-ls')
-      null_ls.setup {
+      local coq = require('coq')
+      null_ls.setup(coq.lsp_ensure_capabilities {
         sources = {
           null_ls.builtins.code_actions.gitsigns,
         },
-      }
+      })
     end
   }
 

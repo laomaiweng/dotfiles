@@ -76,20 +76,23 @@ nnoremap <leader>D <cmd>call v:lua.toggle_diagnostics()<cr>
 nnoremap <c-k> <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>k <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <leader>r <cmd>lua vim.lsp.buf.rename()<cr>
-nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
-"vnoremap <leader>a <esc><cmd>Telescope lsp_range_code_actions<cr>    " Can't get this mapping to work, it seems to call lsp_code_actions?
+nnoremap <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>S <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap g[ <cmd>Telescope lsp_references<cr>
 nnoremap g] <cmd>Telescope lsp_definitions<cr>
-nnoremap g( <cmd>lua vim.lsp.buf.incoming_calls()<cr>
-nnoremap g) <cmd>lua vim.lsp.buf.outgoing_calls()<cr>
+nnoremap <leader>t[ <cmd>Telescope lsp_implementations<cr>
+nnoremap <leader>t] <cmd>Telescope lsp_type_definitions<cr>
+nnoremap g( <cmd>Telescope lsp_incoming_calls<cr>
+nnoremap g) <cmd>Telescope lsp_outgoing_calls<cr>
 " Telescope-specific queries
+nnoremap <leader>tr <cmd>Telescope resume<cr>
 nnoremap <leader>tf <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
 nnoremap <leader>tG <cmd>Telescope live_grep<cr>
 vnoremap <leader>tG "zy:Telescope live_grep default_text=<c-r>z<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
+nnoremap <leader>tj <cmd>Telescope jumplist<cr>
 nnoremap <leader>gf <cmd>Telescope git_files<cr>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
 nnoremap <leader>gC <cmd>Telescope git_bcommits<cr>

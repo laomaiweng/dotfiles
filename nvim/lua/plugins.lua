@@ -244,6 +244,7 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
   use 'fedorenchik/qt-support.vim'
   use 'rust-lang/rust.vim' -- Still useful in Neovim, for Playpen integration + running single tests from Vim.
   use 'bfrg/vim-cpp-modern'
+  use 'lark-parser/vim-lark-syntax'
 
   -- Tooling integration
   use 'tpope/vim-fugitive'

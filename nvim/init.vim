@@ -90,6 +90,7 @@ nnoremap <leader>tr <cmd>Telescope resume<cr>
 nnoremap <leader>tf <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
 nnoremap <leader>tG <cmd>Telescope live_grep<cr>
+nnoremap <leader>tB <cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>
 vnoremap <leader>tG "zy:Telescope live_grep default_text=<c-r>z<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>tj <cmd>Telescope jumplist<cr>

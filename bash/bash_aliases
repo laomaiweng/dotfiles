@@ -4,19 +4,21 @@ alias screen='unset NOGREET; screen'
 alias tmux='unset NOGREET; tmux'
 alias pass='EDITOR="safevim -S $HOME/.password-store/.vimopts" pass'
 
-alias mp3='mpg123 -v -C'
-alias hd='hexdump -C'
-alias git='hub'
-alias g='git'
-alias t='task'
-alias diff='colordiff'
+# one-char shortcuts
+alias g=git
+alias p=print
+alias t=task
+
+# new names for specific options
 alias l='ls -CF'
 alias ll='ls -alh'
 alias la='ls -A'
 alias l.='ls -d .*'
 alias lt='ls -alhct'
 alias rcp='cp --reflink=always'
+alias mp3='mpg123 -v -C'
 
+# options that should always be on
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
 alias qsize='LC_ALL=C qsize'
 alias sort='LC_ALL=C sort'  # https://twitter.com/hdmoore/status/808035256188235778
@@ -28,6 +30,8 @@ alias mkisofs='mkisofs -JR'
 alias alsamixer='alsamixer -c PCH'
 alias pwgen='pwgen -cny -s'
 alias ip='ip --color'
+alias diff='colordiff'
+alias hd='hexdump -f ~/.hd.cfg'
 
 alias bpython2.7='python2.7 -m bpython'
 alias bpython3.6='python3.6 -m bpython'

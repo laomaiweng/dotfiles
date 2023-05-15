@@ -12,12 +12,13 @@
 --      $package_manager install ripgrep
 --      $package_manager install yarn  # for markdown-preview
 --      $package_manager install universal-ctags  # for Coq
--- 5. setup plugins:
+-- 5. setup plugins (may need to temporarily disable the `autocmd! cursormoved * call PoppyInit()`
+--    command that triggers spurious errors before Poppy is installed):
 --      :PackerCompile
 --      :PackerSync
 -- 6. build telescope-fzf-native
 -- 7. install LSPs
---      :LspInstallInfo
+--      :Mason
 -- 8. profit!
 
 -- Plugins to try out:

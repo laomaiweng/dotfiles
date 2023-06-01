@@ -19,7 +19,10 @@
 -- 6. build telescope-fzf-native
 -- 7. install LSPs
 --      :Mason
--- 8. profit!
+-- 8. install COQ & CHADtree dependencies
+--      :COQdeps
+--      :CHADdeps
+-- 9. profit!
 
 -- Plugins to try out:
 --    will133/vim-dirdiff
@@ -45,7 +48,12 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
 
   -- UI enhancements
   use 'vim-ctrlspace/vim-ctrlspace'
-  use 'junegunn/vim-peekaboo'
+  use {
+    'tversteeg/registers.nvim',
+    config = function()
+      require('registers').setup()
+    end
+  }
   use {
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',

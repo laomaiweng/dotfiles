@@ -34,57 +34,22 @@ if [[ -d ~/.bash_functions ]]; then
     done
 fi
 
-# Extend the paths to the .local directories (and some others)
-path prepend -e bin ~/.local/bin ~/.cargo/bin
-path append -e bin /usr/local/sbin /usr/sbin /sbin
-path prepend -e bin /usr/local/firejail                 # keep this last so that firejail'ed programs remain firejail'ed!
-path prepend -e lib ~/.local/lib64 ~/.local/lib
-path prepend -e inc ~/.local/include
-path prepend -e pkc ~/.local/lib/pkgconfig
-path prepend -e man ~/.local/share/man
-
-# Default browser
-export BROWSER=chromium
-
-# Ensure an SSH agent is running and add session SSH keys to it (keys in ~/.ssh/session-keys.d)
-if ! ssh-agent-test ~/.ssh/agent-cobalt; then
-    ssh-agent-respawn ~/.ssh/agent-cobalt &>/dev/null
-fi
-ssh-agent-add-session-keys &>/dev/null
-
-# Get a GPG agent running (we do it ourselves so that it gets firejailed and backgrounded properly)
-export GPG_TTY=$(tty)
-if [[ "$(gpg-connect-agent --no-autostart /bye 2>&1)" == "gpg-connect-agent: no gpg-agent running in this session" ]]; then
-    gpg-agent --homedir ~/.gnupg --daemon &>/dev/null & disown
-fi
-
-# Gentoo environment variables
-export GENTOO_AUTHOR_NAME="Quentin Minster"
-export GENTOO_AUTHOR_EMAIL=quentin@minster.io
-export PORTAGE_GPG_KEY=0xAA0929D0263BE9D6C260BDC5FF79BF270F5F912C
-export ECHANGELOG_USER="Quentin Minster <quentin@minster.io>"
-
 # Password store settings
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
-export PASSWORD_STORE_SIGNING_KEY="AA0929D0263BE9D6C260BDC5FF79BF270F5F912C"
+export PASSWORD_STORE_SIGNING_KEY="06C4FDF48B857706FDB4EE2E7427A13D9B5B7471"
+export TERMUX_PASS_OKC_GPG=1  # own addition to pass
 
-# *cough cough*
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
 
-# Enable TODO auto-print
-todo on -q
+# `pip3 install unicorn` fails w/o `apt install unicorn` & this
+export LIBUNICORN_PATH=/data/data/com.termux/files/usr/lib/libunicorn.so
 
-# Source WeChall credentials
-[[ -f ~/.wechallrc ]] && . ~/.wechallrc
-
-# Default to no display when the X server is remote (this greatly improves Vim startup time over slow connections)
-[[ "$DISPLAY" == "localhost:"* ]] && nodisplay
+eval "$(starship init bash)"
 
 # Setup some useful aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-# Customize the prompt
-[[ -f ~/.bash_prompt ]] && . ~/.bash_prompt
-
 # Greet the user
 [[ -f ~/.bash_greetings ]] && . ~/.bash_greetings
+echo
+echo 'Use `okc-gpg` for GPG operations through OpenKeychain.'

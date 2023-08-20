@@ -1,0 +1,10 @@
+# theme
+eco solarized
+e scr.utf8 = true
+e scr.utf8.curvy = true
+
+cfg.editor = nvim
+
+# disassembly
+e asm.bytes = false
+e asm.stackptr = true

@@ -1,5 +1,5 @@
 e cfg.editor=nvim
-e dir.projects=`pwd`  # default to saving projects in the current directory
+e dir.projects="`pwd`"  # default to saving projects in the current directory
 
 # theme
 eco solarized

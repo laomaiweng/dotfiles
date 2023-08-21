@@ -39,7 +39,7 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 export PASSWORD_STORE_SIGNING_KEY="06C4FDF48B857706FDB4EE2E7427A13D9B5B7471"
 export TERMUX_PASS_OKC_GPG=1  # own addition to pass
 
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/opt/org.rizinorg.rizininstaller/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 
 # `pip3 install unicorn` fails w/o `apt install unicorn` & this
 export LIBUNICORN_PATH=/data/data/com.termux/files/usr/lib/libunicorn.so

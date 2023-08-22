@@ -2,7 +2,7 @@
 
 # one-char shortcuts
 alias g=git
-alias p=print
+alias p=printf
 alias t=task
 
 # new names for specific options

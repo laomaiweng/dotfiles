@@ -389,8 +389,8 @@ return require('packer').startup(function(use) -- "Define" `use` to prevent "und
           require('rust-tools').setup(coq.lsp_ensure_capabilities {})
         end,
 
-        ['sumneko_lua'] = function()
-          lspconfig.sumneko_lua.setup(coq.lsp_ensure_capabilities {
+        ['lua_ls'] = function()
+          lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {
             settings = {
               Lua = {
                 diagnostics = {

@@ -1,46 +1,25 @@
 # ~/.gitconfig - user-specific global Git configuration file
 
 [user]
-	name = quentin
-	email = quentin@minster.io
-	signingkey = AA0929D0263BE9D6C260BDC5FF79BF270F5F912C
+    name = quentin
+    email = quentin@minster.io
+    signingkey = 06C4FDF48B857706FDB4EE2E7427A13D9B5B7471
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [pull]
-	ff = only
-[diff]
-	tool = vimdiff
-[merge]
-	tool = vimdiff
-[difftool]
-	prompt = false
-[alias]
-	br = branch
-	ci = commit
-	co = checkout
-	cp = cherry-pick
-	d = diff
-	dc = diff --cached
-	dt = difftool
-	h = help
-	last = !git --no-pager log -1 --stat
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative
-	lga = lg --all
-	mwpull = pull --rebase
-	mwpush = !git push && git pull --rebase
-	st = status -sb
-	sti = status -sb --ignored
-	stn = status -sb -uno
-	stm = status -sb --ignore-submodules
-	t = task
-	unstage = reset HEAD --
-	ff = merge --ff-only
-[github]
-	user = laomaiweng
+    ff = only
 [transfer]
-	fsckObjects = true
+    fsckObjects = true
 [core]
-	excludesfile = ~/.cvsignore
+    excludesfile = ~/.cvsignore
+
+[diff]
+    tool = nvim -d
+[merge]
+    tool = nvim -d
+[difftool]
+    prompt = false
 [pager]
     diff = delta
     log = delta
@@ -49,4 +28,29 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 
-# vim: noet
+[alias]
+    br = branch
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    h = help
+    last = !git --no-pager log -1 --stat
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative
+    lga = lg --all
+    st = status -sb
+    sti = status -sb --ignored
+    stn = status -sb -uno
+    stm = status -sb --ignore-submodules
+    t = task
+    unstage = reset HEAD --
+    ff = merge --ff-only
+
+[github]
+    user = laomaiweng
+[credential "https://github.com"]
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = !/usr/bin/gh auth git-credential

@@ -1,11 +1,11 @@
 " %LOCALAPPDATA%\nvim\init.vim
 " User settings for Neovim
 
-" Load plugins
-lua require('plugins')
-
 " Change the mapleader for bépo
 let mapleader = ";"
+
+" Load plugins
+lua require('plugins')
 
 "" Theme settings
 if has('gui_running')
@@ -13,7 +13,6 @@ if has('gui_running')
 else
     set background=dark
 endif
-colorscheme nightfox    " couldn't find a Solarized Dark theme with good support for treesitter et al. :(
 " The font is set in ginit.vim, because `set guifont=` doesn't work with my
 " Nerd Fonts for some reason (Neovim rejects the font and keeps the default).
 set termguicolors
@@ -124,28 +123,7 @@ augroup dap_python
 augroup end
 
 "" Functions
-lua <<LUA_EOF
--- Function to enable/disable diagnostics.
-vim.g.diagnostics_visible = true
-function _G.toggle_diagnostics()
-    if vim.g.diagnostics_visible then
-        vim.g.diagnostics_visible = false
-        vim.diagnostic.disable()
-        print('Disabled diagnostics.')
-    else
-        vim.g.diagnostics_visible = true
-        vim.diagnostic.enable()
-        print('Enabled diagnostics.')
-    end
-end
-LUA_EOF
-
-"" Packer config
-" Run :PackerCompile upon modification of plugins.lua.
-augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
+lua require('functions')
 
 "" CtrlSpace config
 set hidden

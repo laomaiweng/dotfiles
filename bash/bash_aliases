@@ -1,9 +1,5 @@
 # ~/.bash_aliases - user-specific aliases
 
-alias screen='unset NOGREET; screen'
-alias tmux='unset NOGREET; tmux'
-alias pass='EDITOR="safevim -S $HOME/.password-store/.vimopts" pass'
-
 # one-char shortcuts
 alias g=git
 alias p=print
@@ -16,29 +12,18 @@ alias la='ls -A'
 alias l.='ls -d .*'
 alias lt='ls -alhct'
 alias rcp='cp --reflink=always'
-alias mp3='mpg123 -v -C'
 
 # options that should always be on
 alias strings='strings -a'  # http://lcamtuf.blogspot.fr/2014/10/psa-dont-run-strings-on-untrusted-files.html
 alias qsize='LC_ALL=C qsize'
 alias sort='LC_ALL=C sort'  # https://twitter.com/hdmoore/status/808035256188235778
 alias gdb='gdb -q'
-alias rust-gdb='rust-gdb -q'
 alias readelf='readelf -W'
 alias disown='disown -r'
-alias mkisofs='mkisofs -JR'
-alias alsamixer='alsamixer -c PCH'
 alias pwgen='pwgen -cny -s'
-alias ip='ip --color'
-alias diff='colordiff'
 alias hd='hexdump -f ~/.hd.cfg'
 
-alias bpython2.7='python2.7 -m bpython'
-alias bpython3.6='python3.6 -m bpython'
-alias bpython3.7='python3.7 -m bpython'
-alias bpython3.8='python3.8 -m bpython'
-
-alias dbus-suspend='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Suspend boolean:true'
-alias dbus-hibernate='dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Hibernate boolean:true'
+# machine-specific aliases
+[ -f ~/.bash_aliases.local ] && . ~/.bash_aliases.local
 
 # vim:ft=sh

@@ -42,16 +42,23 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Colorschemes
   {
-    "EdenEast/nightfox.nvim",
+    "calind/selenized.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1001, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      -- couldn't find a Solarized/Selenized Dark theme with good support for treesitter et al. :(
-      vim.cmd([[colorscheme nightfox]])
+      vim.cmd([[colorscheme selenized]])
     end,
   },
-  "calind/selenized.nvim",
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1001, -- make sure to load this before all the other start plugins
+    -- config = function()
+    --   -- load the colorscheme here
+    --   vim.cmd([[colorscheme nightfox]])
+    -- end,
+  },
   "marko-cerovac/material.nvim",
 
   -- Utilities
@@ -139,7 +146,10 @@ require("lazy").setup({
       end
 
       require("lualine").setup {
-        options = { theme = "auto" },
+        options = {
+          theme = "solarized_dark", -- for colorscheme "selenized"
+          --theme = "ayu_mirage", -- for colorscheme "nightfox"
+        },
         extensions = { "chadtree", "fugitive", "quickfix" },
         sections = {
           -- truncate the mode if the window gets too small

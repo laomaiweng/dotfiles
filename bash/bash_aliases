@@ -5,6 +5,9 @@ alias g=git
 alias p=print
 alias t=task
 
+# shortcuts
+alias md='python3 -m rich.markdown'
+
 # new names for specific options
 alias l='ls -CF'
 alias ll='ls -alh'

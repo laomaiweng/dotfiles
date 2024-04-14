@@ -9,7 +9,7 @@
 -- 3. install external tools:
 --      $package_manager install ripgrep
 --      $package_manager install yarnpkg  # for markdown-preview
---      $package_manager install universal-ctags  # for Coq
+--      $package_manager install python3-venv universal-ctags sqlite3  # for Coq
 -- 4. install LSPs
 --      :Mason
 -- 5. install COQ & CHADtree dependencies
@@ -45,19 +45,19 @@ require("lazy").setup({
     "calind/selenized.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1001, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme selenized]])
-    end,
+    -- config = function()
+    --   -- load the colorscheme here
+    --   vim.cmd([[colorscheme selenized]])
+    -- end,
   },
   {
     "EdenEast/nightfox.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1001, -- make sure to load this before all the other start plugins
-    -- config = function()
-    --   -- load the colorscheme here
-    --   vim.cmd([[colorscheme nightfox]])
-    -- end,
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme nightfox]])
+    end,
   },
   "marko-cerovac/material.nvim",
 
@@ -147,8 +147,8 @@ require("lazy").setup({
 
       require("lualine").setup {
         options = {
-          theme = "solarized_dark", -- for colorscheme "selenized"
-          --theme = "ayu_mirage", -- for colorscheme "nightfox"
+          -- theme = "solarized_dark", -- for colorscheme "selenized"
+          theme = "ayu_mirage", -- for colorscheme "nightfox"
         },
         extensions = { "chadtree", "fugitive", "quickfix" },
         sections = {

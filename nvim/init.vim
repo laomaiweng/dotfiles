@@ -128,6 +128,7 @@ lua require('functions')
 "" CtrlSpace config
 set hidden
 let g:CtrlSpaceDefaultMappingKey = '<c-space> '
+nnoremap <c-space> <cmd>CtrlSpace<cr>  " apparently the above default mapping isn't installed under some obscure circumstances
 
 "" Coq config
 " The default keybind for manually triggering completions is <c-space>, which

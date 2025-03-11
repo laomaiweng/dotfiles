@@ -278,6 +278,7 @@ require("lazy").setup({
   "fedorenchik/qt-support.vim",
   "rust-lang/rust.vim", -- Still useful in Neovim, for Playpen integration + running single tests from Vim.
   "bfrg/vim-cpp-modern",
+  "rhysd/vim-llvm",
   "lark-parser/vim-lark-syntax",
 
   -- Tooling integration

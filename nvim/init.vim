@@ -144,3 +144,19 @@ let g:clever_f_across_no_line = 1
 let g:clever_f_fix_key_direction = 1
 let g:clever_f_timeout_ms = 1500
 let g:clever_f_highlight_timeout_ms = 1500
+
+"" committia config
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Enable spell-checking
+    setlocal spell
+
+    " If no commit message, start in insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    endif
+
+    " Scroll the diff window from insert mode
+    imap <buffer><C-d> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-u> <Plug>(committia-scroll-diff-up-half)
+endfunction

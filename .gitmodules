@@ -1,5 +1,9 @@
 # git submodules
 
+[submodule ".scripts"]
+	path = .scripts
+	url = https://github.com/laomaiweng/scripts
+
 [submodule "dircolors/dircolors-solarized"]
 	path = dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized

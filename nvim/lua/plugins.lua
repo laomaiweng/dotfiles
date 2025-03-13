@@ -242,6 +242,7 @@ require("lazy").setup({
       telescope.load_extension("heading")
     end
   },
+  "rhysd/committia.vim",
 
   -- Editing helpers
   -- NOTE: vim-endwise & vim-closer have been disabled because they both try to extend the Insert-mode <CR> mapping, but

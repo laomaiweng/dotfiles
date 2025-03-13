@@ -243,6 +243,12 @@ require("lazy").setup({
     end
   },
   "rhysd/committia.vim",
+  {
+    "junegunn/gv.vim",
+    dependencies = {
+      "tpope/vim-fugitive",
+    }
+  },
 
   -- Editing helpers
   -- NOTE: vim-endwise & vim-closer have been disabled because they both try to extend the Insert-mode <CR> mapping, but

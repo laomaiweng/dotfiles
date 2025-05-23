@@ -27,7 +27,7 @@
 
 -- Auto-install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -75,7 +75,8 @@ require("lazy").setup({
   },
   {
     "folke/trouble.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "Trouble",
   },
   { "andymass/vim-matchup", event = "VimEnter" },
   {
@@ -95,7 +96,7 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       { "lewis6991/gitsigns.nvim", optional = true },
       { "nvim-treesitter/nvim-treesitter", optional = true },
       "arkav/lualine-lsp-progress",
@@ -175,7 +176,7 @@ require("lazy").setup({
     "kdheepak/tabline.nvim",
     dependencies = {
       { "nvim-lualine/lualine.nvim", optional = true },
-      "kyazdani42/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons"
     },
     config = function()
       require("tabline").setup { enable = true, }
@@ -184,9 +185,56 @@ require("lazy").setup({
   "stevearc/dressing.nvim",
   {
     "goolord/alpha-nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function ()
-      require("alpha").setup(require("alpha.themes.startify").config)
+      local theme = require("alpha.themes.startify")
+
+      -- Default header when `toilet` isn't available
+      theme.section.header.val = {
+        "                                                            ",
+        "                                                            ",
+        "                                            ██              ",
+        "                                            ██              ",
+        "                                            ██              ",
+        "                                                            ",
+        " ██░████    ░████▒    ░████░   ██▒  ▒██   ████     ██▓█▒██▒ ",
+        " ███████▓  ░██████▒  ░██████░  ▓██  ██▓   ████     ████████ ",
+        " ███  ▒██  ██▒  ▒██  ███  ███  ▒██  ██▒     ██     ██░██░██ ",
+        " ██    ██  ████████  ██░  ░██   ██░░██      ██     ██ ██ ██ ",
+        " ██    ██  ████████  ██    ██   ██▒▒██      ██     ██ ██ ██ ",
+        " ██    ██  ██        ██░  ░██   ▒████▒      ██     ██ ██ ██ ",
+        " ██    ██  ███░  ▒█  ███  ███    ████       ██     ██ ██ ██ ",
+        " ██    ██  ░███████  ░██████░    ████    ████████  ██ ██ ██ ",
+        " ██    ██   ░█████▒   ░████░     ▒██▒    ████████  ██ ██ ██ ",
+        "                                                            ",
+        "                                                            ",
+        "                                                            ",
+        "                                                            ",
+      }
+
+      -- Switch between various fonts, inspired by:
+      -- https://github.com/AdamWhittingham/vim-config/blob/nvim/lua/config/plugins/alpha-nvim.lua
+      if vim.fn.executable("toilet") then
+        local fonts = {
+          -- Favorite fonts, double the odds
+          "ascii12", "ascii12",
+          "bigascii12", "bigascii12",
+          "bigmono12", "bigmono12",
+          "mono12", "mono12",
+          -- Less favorite fonts
+          "future", "letter", "pagga", "smblock", "smbraille"
+        }
+        math.randomseed(os.time())
+        local font = fonts[math.random(#fonts)]
+
+        local handle = io.popen("toilet -f " .. font .. " neovim")
+        if handle then
+          theme.section.header.val = handle:read("*a")
+          handle:close()
+        end
+      end
+
+      require("alpha").setup(theme.config)
     end
   },
   {
@@ -205,22 +253,23 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "tsakirist/telescope-lazy.nvim",
       "nvim-telescope/telescope-dap.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-github.nvim",
       "nvim-telescope/telescope-symbols.nvim",
+      "fdschmidt93/telescope-egrepify.nvim",
       "crispgm/telescope-heading.nvim",
     },
     config = function()
       local telescope = require("telescope")
-      local trouble = require("trouble.providers.telescope")
       telescope.setup {
         defaults = {
           mappings = {
             i = {
               ["<c-h>"] = "which_key",
-              ["<c-space>"] = trouble.open_with_trouble
+              ["<c-space>"] = require("trouble.sources.telescope").open
             },
             n = {
-              ["<c-space>"] = trouble.open_with_trouble
+              ["<c-space>"] = require("trouble.sources.telescope").open
             },
           }
         },
@@ -229,17 +278,50 @@ require("lazy").setup({
           lsp_range_code_actions = { theme = "cursor" },
         },
         extensions = {
+          egrepify = {
+            AND = false, -- By default, don't intersect tokens in prompt
+          },
+          file_browser = {
+            hijack_netrw = true,
+          },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown{},
           },
         },
       }
-      telescope.load_extension("fzf")
-      telescope.load_extension("lazy")
       telescope.load_extension("dap")
+      telescope.load_extension("egrepify")
+      telescope.load_extension("file_browser")
+      telescope.load_extension("fzf")
       telescope.load_extension("gh")
-      telescope.load_extension("notify")
       telescope.load_extension("heading")
+      telescope.load_extension("lazy")
+      telescope.load_extension("notify")
+
+      function vim.getVisualSelection()
+	local current_clipboard_content = vim.fn.getreg('"')
+
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	vim.fn.setreg('"', current_clipboard_content)
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+          return text
+	else
+          return ''
+	end
+      end
+
+      -- Search for selected text in visual mode
+      vim.keymap.set('v', '<leader>tG',
+        function()
+              local text = vim.getVisualSelection()
+              require("telescope.builtin").grep_string({ search = text })
+        end,
+        {noremap = true, silent = true})
     end
   },
   "rhysd/committia.vim",
@@ -279,6 +361,12 @@ require("lazy").setup({
   "tommcdo/vim-exchange",
   "michaeljsmith/vim-indent-object",
   "mg979/vim-visual-multi",
+  {
+    "RaafatTurki/hex.nvim",
+    config = function()
+      require("hex").setup()
+    end
+  },
 
   -- Filetypes
   "ron-rs/ron.vim",
@@ -396,6 +484,21 @@ require("lazy").setup({
       }
     end
   },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    opts = {
+      -- ASCII hints to use instead of the default :panda: emoji
+      hint_prefix = {
+        above = "↙ ",
+        current = "← ",
+        below = "↖ "
+      },
+      hint_inline = function() return "eol" end,
+      toggle_key = "<C-k>",
+      select_signature_key = "<C-n>",
+    },
+  },
 
   -- LSP stuff
   "williamboman/mason.nvim",
@@ -403,42 +506,51 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
   },
-  "simrat39/rust-tools.nvim",
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,   -- This plugin is already lazy
+  },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim", "simrat39/rust-tools.nvim", "ms-jpq/coq_nvim", },
+    dependencies = { "williamboman/mason-lspconfig.nvim", "mrcjkb/rustaceanvim", "ms-jpq/coq_nvim", },
     config = function()
       require("mason").setup()
-      local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup()
-      local lspconfig = require("lspconfig")
+      require("mason-lspconfig").setup()
       local coq = require("coq")
-      mason_lspconfig.setup_handlers {
-        -- Default handler
-        function (server_name)
-          lspconfig[server_name].setup(coq.lsp_ensure_capabilities {})
-        end,
 
-        ["rust_analyzer"] = function()
-          require("rust-tools").setup(coq.lsp_ensure_capabilities {})
-        end,
+      -- Default handler
+      vim.lsp.config("*", coq.lsp_ensure_capabilities {})
 
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" }
-                }
-              }
+      vim.lsp.config("lua_ls",
+        coq.lsp_ensure_capabilities {
+          settings = {
+            Lua = {
+              runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+                path = vim.split(package.path, ";"),
+              },
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files and plugins
+                library = { vim.env.VIMRUNTIME },
+                checkThirdParty = false,
+              },
+              telemetry = {
+                enable = false,
+              },
             }
-          })
-        end,
-      }
+          }
+        }
+      )
     end
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     dependencies = { "lewis6991/gitsigns.nvim", "ms-jpq/coq_nvim", },
     config = function()
       local null_ls = require("null-ls")

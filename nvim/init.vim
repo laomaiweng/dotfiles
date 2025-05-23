@@ -54,8 +54,9 @@ augroup end
 
 "" Key bindings
 " Fn keys
-set pastetoggle=<F2>
 nnoremap <F1> <cmd>CHADopen<cr>
+nnoremap <silent> <F2> :set paste!<cr>
+inoremap <silent> <F2> <esc>:set paste!<cr>i
 nnoremap <F3> <cmd>make<cr>
 nnoremap <F4> <cmd>UndotreeToggle<cr>
 nnoremap <F5> <cmd>Autoformat<cr>
@@ -70,7 +71,8 @@ xmap gA <plug>(EasyAlign)
 nmap gA <plug>(EasyAlign)
 " LSP functions (some via Telescope)
 nnoremap <c-e> <cmd>lua vim.diagnostic.open_float()<cr>
-nnoremap gd <cmd>Telescope diagnostics<cr>
+nnoremap gd <cmd>Telescope diagnostics bufnr=0<cr>
+nnoremap gD <cmd>Telescope diagnostics<cr>
 nnoremap <leader>D <cmd>call v:lua.toggle_diagnostics()<cr>
 nnoremap <c-k> <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>k <cmd>lua vim.lsp.buf.signature_help()<cr>
@@ -80,17 +82,18 @@ nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>S <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap g[ <cmd>Telescope lsp_references<cr>
 nnoremap g] <cmd>Telescope lsp_definitions<cr>
-nnoremap <leader>t[ <cmd>Telescope lsp_implementations<cr>
-nnoremap <leader>t] <cmd>Telescope lsp_type_definitions<cr>
+nnoremap <leader>g[ <cmd>Telescope lsp_implementations<cr>
+nnoremap <leader>g] <cmd>Telescope lsp_type_definitions<cr>
 nnoremap g( <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap g) <cmd>Telescope lsp_outgoing_calls<cr>
 " Telescope-specific queries
 nnoremap <leader>tr <cmd>Telescope resume<cr>
-nnoremap <leader>tf <cmd>Telescope find_files<cr>
+nnoremap <leader>tf. <cmd>Telescope file_browser<cr>
+nnoremap <leader>tff <cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>
+nnoremap <leader>tf/ <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
-nnoremap <leader>tG <cmd>Telescope live_grep<cr>
+nnoremap <leader>tG <cmd>Telescope egrepify<cr>
 nnoremap <leader>tB <cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>
-vnoremap <leader>tG "zy:Telescope live_grep default_text=<c-r>z<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>tj <cmd>Telescope jumplist<cr>
 nnoremap <leader>gf <cmd>Telescope git_files<cr>

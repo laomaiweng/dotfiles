@@ -214,7 +214,7 @@ require("lazy").setup({
 
       -- Switch between various fonts, inspired by:
       -- https://github.com/AdamWhittingham/vim-config/blob/nvim/lua/config/plugins/alpha-nvim.lua
-      if vim.fn.executable("toilet") then
+      if vim.fn.executable("toilet") == 1 then
         local fonts = {
           -- Favorite fonts, double the odds
           "ascii12", "ascii12",

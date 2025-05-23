@@ -215,22 +215,23 @@ require("lazy").setup({
       -- Switch between various fonts, inspired by:
       -- https://github.com/AdamWhittingham/vim-config/blob/nvim/lua/config/plugins/alpha-nvim.lua
       if vim.fn.executable("toilet") == 1 then
-        local fonts = {
-          -- Favorite fonts, double the odds
-          "ascii12", "ascii12",
-          "bigascii12", "bigascii12",
-          "bigmono12", "bigmono12",
-          "mono12", "mono12",
-          -- Less favorite fonts
-          "future", "letter", "pagga", "smblock", "smbraille"
-        }
+        local big_fonts = { "ascii12", "bigascii12", "bigmono12", "mono12", }
+        local small_fonts = { "future", "letter", "pagga", "smblock", "smbraille" }
+        local fonts = vim.fn.winheight(0) > 40 and big_fonts or small_fonts
+
         math.randomseed(os.time())
         local font = fonts[math.random(#fonts)]
 
         local handle = io.popen("toilet -f " .. font .. " neovim")
         if handle then
-          theme.section.header.val = handle:read("*a")
+          -- Read line-by-line because we need a table of lines, not a single big string with newlines
+          local header = {}
+          for l in handle:lines() do
+            table.insert(header, l)
+          end
           handle:close()
+
+          theme.section.header.val = header
         end
       end
 

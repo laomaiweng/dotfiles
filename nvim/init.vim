@@ -88,9 +88,9 @@ nnoremap g( <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap g) <cmd>Telescope lsp_outgoing_calls<cr>
 " Telescope-specific queries
 nnoremap <leader>tr <cmd>Telescope resume<cr>
-nnoremap <leader>tf. <cmd>Telescope file_browser<cr>
-nnoremap <leader>tff <cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>
-nnoremap <leader>tf/ <cmd>Telescope find_files<cr>
+nnoremap <leader>f. <cmd>Telescope file_browser<cr>
+nnoremap <leader>ff <cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>
+nnoremap <leader>f/ <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
 nnoremap <leader>tG <cmd>Telescope egrepify<cr>
 nnoremap <leader>tB <cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>

@@ -1,0 +1,2 @@
+# completion for alias tw=timew
+_xfunc timew complete -F _timew tw

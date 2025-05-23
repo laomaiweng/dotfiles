@@ -1,0 +1,2 @@
+# completion for alias t=task
+_xfunc task complete -o nospace -F _task t

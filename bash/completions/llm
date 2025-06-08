@@ -1,0 +1,29 @@
+# bash completion for `llm`
+
+_llm() {
+    local cur prev
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    case "$prev" in
+        -m|--model)
+            # XXX: There may be other model types than "OpenAI Chat"
+            local models
+            mapfile -t models < <(llm models | sed -n -e 's/^OpenAI Chat: //p')
+            mapfile -t COMPREPLY < <(compgen -W "${models[*]@Q}" -- "$cur")
+            return 0
+            ;;
+
+        -f|--fragment)
+            _filedir
+            return 0
+            ;;
+
+        *)
+    esac
+}
+
+complete -F _llm llm
+
+# vim: ft=bash

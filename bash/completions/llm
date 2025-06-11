@@ -1,10 +1,8 @@
 # bash completion for `llm`
 
 _llm() {
-    local cur prev
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    local cur prev words cword
+    _init_completion -n : || return
 
     case "$prev" in
         -m|--model)
@@ -12,15 +10,45 @@ _llm() {
             local models
             mapfile -t models < <(llm models | sed -n -e 's/^OpenAI Chat: //p')
             mapfile -t COMPREPLY < <(compgen -W "${models[*]@Q}" -- "$cur")
-            return 0
+            __ltrim_colon_completions "$cur"
             ;;
 
         -f|--fragment)
             _filedir
-            return 0
             ;;
 
-        *)
+        -t|--template)
+            local loader arg
+            IFS=: read -r loader arg <<<"$cur"
+
+            if [[ "$cur" != *:* ]]; then
+                # No colon, either the user is typing the loader name, or they're going straight for a filename
+                if [[ "$cur" == */* ]]; then
+                    _filedir
+                else
+                    local loaders
+                    mapfile -t loaders < <(llm templates loaders | sed -n -e 's/^\([^ :]\+\):$/\1/p')
+                    mapfile -t COMPREPLY < <(compgen -W "${loaders[*]}" -S : -- "$cur")
+
+                    if (( ${#COMPREPLY[@]} > 0 )); then
+                        # Got loader completions, don't append a space to let the user type in the loader arg
+                        compopt -o nospace
+                    else
+                        # No loader completions, attempt file completion
+                        _filedir
+                    fi
+                fi
+
+            elif [[ "$loader" != */* ]]; then
+                # Got a loader name, complete $arg as a file
+                cur="$arg"
+                _filedir
+
+            else
+                # Loader name looks like a filename, complete as a file
+                _filedir
+            fi
+            ;;
     esac
 }
 

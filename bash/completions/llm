@@ -49,6 +49,12 @@ _llm() {
                 _filedir
             fi
             ;;
+
+        *)
+            # Attempt to complete a command
+            local commands=(prompt aliases chat collections embed embed-models embed-multi fragments install keys logs models openai plugins schemas similar templates tools uninstall)
+            mapfile -t COMPREPLY < <(compgen -W "${commands[*]}" -- "$cur")
+            ;;
     esac
 }
 

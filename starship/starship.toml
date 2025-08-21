@@ -1,0 +1,7 @@
+format = '$all${custom.upterm}$character'
+
+[custom.upterm]
+description = 'This shell is involved in an upterm session'
+command = 'echo 🔗'
+when = ''' test -n "${UPTERM_ADMIN_SOCKET}" '''
+style = 'bold blue'

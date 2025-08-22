@@ -1,2 +1,3 @@
 # completion for alias t=task
-_xfunc task complete -o nospace -F _task t
+declare -F -- _task &>/dev/null || _comp_load -- task
+complete -o nospace -F _task t

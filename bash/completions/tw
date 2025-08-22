@@ -1,2 +1,3 @@
 # completion for alias tw=timew
-_xfunc timew complete -F _timew tw
+declare -F -- _timew &>/dev/null || _comp_load -- timew
+complete -F _timew tw

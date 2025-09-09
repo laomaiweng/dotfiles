@@ -1,13 +1,12 @@
-# fastmmd - render a Mermaid diagram from stdin to stdout, or okular if stdin is a terminal
+# fastmmd - render a Mermaid diagram from stdin to stdout, or chafa if stdout is a terminal
 
-: "${FASTMMD_PROGRAM:=okular -}"
+: "${FASTMMD_PROGRAM:=chafa}"
 
 fastmmd() {  # *:mmdc_args
     local outcmd=(cat)
     [[ -t 1 ]] && outcmd=($FASTMMD_PROGRAM)
 
-    # provide a default -epng output format arg because the default for mmdc is to render to svg, which okular doesn't understand
-    # the user is free to pass in another -eFMT arg to override that
+    # default to png output, but the user is free to pass in another -eFMT arg to override that
     mmdc -i- -epng -o- "$@" | "${outcmd[@]}" 2>/dev/null
 }
 

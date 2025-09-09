@@ -1,0 +1,9 @@
+# mmdclip - grab a Mermaid diagram from the clipboard, render it, stash the output back into the clipboard
+
+mmdclip() {  # *:mmdc_args
+    # provide a default -epng output format arg because the default for mmdc is to render to svg, which okular doesn't understand
+    # the user is free to pass in another -eFMT arg to override that
+    wl-paste | mmdc -i- -epng -o- "$@" | tee >(wl-copy && echo 'Copied to clipboard' >/dev/tty) | { okular - 2>/dev/null; }
+}
+
+# vim: ft=bash

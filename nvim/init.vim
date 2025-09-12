@@ -93,6 +93,7 @@ nnoremap <leader>ff <cmd>Telescope file_browser path=%:p:h select_buffer=true<cr
 nnoremap <leader>f/ <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope grep_string<cr>
 nnoremap <leader>tG <cmd>Telescope egrepify<cr>
+nnoremap <leader>th <cmd>Telescope heading<cr>
 nnoremap <leader>tB <cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>tj <cmd>Telescope jumplist<cr>

@@ -1,6 +1,7 @@
-# Default config for sway
+# User config for sway
 #
-# Copy this to ~/.config/sway/config and edit it to your liking.
+# Bootstrapped from /etc/sway/config
+# With bépo-specific tweaks from https://bepo.fr/wiki/Utilisatrice:Océane/Fichier_de_configuration_sway
 #
 # Read `man 5 sway` for a complete reference.
 
@@ -16,7 +17,20 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu wmenu-run
+set $menu wofi --show=run --gtk-dark --prompt="Run a program"
+set $dmenu wofi --show=drun --gtk-dark --prompt="Run an application" --allow-images --allow-markup
+set $cmenu wofi --show=run --gtk-dark --prompt="Run a command" --define=run-always_parse_args=true
+# Top number keys (bépo layout)
+set $_1 quotedbl
+set $_2 guillemotleft
+set $_3 guillemotright
+set $_4 parenleft
+set $_5 parenright
+set $_6 at
+set $_7 plus
+set $_8 minus
+set $_9 slash
+set $_0 asterisk
 
 ### Output configuration
 #
@@ -41,6 +55,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaylock --daemonize --show-failed-attempts --color 131a24' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock --daemonize --show-failed-attempts --color 131a24'
 
 ### Input configuration
 #
@@ -55,6 +73,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input * {
+    xkb_layout "fr"
+    xkb_variant "bepo"
+}
 
 ### Key bindings
 #
@@ -62,12 +84,20 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term -a 'flying-foot'
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec $dmenu
+    bindsym $mod+Shift+d exec $menu
+    bindsym Alt+F2 exec $cmenu
+
+    # Switch between windows
+    # sway-switch is a simple window switcher script from the wofi(7) man page
+    # See: https://github.com/laomaiweng/scripts/blob/main/wm/sway-switch
+    bindsym $mod+Tab exec sway-switch
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -78,6 +108,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+
+    # Lock the screen
+    bindsym $mod+Control+Shift+l exec swaylock --daemonize --show-failed-attempts --color 131a24
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -109,29 +142,34 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Workspaces:
 #
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+$_1 workspace number 1
+    bindsym $mod+$_2 workspace number 2
+    bindsym $mod+$_3 workspace number 3
+    bindsym $mod+$_4 workspace number 4
+    bindsym $mod+$_5 workspace number 5
+    bindsym $mod+$_6 workspace number 6
+    bindsym $mod+$_7 workspace number 7
+    bindsym $mod+$_8 workspace number 8
+    bindsym $mod+$_9 workspace number 9
+    bindsym $mod+$_0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+$_1 move container to workspace number 1
+    bindsym $mod+Shift+$_2 move container to workspace number 2
+    bindsym $mod+Shift+$_3 move container to workspace number 3
+    bindsym $mod+Shift+$_4 move container to workspace number 4
+    bindsym $mod+Shift+$_5 move container to workspace number 5
+    bindsym $mod+Shift+$_6 move container to workspace number 6
+    bindsym $mod+Shift+$_7 move container to workspace number 7
+    bindsym $mod+Shift+$_8 move container to workspace number 8
+    bindsym $mod+Shift+$_9 move container to workspace number 9
+    bindsym $mod+Shift+$_0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    # Cycle between workspaces
+    bindsym $mod+Control+$left workspace prev
+    bindsym $mod+Control+$right workspace next
+    bindsym $mod+Control+Left workspace prev
+    bindsym $mod+Control+Right workspace next
 #
 # Layout stuff:
 #
@@ -143,8 +181,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+t layout tabbed
+    bindsym $mod+c layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -157,6 +195,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # Move focus to the last-focused child of the focused container
+    bindsym $mod+Shift+a focus child
 #
 # Scratchpad:
 #
@@ -164,11 +205,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+equal move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+equal scratchpad show
 #
 # Resizing containers:
 #
@@ -197,21 +238,28 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%-
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume \@DEFAULT_SINK@ 5%+
+    bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Browsers
+    bindsym XF86HomePage exec chromium
+    bindsym Shift+XF86HomePage exec chromium --incognito
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    # Spawn a terminal with htop
+    bindsym Control+Shift+Escape exec $term -a 'flying-foot' htop
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    swaybar_command waybar
+
     position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
@@ -224,5 +272,56 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+#
+# Notifications:
+#
+exec mako
+
+#
+# Floating window rules:
+#
+# Initial set of rules courtesy of https://wiki.gentoo.org/wiki/Sway
+# Use `swaymsg -t get_tree` to find out the app_id for a Wayland window
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [app_id = "flying-foot"] floating enable, resize set width 60ppt height 60ppt
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
+for_window [app_id = "chromium-browser-chromium"] border none
+
+#
+# GTK theme:
+#
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface font-name 'Sans 10'
+}
+
+#
+# Seat configuration
+#
+# Check existing seats with `swaymsg -t get_seats`
+seat seat0 xcursor_theme Adwaita 24
+
+#
+# Clipboard management
+#
+# There are 2 aspects to this:
+# - clipboard persistence (in Wayland, once the source application for some clipboard data terminates, the data is no longer available in other applications)
+# - clipboard history (remembering more than just the last copied data)
+# `wl-clip-persist` provides clipboard persistence.
+# Cliboard history is a risky business with password managers, so not used for now (but if I were looking for options,
+# `cliprust` might be a good candidate as its README explicitly mentions excluding passwords for the history).
+exec wl-clip-persist --clipboard regular
+
 
 include /etc/sway/config.d/*

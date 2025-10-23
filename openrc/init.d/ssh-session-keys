@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+
+depend() {
+	need ssh-agent
+}
+
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.sock"
+export SSH_SESSION_KEY_LIFETIME="365d"
+command="~/.local/bin/ssh-add-session-keys"

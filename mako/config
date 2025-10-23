@@ -1,0 +1,20 @@
+border-radius=5
+#default-timeout=10000
+
+[urgency=low]
+background-color=#343b45
+border-color=#59606b
+text-color=#93a0b5
+
+[urgency=normal]
+#border-color=#
+
+[urgency=high]
+background-color=#5e4245
+border-color=#bf616a
+default-timeout=0
+
+[actionable=true]
+# mako-run is a simple action picker
+# See: https://github.com/laomaiweng/scripts/blob/main/wm/mako-run
+on-button-right=exec makoctl menu -n "${id}" mako-run "${id}"

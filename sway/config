@@ -32,6 +32,7 @@ set $_8 minus
 set $_9 slash
 set $_0 asterisk
 
+#
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -43,6 +44,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+#
 ### Idle configuration
 #
 # Example configuration:
@@ -60,6 +62,7 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock --daemonize --show-failed-attempts --color 131a24'
 
+#
 ### Input configuration
 #
 # Example configuration:
@@ -78,6 +81,7 @@ input * {
     xkb_variant "bepo"
 }
 
+#
 ### Key bindings
 #
 # Basics:
@@ -114,6 +118,7 @@ input * {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 #
 # Moving around:
 #
@@ -138,6 +143,7 @@ input * {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
@@ -170,6 +176,7 @@ input * {
     bindsym $mod+Control+$right workspace next
     bindsym $mod+Control+Left workspace prev
     bindsym $mod+Control+Right workspace next
+
 #
 # Layout stuff:
 #
@@ -198,6 +205,7 @@ input * {
 
     # Move focus to the last-focused child of the focused container
     bindsym $mod+Shift+a focus child
+
 #
 # Scratchpad:
 #
@@ -210,6 +218,7 @@ input * {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+equal scratchpad show
+
 #
 # Resizing containers:
 #
@@ -234,6 +243,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
 #
 # Utilities:
 #
@@ -248,13 +258,16 @@ bindsym $mod+r mode "resize"
     # Browsers
     bindsym XF86HomePage exec chromium
     bindsym Shift+XF86HomePage exec chromium --incognito
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    # Special key to take a screenshot with slurpshot
+    # See: https://github.com/laomaiweng/scripts/blob/main/wm/slurpshot
+    bindsym Print exec slurpshot
+    bindsym Shift+Print exec slurpshot Focus
+    bindsym $mod+Shift+s exec slurpshot Selection
     # Spawn a terminal with htop
     bindsym Control+Shift+Escape exec $term -a 'flying-foot' htop
 
 #
-# Status Bar:
+### Status Bar
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
@@ -274,12 +287,7 @@ bar {
 }
 
 #
-# Notifications:
-#
-exec mako
-
-#
-# Floating window rules:
+### Floating window rules
 #
 # Initial set of rules courtesy of https://wiki.gentoo.org/wiki/Sway
 # Use `swaymsg -t get_tree` to find out the app_id for a Wayland window
@@ -297,7 +305,7 @@ for_window [title = "Administrator privileges required"] floating enable
 for_window [app_id = "chromium-browser-chromium"] border none
 
 #
-# GTK theme:
+### Theming
 #
 exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
@@ -307,13 +315,15 @@ exec_always {
 }
 
 #
-# Seat configuration
+### Seat configuration
 #
 # Check existing seats with `swaymsg -t get_seats`
 seat seat0 xcursor_theme Adwaita 24
 
 #
-# Clipboard management
+### Misc agents
+#
+# Clipboard management:
 #
 # There are 2 aspects to this:
 # - clipboard persistence (in Wayland, once the source application for some clipboard data terminates, the data is no longer available in other applications)
@@ -323,5 +333,19 @@ seat seat0 xcursor_theme Adwaita 24
 # `cliprust` might be a good candidate as its README explicitly mentions excluding passwords for the history).
 exec wl-clip-persist --clipboard regular
 
+#
+# Notifications:
+#
+exec mako
+
+#
+# Authentication:
+#
+exec dex /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+
+#
+# Network management:
+#
+exec dex /etc/xdg/autostart/firewall-applet.desktop
 
 include /etc/sway/config.d/*

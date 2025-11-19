@@ -18,6 +18,9 @@ gdb/gdbinit                                         ~/.gdbinit
 gnupg/dirmngr.conf                                  ~/.gnupg/dirmngr.conf
 gnupg/gpg.conf                                      ~/.gnupg/gpg.conf
 gnupg/gpg-agent.conf                                ~/.gnupg/gpg-agent.conf
+gtk/gtkrc-2.0                                       ~/.gtkrc-2.0
+gtk/config/gtk-3.0/settings.ini                     ~/.config/gtk-3.0/settings.ini
+gtk/config/gtk-4.0/settings.ini                     ~/.config/gtk-4.0/settings.ini
 hexdump/hd.cfg                                      ~/.hd.cfg
 hg/hgrc                                             ~/.hgrc
 htop/htoprc                                         ~/.config/htop/htoprc

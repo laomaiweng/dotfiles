@@ -1,4 +1,5 @@
 # ~/.gitconfig - user-specific global Git configuration file
+# vim: ft=gitconfig
 
 [user]
     name = quentin
@@ -27,6 +28,8 @@
     show = delta
 [interactive]
     diffFilter = delta --color-only --features=interactive
+[advice]
+    detachedHead = false
 
 [alias]
     br = branch

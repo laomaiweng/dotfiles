@@ -273,6 +273,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
+// Start the Mate polkit agent (https://wiki.gentoo.org/wiki/Niri#Polkit suggests it's not deprecated like the GNOME polkit agent).
+spawn-at-startup "dex" "/etc/xdg/autostart/polkit-mate-authentication-agent-1.desktop"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 

@@ -5,6 +5,7 @@
 -- 1. install the Python client:
 --      pip3 install --user pynvim
 -- 2. install the Node client:
+--      npm config set prefix ~/.local  # set a user prefix if not already set
 --      npm install -g neovim
 -- 3. install external tools:
 --      $package_manager install ripgrep

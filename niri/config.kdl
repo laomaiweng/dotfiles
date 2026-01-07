@@ -276,6 +276,16 @@ spawn-at-startup "waybar"
 // Start the Mate polkit agent (https://wiki.gentoo.org/wiki/Niri#Polkit suggests it's not deprecated like the GNOME polkit agent).
 spawn-at-startup "dex" "/etc/xdg/autostart/polkit-mate-authentication-agent-1.desktop"
 
+// Clipboard management:
+//
+// There are 2 aspects to this:
+// - clipboard persistence (in Wayland, once the source application for some clipboard data terminates, the data is no longer available in other applications)
+// - clipboard history (remembering more than just the last copied data)
+// `wl-clip-persist` provides clipboard persistence.
+// Cliboard history is a risky business with password managers, so not used for now (but if I were looking for options,
+// `cliprust` might be a good candidate as its README explicitly mentions excluding passwords for the history).
+spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 

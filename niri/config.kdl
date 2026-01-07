@@ -286,6 +286,13 @@ spawn-at-startup "dex" "/etc/xdg/autostart/polkit-mate-authentication-agent-1.de
 // `cliprust` might be a good candidate as its README explicitly mentions excluding passwords for the history).
 spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
 
+// Gnome/GTK theming settings
+// Run `dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'` once to enable dark mode.
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "Adwaita"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "Adwaita"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "Adwaita"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "font-name" "Sans 10"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 

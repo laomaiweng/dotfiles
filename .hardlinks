@@ -34,7 +34,7 @@ pybugz/bugzrc                                       ~/.bugzrc
 readline/inputrc                                    ~/.inputrc
 task/taskrc                                         ~/.taskrc
 tclsh/tclshrc                                       ~/.tclshrc
-tmux/tmux.conf                                      ~/.tmux.conf
+tmux/tmux.conf                                      ~/.config/tmux/tmux.conf
 vim/vimrc                                           ~/.vimrc
 vimb/config                                         ~/.config/vimb/config
 wgetpaste/wgetpaste.conf                            ~/.wgetpaste.conf

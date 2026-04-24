@@ -8,9 +8,10 @@
 --      npm config set prefix ~/.local  # set a user prefix if not already set
 --      npm install -g neovim
 -- 3. install external tools:
---      $package_manager install ripgrep
+--      $package_manager install ripgrep fdfind
 --      $package_manager install yarnpkg  # for markdown-preview
 --      $package_manager install python3-venv universal-ctags sqlite3  # for Coq
+--      cargo install tree-sitter-cli     # apt version is too old on Debian
 -- 4. install LSPs
 --      :Mason
 -- 5. install COQ & CHADtree dependencies
@@ -449,25 +450,11 @@ require("lazy").setup({
   -- Completers, analyzers
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup {
-        ensure_installed = { "bash", "c", "c_sharp", "cmake", "cpp", "css", "dockerfile", "dot", "go", "html", "javascript", "json", "latex", "llvm", "lua", "make", "markdown", "python", "regex", "rst", "rust", "toml", "vim" },
-        sync_install = true,
-        highlight = {
-          enable = true,
-          disable = { "bash", "markdown", "toml" },  -- TS highlighting seems to suck in these
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-        matchup = { enable = true },
+      require("nvim-treesitter").install {
+        "bash", "c", "c_sharp", "cmake", "cpp", "css", "dockerfile", "dot", "go", "html", "javascript", "json", "latex", "llvm", "lua", "make", "markdown", "python", "regex", "rst", "rust", "toml", "vim"
       }
     end
   },

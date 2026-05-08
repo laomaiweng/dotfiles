@@ -23,6 +23,7 @@ fi
 shopt -s globstar
 
 # Setup a useful history
+shopt -s histappend
 HISTCONTROL=ignoreboth
 HISTFILESIZE=-1
 HISTSIZE=-1

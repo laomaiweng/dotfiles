@@ -378,6 +378,7 @@ require("lazy").setup({
   "bfrg/vim-cpp-modern",
   "rhysd/vim-llvm",
   "lark-parser/vim-lark-syntax",
+  "etiennepellegrini/vim-jsonschema",
 
   -- Tooling integration
   "tpope/vim-fugitive",

@@ -1,0 +1,43 @@
+// French keyboard layout customizations.
+
+default partial alphanumeric_keys
+xkb_symbols { include "fr(basic)" };
+
+// Ergo‑L customization
+// Same as regular Ergo‑L, but with arrow keys added under the pinkies in the
+// symbols (AltGr) layer.
+//
+// Project page: https://ergol.org
+// Author: NuclearSquid (huge thanks to Fabien Cazenave and the “Ergonauts”)
+// Version: 1.0.0
+//
+// In the following figures, a `*` preceding another character denotes a dead key.
+//
+// Symbols layer (AltGr)
+// ╭╌╌╌╌╌┰─────┬─────┬─────┬─────┬─────┰─────┬─────┬─────┬─────┬─────┰╌╌╌╌╌┬╌╌╌╌╌╮
+// ┆   ⇕ ┃   ¹ │   ² │   ³ │   ⁴ │   ⁵ ┃   ⁶ │   ⁷ │   ⁸ │   ⁹ │   ⁰ ┃     ┆     ┆
+// ┆   ↕ ┃   ₁ │   ₂ │   ₃ │   ₄ │   ₅ ┃   ₆ │   ₇ │   ₈ │   ₉ │   ₀ ┃     ┆     ┆
+// ╰╌╌╌╌╌╂─────┼─────┼─────┼─────┼─────╂─────┼─────┼─────┼─────┼─────╂╌╌╌╌╌┼╌╌╌╌╌┤
+//       ┃  *^ │     │     │  *¤ │   ‰ ┃  *˚ │     │   × │  *´ │  *` ┃   ⇓ ┆   ⇑ ┆
+//       ┃   ^ │   < │   > │   $ │   % ┃   @ │   & │   * │   ' │   ` ┃   ↓ ┆   ↑ ┆
+//       ┠─────┼─────┼─────┼─────┼─────╂─────┼─────┼─────┼─────┼─────╂╌╌╌╌╌┼╌╌╌╌╌┤
+//       ┃  *ˇ │     │     │  *˙ │   ≠ ┃  */ │   ± │  *¯ │   ÷ │  *” ┃   ⇐ ┆   ⇒ ┆
+//       ┃   { │   ( │   ) │   } │   = ┃   \ │   + │   - │   / │   " ┃   ← ┆   → ┆
+// ╭╌╌╌╌╌╂─────┼─────┼─────┼─────┼─────╂─────┼─────┼─────┼─────┼─────╂╌╌╌╌╌┴╌╌╌╌╌╯
+// ┆   ⇔ ┃  *~ │  *, │  *˛ │   – │     ┃     │   ¬ │  *¸ │   : │  *˘ ┃
+// ┆   ↔ ┃   ~ │   [ │   ] │   _ │   # ┃   | │   ! │   ; │   : │   ? ┃
+// ╰╌╌╌╌╌┸─────┴─────┴─────┴─────┴─────┸─────┴─────┴─────┴─────┴─────┚
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "ergol_lw" {
+    include "fr(ergol)"
+    name[group1]= "French (Ergo‑L, laomaiweng variant)";
+
+    // Pinky keys
+    key <AD11> {[ bracketleft     , braceleft       , U2193           , U21D3           , VoidSymbol      , VoidSymbol      ]}; // [ { ↓ ⇓
+    key <AD12> {[ bracketright    , braceright      , U2191           , U21D1           , VoidSymbol      , VoidSymbol      ]}; // ] } ↑ ⇑
+    key <AC11> {[ apostrophe      , quotedbl        , U2190           , U21D0           , VoidSymbol      , VoidSymbol      ]}; // ' " ← ⇐
+    key <BKSL> {[ backslash       , bar             , U2192           , U21D2           , VoidSymbol      , VoidSymbol      ]}; // \ | → ⇒
+    key <TLDE> {[ grave           , asciitilde      , U2195           , U21D5           , VoidSymbol      , VoidSymbol      ]}; // ` ~ ↕ ⇕
+    key <LSGT> {[ less            , greater         , U2194           , U21D4           , VoidSymbol      , VoidSymbol      ]}; // < > ↔ ⇔
+};

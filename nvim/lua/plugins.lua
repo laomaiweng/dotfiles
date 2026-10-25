@@ -70,7 +70,7 @@ require("lazy").setup({
   -- UI enhancements
   "vim-ctrlspace/vim-ctrlspace",
   {
-    "tversteeg/registers.nvim",
+    "happy663/registers.nvim",
     config = function()
       require("registers").setup()
     end

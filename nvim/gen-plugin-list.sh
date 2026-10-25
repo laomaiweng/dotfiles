@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ts=2 sts=2 sw=2 et
 
 dir=${0%/*}
 plugins_lua=$dir/lua/plugins.lua
@@ -12,17 +13,26 @@ lua <<EOF | sort -u
 plugins=$plugins
 for i,p in ipairs(plugins) do
   if type(p) == "table" then
-    n = p[1]
+    if p["url"] then
+      n = p["url"]
+    else
+      n = p[1]
+    end
   else
     n = p
   end
 
-  if n:find("https://", 1, true) == 1 then
+  -- Skip local paths
+  if n:find("/", 1, true) == 1 then
+    goto continue
+  elseif n:find("https://", 1, true) == 1 then
     u = n
   else
     u = "https://github.com/" .. n
   end
 
   print(u)
+
+  ::continue::
 end
 EOF

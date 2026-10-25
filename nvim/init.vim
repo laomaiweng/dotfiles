@@ -53,6 +53,11 @@ augroup apparmor
 augroup end
 
 "" Key bindings
+" Remap viewport movement (<C-e> is remapped below for LSP diagnostics)
+nnoremap zJ <c-e>
+vnoremap zJ <c-e>
+nnoremap zK <c-y>
+vnoremap zK <c-y>
 " Fn keys
 nnoremap <F1> <cmd>CHADopen<cr>
 nnoremap <silent> <F2> :set paste!<cr>

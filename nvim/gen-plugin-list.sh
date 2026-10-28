@@ -10,9 +10,21 @@ plugins=$(sed -n -e '/^require("lazy").setup/,$ p' "$plugins_lua" | sed -e '1 s/
 echo 'https://github.com/folke/lazy.nvim'
 
 lua <<EOF | sort -u
-plugins=$plugins
-for i,p in ipairs(plugins) do
+function plugin_url(p)
+  local n
+  local u
+
   if type(p) == "table" then
+    -- Process dependencies
+    local deps = p["dependencies"]
+    if deps and type(deps) == "table" then
+      local i
+      local d
+      for i,d in ipairs(deps) do
+        plugin_url(d)
+      end
+    end
+
     if p["url"] then
       n = p["url"]
     else
@@ -24,15 +36,20 @@ for i,p in ipairs(plugins) do
 
   -- Skip local paths
   if n:find("/", 1, true) == 1 then
-    goto continue
-  elseif n:find("https://", 1, true) == 1 then
+    return
+  end
+
+  if n:find("https://", 1, true) == 1 then
     u = n
   else
     u = "https://github.com/" .. n
   end
 
   print(u)
+end
 
-  ::continue::
+plugins=$plugins
+for i,p in ipairs(plugins) do
+  plugin_url(p)
 end
 EOF

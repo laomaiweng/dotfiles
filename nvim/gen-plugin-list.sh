@@ -6,8 +6,12 @@ plugins_lua=$dir/lua/plugins.lua
 
 plugins=$(sed -n -e '/^require("lazy").setup/,$ p' "$plugins_lua" | sed -e '1 s/.*/{/; $ s/.*/}/')
 
-# Always print lazy.nvim (at the top, unsorted)
+# Always print lazy.nvim (at the top, unsorted).
 echo 'https://github.com/folke/lazy.nvim'
+
+# And the Mason registries (useful when mirroring offline because Mason defaults to accessing those via the Github API).
+echo 'https://github.com/mason-org/mason-registry'
+echo 'https://github.com/mason-org/mason-system-registry'
 
 lua <<EOF | sort -u
 function plugin_url(p)

@@ -491,10 +491,10 @@ require("lazy").setup({
   },
 
   -- LSP stuff
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim" },
   },
   {
     "mrcjkb/rustaceanvim",
@@ -503,11 +503,10 @@ require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim", "mrcjkb/rustaceanvim", "ms-jpq/coq_nvim", },
+    dependencies = { "mason-org/mason-lspconfig.nvim", "mrcjkb/rustaceanvim", "ms-jpq/coq_nvim", },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
-      local coq = require("coq")
 
       -- Default handler
       vim.lsp.config("*", {})
@@ -542,7 +541,6 @@ require("lazy").setup({
     dependencies = { "lewis6991/gitsigns.nvim", "ms-jpq/coq_nvim", },
     config = function()
       local null_ls = require("null-ls")
-      local coq = require("coq")
       null_ls.setup({
         sources = {
           null_ls.builtins.code_actions.gitsigns,

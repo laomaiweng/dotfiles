@@ -510,33 +510,31 @@ require("lazy").setup({
       local coq = require("coq")
 
       -- Default handler
-      vim.lsp.config("*", coq.lsp_ensure_capabilities {})
+      vim.lsp.config("*", {})
 
-      vim.lsp.config("lua_ls",
-        coq.lsp_ensure_capabilities {
-          settings = {
-            Lua = {
-              runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-                path = vim.split(package.path, ";"),
-              },
-              diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-              },
-              workspace = {
-                -- Make the server aware of Neovim runtime files and plugins
-                library = { vim.env.VIMRUNTIME },
-                checkThirdParty = false,
-              },
-              telemetry = {
-                enable = false,
-              },
-            }
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { "vim" },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files and plugins
+              library = { vim.env.VIMRUNTIME },
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
           }
         }
-      )
+      })
     end
   },
   {
@@ -545,7 +543,7 @@ require("lazy").setup({
     config = function()
       local null_ls = require("null-ls")
       local coq = require("coq")
-      null_ls.setup(coq.lsp_ensure_capabilities {
+      null_ls.setup({
         sources = {
           null_ls.builtins.code_actions.gitsigns,
         },

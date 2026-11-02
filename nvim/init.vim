@@ -142,7 +142,7 @@ nnoremap <c-space> <cmd>CtrlSpace<cr>  " apparently the above default mapping is
 "" Coq config
 " The default keybind for manually triggering completions is <c-space>, which
 " collides with CtrlSpace. Use <c-tab> for manual completions.
-let g:coq_settings = { 'keymap.manual_complete': '<c-tab>', 'auto_start': 'shut-up' }
+let g:coq_settings = { 'keymap.manual_complete': '<c-tab>' }
 
 "" CamelCaseMotion config
 " Maps <leader>{w,b,e,ge} to camel-case motions.

@@ -459,8 +459,6 @@ require("lazy").setup({
       }
     end
   },
-  { "ms-jpq/coq_nvim", branch = "coq" },
-  { "ms-jpq/coq.artifacts", branch = "artifacts" },
   {
     "ms-jpq/coq.thirdparty",
     branch = "3p",
@@ -503,7 +501,16 @@ require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "mason-org/mason-lspconfig.nvim", "mrcjkb/rustaceanvim", "ms-jpq/coq_nvim", },
+    lazy = false,
+    dependencies = {
+      "mason-org/mason-lspconfig.nvim",
+      "mrcjkb/rustaceanvim",
+      { "ms-jpq/coq_nvim", branch = "coq" },
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+    },
+    init = function()
+      vim.g.coq_settings = {}
+    end,
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
